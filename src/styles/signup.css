@@ -1,0 +1,56 @@
+.main-div-sup{
+    background-color: purple;
+    width: 100%;
+    height: 100vh;
+}
+
+.form-div{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.form-child{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    
+}
+
+.upload-first-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    margin-bottom: 15px;
+}
+.upload-second-div{
+    height: 120px;
+    width: 160px;
+    background-color: transparent;
+    margin-bottom: 15px;
+}
+.uploaded-image{
+    width: 99%;
+    height: 18vh;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid red;
+    
+}
+
+.upload-span{
+    font-size: 50px;
+    color: blueviolet;
+    font-weight: lighter;
+    cursor: pointer;
+    position: absolute;
+    left: 49%;
+    top: 18%;
+}
+
+.upload-btn{
+    margin-top: 10px;
+}
