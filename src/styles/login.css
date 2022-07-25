@@ -1,0 +1,20 @@
+.login-main-div{
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blue;
+}
+
+.login-form-div{
+    background-color: violet;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.login-form-child{
+    display: flex;
+    flex-direction: column;
+}

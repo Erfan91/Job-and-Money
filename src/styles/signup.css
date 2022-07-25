@@ -54,3 +54,16 @@
 .upload-btn{
     margin-top: 10px;
 }
+
+.err-span{
+    color: red;
+    font-size: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.design-div{
+    background: black;
+    width: 37%;
+    height: 35vh;
+    clip-path: ellipse(110px 120px at 10% 20%);
+}

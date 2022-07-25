@@ -3,7 +3,9 @@ import {Link, Routes, Route} from 'react-router-dom'
 import { useState, useContext,useEffect } from 'react';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
-import './styles/signup.css'
+import Profile from './Components/Profile';
+import './styles/signup.css';
+import './styles/login.css'
 function App() {
 
   return (
@@ -17,6 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
     </div>
   );

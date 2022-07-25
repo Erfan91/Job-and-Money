@@ -11,6 +11,8 @@ const SignUp = () => {
   const [code, setCode] = useState('')
   const [phoneNum, setPhoneNum] = useState('')
   const [userName, setUserName] = useState('')
+  const [userNameErr,setNameErr] = useState('')
+  const [emailErr,setEmailErr] = useState('')
   const sender = (e) => {
     e.preventDefault()
     fetch('http://localhost:3001/user', {
@@ -30,6 +32,13 @@ const SignUp = () => {
     }).then(res => res.json())
       .then(json => {
         console.log(json)
+        if(json.issue === true){
+          setNameErr('UserName has been taken choose a different user name')
+        }
+        if(!json.issue){
+          setEmailErr('Email Already exists')
+        }
+        
       })
   }
 
@@ -98,7 +107,11 @@ const SignUp = () => {
         </div>
         <div className='form-child'>
           <label >User Name</label>
-          <input type="text" placeholder='user name must be unique' onChange={(e)=>setUserName(e.target.value)}/>
+          <input type="text" placeholder='user name must be unique' onChange={(e)=>{
+            setNameErr('')
+            setUserName(e.target.value)}
+            }/>
+          <span className='err-span'>{userNameErr}</span>
           <label>Enter your name</label>
           <input type="name" placeholder='Erfan' onChange={(e) => setName(e.target.value)} />
           <label>Surname</label>
@@ -110,7 +123,11 @@ const SignUp = () => {
         </div>
         <div className='form-child'>
           <label>Enter your Email</label>
-          <input type="email" placeholder='someone@example.com' onChange={(e) => setEmail(e.target.value)} />
+          <input type="email" placeholder='someone@example.com' onChange={(e) => {
+            setEmail(e.target.value)
+            setEmailErr('')
+            }} />
+          <span className='err-span'>{emailErr}</span>
           <label>Enter your Password</label>
           <input type="password" onChange={(e) => setCode(e.target.value)} />
         </div>
@@ -120,7 +137,9 @@ const SignUp = () => {
         </div>
         <button type='submit' onClick={sender}>Submit</button>
       </div>
-
+          <div className='design-div'>
+              
+          </div>
     </div>
   )
 }
