@@ -9,13 +9,7 @@ import './styles/login.css'
 function App() {
 
   return (
-    <div className="App">
-      <nav>
-        <Link to='/signup'>
-          <button>SignUp</button>         
-        </Link>
-      </nav>
-     
+    <div className="App">     
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
