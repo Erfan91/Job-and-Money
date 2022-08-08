@@ -6,6 +6,7 @@ import SignUp from './Components/SignUp';
 import Profile from './Components/Profile';
 import './styles/signup.css';
 import './styles/login.css'
+import './styles/profile.css'
 function App() {
 
   return (

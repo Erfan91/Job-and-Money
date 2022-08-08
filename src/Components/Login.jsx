@@ -28,7 +28,6 @@ const Login = () => {
     fetch('http://localhost:3001/user/login',{
       method:'POST',
       headers: new Headers({"content-type":"application/json"}),
-      // credentials:'include',
       body:JSON.stringify({
         username:userName,
         password:password
