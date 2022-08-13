@@ -3,10 +3,11 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { IoIosNotifications } from "react-icons/io";
 import { BiMessage, BiNotification, BiSearch } from "react-icons/bi";
-import { AiOutlineDownSquare } from "react-icons/ai";
+import { AiOutlineDownSquare, AiOutlineCloseSquare } from "react-icons/ai";
 
 const Profile = () => {
     const [userInfo, setInfo] = useState([])
+    const [visible,setVisiblity] = useState('hidden')
     const id = JSON.stringify(localStorage.getItem('_id'))
     const ids = JSON.parse(id)
     const placeholder = 'Per-Hour'
@@ -72,16 +73,23 @@ const Profile = () => {
                             <button>Worked with</button>
                         </div>
                         <div>
-                            <button className='create-btn'>Create an offer</button>
+                            <button className='create-btn' onClick={()=>{
+                                setVisiblity('visible')
+                            }}>Create an offer</button>
                         </div>
                     </div>
                 </div>
-                <div className='offer-popUp1'>
+                <div className='offer-popUp1' style={{visibility:visible}}>
+                    <div className='close-window'>
+                    <AiOutlineCloseSquare className='close-icon' onClick={()=>{
+                        setVisiblity('hidden')
+                    }}/>
+                    </div>
                     <form>
                         <div className='form-main-div'>
                             <label htmlFor="">Title</label>
                             <div className='form-title-div'>
-                                <input type="text" />
+                                <input type="text" className='popUp-input' />
                                 <div className="dropDown">
                                     <button className='pro-btn'>Pro <AiOutlineDownSquare /></button>
                                     <div className="dropDown-content">
@@ -101,7 +109,7 @@ const Profile = () => {
                             </div>
                             <label htmlFor="">When</label>
                             <div className="popUp-date-div form-title-div">
-                                <input type="text" />
+                                <input type="text" className='popUp-input'/>
                                 <div className='date-div-child '>
                                     <label htmlFor="">Estimated Time</label>
                                     <input type="text" />
@@ -129,7 +137,7 @@ const Profile = () => {
                             </div>
                             <label htmlFor="">Address</label>
                             <div className='popUp-address-div form-title-div'>
-                                <input type="text" />
+                                <input type="text" className='popUp-input'/>
                                 <div className='address-child date-div-child'>
                                     <label htmlFor="">Respond in...</label>
                                     <input type="text" placeholder='30-Minutes'/>

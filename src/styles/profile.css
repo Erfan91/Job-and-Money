@@ -86,7 +86,7 @@ justify-content: space-around;
 
 .pro-section-child1{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     height: 10vh;
     padding: 10px;
     text-align: center;
@@ -137,12 +137,19 @@ justify-content: space-around;
 .offer-popUp1{
     width: 35%;
     background-color: aquamarine;
-    height: 70vh;
+    height: 75vh;
+    position: absolute;
+    left: 33%;
+    top: 17%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 3px 3px 19px 2px black;
 }
 
 .form-main-div{
     margin:0 40px;
     padding: 25px 0;
+    margin-top: -25px;
 }
 .offer-popUp1 input{
     height: 4vh;
@@ -151,6 +158,10 @@ justify-content: space-around;
 .dropDown{
     position: relative;
     display: inline-block;
+}
+
+.popUp-input{
+    width: 250px;
 }
 
 .dropDown-content{  
@@ -185,6 +196,7 @@ justify-content: space-around;
     justify-content: space-between;
 }
 
+
 /* Offer form Date section Styles */
 .desperator-div{
     display: flex;
@@ -207,16 +219,39 @@ justify-content: space-around;
     margin-top: -20px;
 }
 
+.date-div-child input{
+    width: 120px;
+}
+
 ::placeholder{
     color: rgb(0, 73, 91);
     font-size: normal;
 }
 
 .popUp-next-btn{
-    width: 200px;
-    margin: auto;
+    width: 300px;
+    /* margin: auto ; */
     align-items: center;
     height: 4.5vh;
     border: none;
     border-radius: 13px;
+    background-color: rgb(107, 107, 255);
+    margin: 15px 0 15px 60px;
+    
+}
+
+.close-window{
+    display: flex;
+    justify-content: flex-end;
+    padding:0 15px;
+    padding-top: 10px;
+    font-size: 20px;
+}
+
+.close-icon{
+    cursor: pointer;
+}
+
+.close-icon :hover{
+    color: rgb(255, 0, 0);
 }
