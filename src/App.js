@@ -7,6 +7,7 @@ import Profile from './Components/Profile';
 import './styles/signup.css';
 import './styles/login.css'
 import './styles/profile.css'
+import './styles/popupTwo.css'
 function App() {
 
   return (

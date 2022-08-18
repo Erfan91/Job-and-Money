@@ -1,0 +1,82 @@
+.popup-two-main{
+    text-align: center;
+}
+
+.desc-span{
+    margin: auto;
+  
+    font-weight: bold;
+}
+
+.desc-input-div{
+   display: flex;
+   flex-direction: column; 
+   text-align: left;
+   height: 45vh;
+}
+
+
+
+.desc-input{
+  padding-bottom: 220px;
+  border: none;
+  border-radius: 5px;
+  overflow-y: hidden;
+}
+
+.desc-input:focus{
+    outline: none;
+}
+
+.desc-upload-div{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 10px;
+
+}
+
+.desc-upload-btn{
+    width: 160px;
+    height: 5vh;
+    margin: 3px;
+    border-radius: 5px;
+    border: none;
+    margin-left: -1px;
+}
+
+.desc-upload-span{
+    font-size: 9px;
+    color: navy;
+}
+
+.popupTwo-nxt-btn{
+    margin-top: 30px;
+    margin-left: 10px;
+    /* margin-left: -5px; */
+}
+
+.images-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-names-div{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 35px;
+}
+
+.img-name-span{
+    font-size: 12px;
+    background-color: rgb(222, 222, 222);
+    padding: 2px 10px;
+    height: 22px;
+    margin: 1px;
+    border: 0.3px solid black;
+    border-radius: 3px;
+}
+
+.popTwo-close-window{
+    padding: 0;
+}

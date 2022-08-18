@@ -4,10 +4,12 @@ import { useState } from 'react'
 import { IoIosNotifications } from "react-icons/io";
 import { BiMessage, BiNotification, BiSearch } from "react-icons/bi";
 import { AiOutlineDownSquare, AiOutlineCloseSquare } from "react-icons/ai";
+import PopupTwo from './popups/PopupTwo';
 
-const Profile = () => {
+const Profile = (props) => {
     const [userInfo, setInfo] = useState([])
     const [visible,setVisiblity] = useState('hidden')
+    const [visibleB, setVisiblityB] = useState('hidden')
     const id = JSON.stringify(localStorage.getItem('_id'))
     const ids = JSON.parse(id)
     const placeholder = 'Per-Hour'
@@ -23,6 +25,7 @@ const Profile = () => {
         console.log(userInfo)
     }, [])
 
+   
 
     return (
         <div className='pro-main-div'>
@@ -143,10 +146,15 @@ const Profile = () => {
                                     <input type="text" placeholder='30-Minutes'/>
                                 </div>
                             </div>
-                            <button className='popUp-next-btn'>Next</button>
+                            <button className='popUp-next-btn' onClick={(e)=>{
+                                e.preventDefault(); 
+                                setVisiblity('hidden')
+                                setVisiblityB('visible')
+                            }}>Next</button>
                         </div>
                     </form>
                 </div>
+                <PopupTwo close={setVisiblity} visible={visibleB} visibleFunc={setVisiblityB}/>
             </section>
         </div>
     )
