@@ -8,6 +8,7 @@ import './styles/signup.css';
 import './styles/login.css'
 import './styles/profile.css'
 import './styles/popupTwo.css'
+import './styles/popupThree.css'
 function App() {
 
   return (

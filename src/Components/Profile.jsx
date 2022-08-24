@@ -10,11 +10,31 @@ const Profile = (props) => {
     const [userInfo, setInfo] = useState([])
     const [visible,setVisiblity] = useState('hidden')
     const [visibleB, setVisiblityB] = useState('hidden')
+    const [image,setImage] = useState('')
+    const [name,setName] = useState('')
+    const [surName,setSurName] = useState('')
+    const [userName,setUserName] = useState('')
+    const [email,setEmail] = useState('')
+    const [number,setNumber] = useState('')
     const id = JSON.stringify(localStorage.getItem('_id'))
     const ids = JSON.parse(id)
     const placeholder = 'Per-Hour'
     const icon = <AiOutlineDownSquare />
     console.log(ids)
+    // <Form Values> 
+    const [title, setTitle] = useState('');
+    const [pro, setPro] = useState(Boolean);
+    const [workers, setWorkers] = useState('');
+    const [date, setDate] = useState('');
+    const [estimatedTime, setEstimated] = useState('');
+    const [startFrom, setStart] = useState('');
+    const [payment, setPayment] = useState('');
+    const [amount, setAmount] = useState('');
+    const [address, setAddress] = useState('');
+    const [reply, setReply] = useState('');
+    const values = [title, pro, workers, date, estimatedTime, startFrom, payment, amount, address, reply]
+    // </Form values>
+
     useEffect(() => {
         fetch(`http://localhost:3001/user/${ids}`)
             .then(result => result.json())
@@ -92,9 +112,12 @@ const Profile = (props) => {
                         <div className='form-main-div'>
                             <label htmlFor="">Title</label>
                             <div className='form-title-div'>
-                                <input type="text" className='popUp-input' />
+                                <input type="text" className='popUp-input' onChange={(e)=>{
+                                    e.preventDefault()
+                                    setTitle(e.target.value)
+                                }}/>
                                 <div className="dropDown">
-                                    <button className='pro-btn'>Pro <AiOutlineDownSquare /></button>
+                                    <button className='pro-btn'>Pro <AiOutlineDownSquare className='chev-down'/></button>
                                     <div className="dropDown-content">
                                         <span>Pro</span>
                                         <span>Off</span>
@@ -103,7 +126,10 @@ const Profile = (props) => {
                             </div>
                             <label htmlFor="">Workers</label>
                             <div>
-                                <input type="text" />
+                                <input type="text" onChange={(e)=>{
+                                    e.preventDefault()
+                                    setWorkers(e.target.value)
+                                }}/>
                             </div>
                             <div className='desperator-div'>
                                 <div className='vertical-line'></div>
@@ -112,12 +138,21 @@ const Profile = (props) => {
                             </div>
                             <label htmlFor="">When</label>
                             <div className="popUp-date-div form-title-div">
-                                <input type="text" className='popUp-input'/>
+                                <input type="text" className='popUp-input' onChange={(e)=>{
+                                    e.preventDefault()
+                                    setDate(e.target.value)
+                                }}/>
                                 <div className='date-div-child '>
                                     <label htmlFor="">Estimated Time</label>
-                                    <input type="text" />
+                                    <input type="text" onChange={(e)=>{
+                                    e.preventDefault()
+                                    setEstimated(e.target.value)
+                                }}/>
                                     <label htmlFor="">Starting from</label>
-                                    <input type="text" />
+                                    <input type="text" onChange={(e)=>{
+                                    e.preventDefault()
+                                    setStart(e.target.value)
+                                }}/>
                                 </div>
                             </div>
                             <div className='desperator-div'>
@@ -127,10 +162,16 @@ const Profile = (props) => {
                             </div>
                             <label htmlFor="">Payment</label>
                             <div className='form-title-div popUp-payment-div'>
-                                <input type="text" placeholder={placeholder + "                        🔽"} />
+                                <input type="text" placeholder={placeholder + "                        🔽"} onChange={(e)=>{
+                                    e.preventDefault()
+                                    setPayment(e.target.value)
+                                }}/>
                                 <div className='payment-child date-div-child'>
                                     <label htmlFor="">Amount</label>
-                                    <input type="text" />
+                                    <input type="text" onChange={(e)=>{
+                                    e.preventDefault()
+                                    setAmount(e.target.value)
+                                }}/>
                                 </div>
                             </div>
                             <div className='desperator-div'>
@@ -140,10 +181,16 @@ const Profile = (props) => {
                             </div>
                             <label htmlFor="">Address</label>
                             <div className='popUp-address-div form-title-div'>
-                                <input type="text" className='popUp-input'/>
+                                <input type="text" className='popUp-input' onChange={(e)=>{
+                                    e.preventDefault()
+                                    setAddress(e.target.value)
+                                }}/>
                                 <div className='address-child date-div-child'>
                                     <label htmlFor="">Respond in...</label>
-                                    <input type="text" placeholder='30-Minutes'/>
+                                    <input type="text" placeholder='30-Minutes' onChange={(e)=>{
+                                    e.preventDefault()
+                                    setReply(e.target.value)
+                                }}/>
                                 </div>
                             </div>
                             <button className='popUp-next-btn' onClick={(e)=>{
@@ -154,7 +201,7 @@ const Profile = (props) => {
                         </div>
                     </form>
                 </div>
-                <PopupTwo close={setVisiblity} visible={visibleB} visibleFunc={setVisiblityB}/>
+                <PopupTwo close={setVisiblity} visible={visibleB} visibleFunc={setVisiblityB}  userInfo={userInfo} popOneVal={values}/>
             </section>
         </div>
     )

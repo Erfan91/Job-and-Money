@@ -1,5 +1,6 @@
 .popup-two-main{
     text-align: center;
+    /* position: relative; */
 }
 
 .desc-span{
@@ -79,4 +80,8 @@
 
 .popTwo-close-window{
     padding: 0;
+}
+
+.pTwo{
+    padding-top:10px;
 }

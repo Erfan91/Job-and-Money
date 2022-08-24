@@ -144,6 +144,7 @@ justify-content: space-around;
     border: none;
     border-radius: 15px;
     box-shadow: 3px 3px 19px 2px black;
+  
 }
 
 .form-main-div{
@@ -254,4 +255,15 @@ justify-content: space-around;
 
 .close-icon :hover{
     color: rgb(255, 0, 0);
+}
+
+.pro-btn{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.chev-down{
+    font-size: 18px;
+    margin-top: -2px;
 }

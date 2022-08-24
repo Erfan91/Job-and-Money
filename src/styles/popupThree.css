@@ -1,0 +1,70 @@
+.popup-three-main{
+   width: 100%;
+   position: absolute;
+   left: 0;
+   top: 0;
+   padding-top: 10px;
+}
+
+.popupThree-image{
+    width: 140px;
+    height: 140px;
+    margin-bottom: 15px;
+    border-radius: 70px;
+}
+
+.user-contents{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.user-contents span{
+    padding: 3px;
+}
+
+.name-spn{
+    font-weight: bold;
+}
+
+.creditCard-div span{
+    font-size: 10px;
+}
+
+.card-icon{
+    font-size: 12px;
+    margin-top: 4.5px;
+    margin-left: 3px;
+}
+
+.creditCard-div{
+    display: flex;
+    background-color: blueviolet;
+    width: 105px;
+
+}
+
+.visa-spn{
+    border-right: 0.5px solid grey;
+}
+
+.verfication-div{
+    display: flex;
+    margin-top: 10px;
+}
+
+.cercle{
+    width: 25px;
+    height: 25px;
+    background-color: #646460;
+    margin: 3px;
+    border-radius: 15px;
+
+}
+
+.sms-msg{
+    font-size: 10px;
+}
