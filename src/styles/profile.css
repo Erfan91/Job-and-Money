@@ -137,7 +137,7 @@ justify-content: space-around;
 .offer-popUp1{
     width: 35%;
     background-color: aquamarine;
-    height: 75vh;
+    height: auto;
     position: absolute;
     left: 33%;
     top: 17%;
@@ -190,6 +190,8 @@ justify-content: space-around;
 .pro-btn{
     width: 100px;
     height: 5vh;
+    border: 0.6px solid black;
+    border-radius: 3px;
 }
 
 .form-title-div{
@@ -266,4 +268,92 @@ justify-content: space-around;
 .chev-down{
     font-size: 18px;
     margin-top: -2px;
+}
+
+.hours-div{
+    position: absolute;
+    left: 92.2%;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    height: 43.1vh;
+    padding-top: 110px;
+    width: 39.2px;
+    text-align: center;
+    /* justify-content: center; */
+    align-items: center;
+    border-radius: 10px;
+}
+
+.hour-span{
+    background-color: antiquewhite;
+    margin: 1px;
+    width: 22px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.hours-btn{
+    width: 128px;
+}
+
+.payment-options{
+    position: absolute;
+    top: 71.3%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;   
+    width: 173px;
+    height: 4vh;
+    border-radius: 3px;
+}
+
+.pay-box{
+    
+    padding: 5px;
+    width: 50px;
+    text-align: center;    
+    border: 0.4px solid white;
+    cursor: pointer;
+}
+
+.per-hour{
+    background-color: #e0fbfc;
+}
+
+.per-mission{
+    background-color: #98c1d9;
+}
+
+.per-issue{
+    background-color: #3d5a80;
+}
+
+.address-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.city-input{
+    width: 160px;
+}
+
+.country-input{
+    width: 140px;
+}
+
+.city-country{
+    display: flex;
+    justify-content: space-between;
+}
+
+.city-country div{
+    display: flex;
+    flex-direction: column;
+}
+
+.postal-code-input{
+    width: 110px;
 }

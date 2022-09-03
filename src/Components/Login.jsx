@@ -37,9 +37,11 @@ const Login = () => {
       console.log(json)
       setLoginMsg(json.userInfo)
       localStorage.setItem('_id', json.id)
-      if(json.authenticated){
+      if(json.authenticated && json.employer){
         Navigate('/profile')
-      }else{
+      }else if(json.authenticated == true && json.employer == false) {
+        Navigate('/feed')
+      }else if(!json.authenticated){
         Navigate('/')
       }
     })

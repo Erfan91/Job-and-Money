@@ -2,10 +2,35 @@ import React from 'react'
 import { AiOutlineDownSquare, AiOutlineCloseSquare } from "react-icons/ai";
 import { IoIosImages } from "react-icons/io";
 import { IoArrowBackSharp } from "react-icons/io5";
-import { BsCreditCard2BackFill } from "react-icons/bs";
+import { BsCreditCard2BackFill, BsClock } from "react-icons/bs";
 
 const PopupThree = (props) => {
-  console.log(props.popOneVal[0])
+  console.log(props.popOneVal)
+
+  const sender = (e)=>{
+    e.preventDefault()
+    fetch('http://localhost:3001/offer',{
+      method: "POST",
+      headers:new Headers({"content-type": "application/json"}),
+      body: JSON.stringify({
+        title:props.popOneVal.title,
+        posterID:props.popOneVal.ids,
+        specialist:props.popOneVal.pro,
+        description:props.popTwoVal,
+        workers:props.popOneVal.workers,
+        date:props.popOneVal.date,
+        estimatedTime:props.popOneVal.estimatedTime,
+        startingFrom:props.popOneVal.startHour,
+        paymentMethod:props.popOneVal.payment,
+        amount:props.popOneVal.amount,
+        address:props.popOneVal.address,
+        city:props.popOneVal.city,
+        postalCode:props.popOneVal.codePostal,
+
+      })
+    })
+  }
+
   return (
     <div className='popup-three-main offer-popUp1' style={{visibility:props.visibleC}}>
         <div className='form-main-div'>
@@ -38,7 +63,7 @@ const PopupThree = (props) => {
                             <div className="cercle"></div><div className="cercle"></div><div className="cercle"></div><div className="cercle"></div>
                         </div>
                         <span className='sms-msg'>Enter the code received by sms</span>
-                        <button className='popUp-next-btn popupTwo-nxt-btn'>Verify</button>
+                        <button className='popUp-next-btn popupTwo-nxt-btn' onClick={sender}>Verify</button>
                     </div>
                 )
             })
