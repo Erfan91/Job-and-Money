@@ -1,12 +1,23 @@
 import React, { useState } from 'react'
 import { BiMessage, BiNotification, BiSearch, BiEuro, BiUpArrowAlt } from "react-icons/bi";
-import { BsCreditCard2BackFill, BsClock, BsReplyAllFill } from "react-icons/bs";
+import { BsCreditCard2BackFill, BsClock, BsReplyAllFill, BsFillCalendarDateFill } from "react-icons/bs";
 import { GrMapLocation } from "react-icons/gr";
 import { FaMoneyBillWave, FaUsers } from "react-icons/fa";
+import { MdPayments, MdLocationOn } from "react-icons/md";
+import { AiOutlineFieldTime } from "react-icons/ai";
 
 import { useEffect } from 'react';
 const Feed = () => {
-  const [offers, setOffers] = useState([])
+  const [offers, setOffers] = useState([]);
+  const [title, setTitle] = useState('');
+  const [payment, setPayment] = useState('');
+  const [date, setDate] = useState('');
+  const [address, setAddress] = useState('')
+  const [description, setDescription] = useState('')
+  const [amount, setAmount] = useState('')
+  const [employer, setEmployer] = useState('');
+  const [empNumber, setENumber] = useState('');
+  const [empEmail, setEmpEmail] = useState('')
   useEffect(() => {
     fetch('http://localhost:3001/offer')
       .then(result => result.json())
@@ -36,7 +47,14 @@ const Feed = () => {
             offers.map(offer => {
               console.log(offer, "SAME THING")
               return (
-                <div className='offer-card'>
+                <div className='offer-card' onClick={()=>{
+                  setTitle(offer.title)
+                  setPayment(offer.paymentMethod)
+                  setDate(offer.startingFrom)
+                  setAddress(offer.address + ", " +offer.city +" ("+ offer.postalCode +")")
+                  setDescription(offer.description)
+                  setAmount(offer.amount)
+                }}>
                   <div className='card-title'>
                     <span className='title-span'>{offer.title}</span>
                     {offer.specialist ? <button className='card-pro-btn'>Pro</button> : <button className='card-pro-btn card-pro-btn-off'>Pro</button>}
@@ -104,7 +122,33 @@ const Feed = () => {
           }
         </section>
         <section className='offers-detail'>
-          
+          <div className='offer-page'>
+              <div className='offer-info'>
+                <h4 className='title-h4'>{title}</h4>
+                <div className='info-container'>
+                <AiOutlineFieldTime className='date-icon info-icons'/>
+                <span className='info-span'>Date: {date}</span>
+                </div>
+                <div className="info-container">
+                <MdPayments className='pay-icon info-icons'/>
+                <span className='info-span'>{payment}: {amount} Euros</span>
+                </div>
+                <div className="info-container">
+                <MdLocationOn className='location2-icon info-icons'/>
+                <span className='info-span'>Address: {address}</span>
+                </div>
+                <div className='description-container'>
+                    <div className='desp-div'>
+                      <span>Description</span>
+                      <div className='hori-line'></div>
+                    </div>
+                    <div className='text-container'>
+                        <p>{description}</p>
+                    </div>
+                </div>
+              </div>
+
+          </div>
         </section>
       </div>
     </div>

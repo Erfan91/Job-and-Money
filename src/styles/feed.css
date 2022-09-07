@@ -117,3 +117,64 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+.offer-page{
+    /* background-color: blue; */
+    /* padding: 0 10px; */
+}
+
+.info-container{
+    display: flex;
+}
+
+.info-icons{
+    margin: 4px 4px 4px 0;
+    font-size: 18px;
+}
+
+.date-icon{
+    border-left: 10px solid #b0b8b4ff;
+    border-right: 0.5px solid #b0b8b4ff;
+    border-top: 0.5px solid #b0b8b4ff;
+    border-bottom: 0.5px solid #b0b8b4ff;
+}
+
+.pay-icon{
+    border-left: 10px solid #184a45ff;
+    /* border-right: 0.5px solid #184a45ff;
+    border-top: 0.5px solid #184a45ff;
+    border-bottom: 0.5px solid #184a45ff; */
+}
+
+.location2-icon{
+    border-left: 10px solid #FC766AFF;
+    /* border-right: 0.5px solid #FC766AFF;
+    border-top: 0.5px solid #FC766AFF;
+    border-bottom: 0.5px solid #FC766AFF; */
+}
+
+.title-h4{
+    padding-left: 10px;
+}
+
+.description-container{
+    width: 100%;
+    /* background-color: aliceblue; */
+    margin-top: 10px;
+   
+}
+
+.description-container p{
+    padding: 0 5px;
+}
+
+.desp-div{
+    width: 100%;
+    text-align: center;
+}
+
+.hori-line{
+    height: 1px;
+    width: 100%;
+    background-color: red;
+}
