@@ -9,7 +9,7 @@
     margin: auto;
     display: flex;
     justify-content: space-around;
-    background-color: orangered;
+    /* background-color: orangered; */
 }
 
 .offers-list{
@@ -23,17 +23,19 @@
 
 .offers-detail{
     width: 53%;
-    background-color: burlywood;
+    /* background-color: burlywood; */
 }
 
 .offer-card{
     width: 100%;
     height: 30vh;
-    background-color: rgb(221, 221, 221);
+    background-color: rgb(246, 246, 246);
     margin: auto;
     margin: 5px;
     border-radius: 10px;
     padding: 0 10px;
+    box-shadow: 2px 2px 4px;
+    border: 0.5px solid aquamarine;
 }
 
 .card-title{
@@ -79,12 +81,14 @@
     text-align: center;
     align-items: center;
     justify-content: space-around;
+    box-shadow: 1px 1px 2px black;
+    border: 0.5px solid aquamarine;
 }
 
 .card-line{
     width: 70%;
     height: 0.5px;
-    background-color: black;
+    background-color: aquamarine;
     margin-bottom: -11px;
 }
 
@@ -107,6 +111,39 @@
     font-weight: bold;
 }
 
+.hour-card{
+    background-color: #1d266f;
+    color: white;
+}
+
+.location-card{
+    background-color: #7fc6ef;
+    color: white;
+}
+
+.money-card{
+    background-color: #4678d6;
+    color: white;
+}
+.money-icon{
+    color: azure;
+}
+
+.workers-card{
+    background-color: #546a95;
+    color: white;
+}
+
+.reply-card{
+    background-color: #9fbba1;
+    color: white;
+}
+
+.location-icon{
+    color: white !important;
+    /* background-color: white; */
+}
+
 .icon-container{
     margin-bottom: -8px;
     text-align: center;
@@ -118,10 +155,6 @@
     font-weight: bold;
 }
 
-.offer-page{
-    /* background-color: blue; */
-    /* padding: 0 10px; */
-}
 
 .info-container{
     display: flex;
@@ -155,26 +188,106 @@
 
 .title-h4{
     padding-left: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
 }
 
 .description-container{
     width: 100%;
-    /* background-color: aliceblue; */
     margin-top: 10px;
    
 }
 
 .description-container p{
-    padding: 0 5px;
+    width: 95%;
+    margin: auto;
+    padding: 10px;
 }
 
+.text-container{
+    padding: 0 5px;
+   align-items: center;
+}
 .desp-div{
     width: 100%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .hori-line{
     height: 1px;
-    width: 100%;
-    background-color: red;
+    width: 95%;
+    background-color: black;
+    margin: auto;
+}
+
+.offer-page{
+    background-color: rgb(243, 243, 243);
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.des-span{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.employer-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    /* margin: 5px; */
+}
+
+.apply-div{
+    display: flex;
+    justify-content: space-between;
+    padding:10px 10px;
+}
+
+.apply-div div{
+    display: flex;
+}
+
+.apply-btn{
+    width: 110px;
+    height: 4.5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(57, 57, 255);
+    color: white;
+}
+
+.msg-btn{
+    height: 3vh;
+    width: 75px;
+    margin: 10px;
+    margin-left: 5px;
+    border-radius: 3px;
+    border: none;
+    background-color: rgb(152, 255, 221);
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+}
+
+.pls-icon{
+    font-size: 15px;
+    padding: 1px;
+}
+
+.employer-content{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+    margin-top: -13px;
+}
+
+.offer-page{
+    box-shadow: 3px 3px 6px;
+    margin-top: -15px;
 }

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { BiMessage, BiNotification, BiSearch, BiEuro, BiUpArrowAlt } from "react-icons/bi";
-import { BsCreditCard2BackFill, BsClock, BsReplyAllFill, BsFillCalendarDateFill } from "react-icons/bs";
+import { BsCreditCard2BackFill, BsClock, BsReplyAllFill, BsFillCalendarDateFill, BsPlus } from "react-icons/bs";
 import { GrMapLocation } from "react-icons/gr";
 import { FaMoneyBillWave, FaUsers } from "react-icons/fa";
 import { MdPayments, MdLocationOn } from "react-icons/md";
 import { AiOutlineFieldTime } from "react-icons/ai";
-
+import random from '../images/up.jpg'
 import { useEffect } from 'react';
 const Feed = () => {
   const [offers, setOffers] = useState([]);
@@ -18,6 +18,8 @@ const Feed = () => {
   const [employer, setEmployer] = useState('');
   const [empNumber, setENumber] = useState('');
   const [empEmail, setEmpEmail] = useState('')
+  const [empImg, setEmpImg] = useState('');
+  
   useEffect(() => {
     fetch('http://localhost:3001/offer')
       .then(result => result.json())
@@ -54,6 +56,10 @@ const Feed = () => {
                   setAddress(offer.address + ", " +offer.city +" ("+ offer.postalCode +")")
                   setDescription(offer.description)
                   setAmount(offer.amount)
+                  setEmployer(offer.posterID.name +" "+ offer.posterID.surName);
+                  setENumber(offer.posterID.phoneNumber)
+                  setEmpEmail(offer.posterID.email)
+                  setEmpImg(offer.posterID.image)
                 }}>
                   <div className='card-title'>
                     <span className='title-span'>{offer.title}</span>
@@ -139,15 +145,30 @@ const Feed = () => {
                 </div>
                 <div className='description-container'>
                     <div className='desp-div'>
-                      <span>Description</span>
+                      <span className='des-span'>Description</span>
                       <div className='hori-line'></div>
                     </div>
                     <div className='text-container'>
                         <p>{description}</p>
+                    <img src={random} alt="" width="450px" height="250px" style={{marginLeft:"20px"}}/>
                     </div>
                 </div>
               </div>
-
+              <div className='employer-info'>
+                  <div className="hori-line"></div>
+                  <div className="apply-div">
+                    <div>
+                      <img src={empImg} alt="offer owner" className='employer-img'/>
+                      <button className='msg-btn'><BsPlus className='pls-icon'/> Message</button>
+                    </div>
+                    <button className='apply-btn'>Apply</button>
+                  </div>
+                  <div className='employer-content'>
+                    <span>{employer}</span>
+                    <span>{empNumber}</span>
+                    <span>{empEmail}</span>
+                  </div>
+              </div>
           </div>
         </section>
       </div>
