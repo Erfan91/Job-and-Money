@@ -3,7 +3,15 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { IoIosNotifications } from "react-icons/io";
 import { BiMessage, BiNotification, BiSearch } from "react-icons/bi";
-import { AiOutlineDownSquare, AiOutlineCloseSquare } from "react-icons/ai";
+import { AiOutlineDownSquare, AiOutlineCloseSquare } from "react-icons/ai"
+import { MdOutlineDocumentScanner,  } from "react-icons/md";
+import {GrDocumentUser } from "react-icons/gr";
+import { GiShakingHands} from "react-icons/gi";
+import { SiHandshake} from "react-icons/si";
+import { RiSettingsLine } from "react-icons/ri";
+import { IoDocumentsOutline } from "react-icons/io5";
+import { IoIosDocument } from "react-icons/io";
+
 import PopupTwo from './popups/PopupTwo';
 import Offers from './Offers';
 const Profile = (props) => {
@@ -96,16 +104,28 @@ const Profile = (props) => {
                     })
                 }
                 <div className='pro-section-child3'>
-                    <div className='btn-bar'>
-                        <div>
-                            <button>My offers</button>
-                            <button>Worked with</button>
+                    <div className='pro-options'>
+                        <div className='test-option offer-option'>
+                            <IoDocumentsOutline className="ofr-icon opt-icon"/>
+                            <span className='icn-span'>My offers</span>
                         </div>
-                        <div>
+                        <div className='test-option wrkd-option'>
+                            <SiHandshake className="wrkd-icon opt-icon"/>
+                            <span className='icn-span'>Worked with</span>
+                        </div>
+                        <div className='test-option docs-option'>
+                            <IoIosDocument className="doc-icon opt-icon"/>
+                            <span className='icn-span'>My documents</span>
+                        </div>
+                        <div className='test-option stng-option'>
+                            <RiSettingsLine className="stng-icon opt-icon"/>
+                            <span className='icn-span'>Setting</span>
+                        </div>
+                    </div>
+                    <div className='btn-bar'>
                             <button className='create-btn' onClick={() => {
                                 setVisiblity('visible')
                             }}>Create an offer</button>
-                        </div>
                     </div>
                 </div>
                 <div className='offer-popUp1' style={{ visibility: visible }}>
@@ -155,7 +175,7 @@ const Profile = (props) => {
                             </div>
                             <label htmlFor="">When</label>
                             <div className="popUp-date-div form-title-div">
-                                <input type="text" className='popUp-input' onChange={(e) => {
+                                <input type="date" className='popUp-input' onChange={(e) => {
                                     e.preventDefault()
                                     setDate(e.target.value)
                                 }} />
@@ -263,7 +283,6 @@ const Profile = (props) => {
                 </div>
                 <PopupTwo close={setVisiblity} visible={visibleB} visibleFunc={setVisiblityB} userInfo={userInfo} popOneVal={values} />
             </section>
-            <Offers/>
         </div>
     )
 }

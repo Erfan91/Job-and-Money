@@ -106,7 +106,7 @@ const SignUp = () => {
           <button onClick={() => setEmployer(true)}>Employer</button><button onClick={() => setEmployer(false)}>Employee</button>
         </div>
         <div className='form-child'>
-          <label >User Name</label>
+          <label>User Name</label>
           <input type="text" placeholder='user name must be unique' onChange={(e)=>{
             setNameErr('')
             setUserName(e.target.value)}

@@ -5,7 +5,7 @@ import { IoArrowBackSharp } from "react-icons/io5";
 import { BsCreditCard2BackFill, BsClock } from "react-icons/bs";
 
 const PopupThree = (props) => {
-  console.log(props.popOneVal)
+  console.log(props.images, "¨POP THREE FILE")
 
   const sender = (e)=>{
     e.preventDefault()
@@ -26,6 +26,7 @@ const PopupThree = (props) => {
         address:props.popOneVal.address,
         city:props.popOneVal.city,
         postalCode:props.popOneVal.codePostal,
+        images:props.images
 
       })
     })

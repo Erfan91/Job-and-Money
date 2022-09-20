@@ -3,10 +3,12 @@ import { BiMessage, BiNotification, BiSearch, BiEuro, BiUpArrowAlt } from "react
 import { BsCreditCard2BackFill, BsClock, BsReplyAllFill, BsFillCalendarDateFill, BsPlus } from "react-icons/bs";
 import { GrMapLocation } from "react-icons/gr";
 import { FaMoneyBillWave, FaUsers } from "react-icons/fa";
-import { MdPayments, MdLocationOn } from "react-icons/md";
-import { AiOutlineFieldTime } from "react-icons/ai";
+import { MdPayments, MdLocationOn, MdOutlineMailOutline, MdOutlineClose } from "react-icons/md";
+import { AiOutlineFieldTime, AiOutlinePhone, AiOutlineSearch } from "react-icons/ai";
+import { IoChevronForward, IoCloseOutline } from "react-icons/io5";
 import random from '../images/up.jpg'
 import { useEffect } from 'react';
+import {useInView} from 'react-intersection-observer'
 const Feed = () => {
   const [offers, setOffers] = useState([]);
   const [title, setTitle] = useState('');
@@ -19,7 +21,27 @@ const Feed = () => {
   const [empNumber, setENumber] = useState('');
   const [empEmail, setEmpEmail] = useState('')
   const [empImg, setEmpImg] = useState('');
-  
+  const [postDate, setPDate] = useState('');
+  const [srchDisplay, setHDisplay] = useState('none')
+  const [srchBtnDisplay, setSrchBtnD] = useState('block');
+  const [info, setInfo] = useState([])
+  const [proPic, setProPic] = useState('');
+  const [srchMode, setSrchMode] = useState('User');
+  const [redBgColor, setRedBg] = useState({});
+  const [greenBgColor, setGreenBg] = useState('');
+  const [images, setImages] = useState([]);
+  const [height, setHeight] = useState(0);
+  const [position, setPosition] = useState('')
+  const bref = React.useRef(null);
+  const [ref, inView] = useInView();
+  useEffect(()=>{
+    // setHeight(bref.current.clientHeight)
+    // console.log(height)
+    console.log(inView, "IN VIEWWW")
+  },[inView])
+
+  const id = JSON.stringify(localStorage.getItem('_id'))
+  const ids = JSON.parse(id)
   useEffect(() => {
     fetch('http://localhost:3001/offer')
       .then(result => result.json())
@@ -29,7 +51,18 @@ const Feed = () => {
         setOffers(json)
       })
   }, [])
-  // console.log(offers)
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/user/${ids}`)
+        .then(result => result.json())
+        .then(json => {
+            console.log(json)
+            setInfo([json])
+        })
+    // console.log(info[0].image)
+}, [])
+// onMouseMove={()=>{ console.log(window.pageYOffset,"SCROLL HEIGHT///////")}}
+  // console.log(window.innerHeight,"INNER HEIGHT")
   return (
     <div className='feed-main-div'>
       <nav className='pro-nav'>
@@ -39,7 +72,7 @@ const Feed = () => {
         <div className='nav-child2'>
           <BiNotification className='pro-icons' />
           <BiMessage className='pro-icons' />
-          {/* <img src={} alt="profile image"/> */}
+          {/* <img src={info[0].image} alt="profile image" className='profile-image'/> */}
           <div className='pro-pic-div'></div>
         </div>
       </nav>
@@ -47,7 +80,7 @@ const Feed = () => {
         <section className='offers-list'>
           {
             offers.map(offer => {
-              console.log(offer, "SAME THING")
+              // console.log(offer, "SAME THING")
               return (
                 <div className='offer-card' onClick={()=>{
                   setTitle(offer.title)
@@ -60,6 +93,8 @@ const Feed = () => {
                   setENumber(offer.posterID.phoneNumber)
                   setEmpEmail(offer.posterID.email)
                   setEmpImg(offer.posterID.image)
+                  setPDate(offer.createdAt)
+                  setImages(offer.images)
                 }}>
                   <div className='card-title'>
                     <span className='title-span'>{offer.title}</span>
@@ -122,26 +157,30 @@ const Feed = () => {
                       </div>
                     </div>
                   </div>
+                  <div className="app-messages">
+                    <p className='app-text'>This offer requires skills as you have and its nearby </p>
+                    <p className='app-text'>posted on {postDate} by <span className='employer-span'>{offer.posterID.name +" "+ offer.posterID.surName}</span> </p>
+                  </div>
                 </div>
               )
             })
           }
         </section>
         <section className='offers-detail'>
-          <div className='offer-page'>
+          <div className='offer-page' ref={ref} style={{position:''}}>
               <div className='offer-info'>
                 <h4 className='title-h4'>{title}</h4>
                 <div className='info-container'>
                 <AiOutlineFieldTime className='date-icon info-icons'/>
-                <span className='info-span'>Date: {date}</span>
+                <span className='info-span dte-span'>Date: Needed before  {date}</span>
                 </div>
                 <div className="info-container">
                 <MdPayments className='pay-icon info-icons'/>
-                <span className='info-span'>{payment}: {amount} Euros</span>
+                <span className='info-span pmnt-span'>{payment}: {amount} Euros</span>
                 </div>
                 <div className="info-container">
                 <MdLocationOn className='location2-icon info-icons'/>
-                <span className='info-span'>Address: {address}</span>
+                <span className='info-span adrs-span'>Address: {address}</span>
                 </div>
                 <div className='description-container'>
                     <div className='desp-div'>
@@ -150,30 +189,70 @@ const Feed = () => {
                     </div>
                     <div className='text-container'>
                         <p>{description}</p>
-                    <img src={random} alt="" width="450px" height="250px" style={{marginLeft:"20px"}}/>
+                        {
+                          images.map(img=>{
+                            return(
+                              <img src={img} alt="" width="450px" height="250px" style={{marginLeft:"20px"}}/>
+                            )
+                          })
+                        }
                     </div>
                 </div>
               </div>
               <div className='employer-info'>
                   <div className="hori-line"></div>
                   <div className="apply-div">
-                    <div>
+                    <div className='emp-img-div'>
                       <img src={empImg} alt="offer owner" className='employer-img'/>
                       <button className='msg-btn'><BsPlus className='pls-icon'/> Message</button>
                     </div>
                     <button className='apply-btn'>Apply</button>
                   </div>
                   <div className='employer-content'>
-                    <span>{employer}</span>
-                    <span>{empNumber}</span>
-                    <span>{empEmail}</span>
+                    <span className='employer-name'>{employer}</span>
+                    <div>
+                    <AiOutlinePhone className='phone-icon'/>  
+                    <span className='emp-number'><strong>phone</strong>: {empNumber}</span>  
+                    </div>
+                    <div>
+                    <MdOutlineMailOutline className='email-icon'/>  
+                    <span className='emp-email'><strong>email</strong>: {empEmail}</span>
+                    </div>
                   </div>
               </div>
           </div>
         </section>
       </div>
+      <div className='srch-popup' style={{display:srchBtnDisplay}} onClick={()=>{
+        setSrchBtnD('none')
+        setHDisplay('flex')
+      }}>
+        <span className='srch-span'>Search</span>    
+      </div>
+      <div className='srch-footer' style={{display:srchDisplay}}>
+        <div className='close-icon-div'>
+          <IoCloseOutline className='srch-close-icon' style={redBgColor} onMouseEnter={()=>{
+            setRedBg({backgroundColor: 'rgba(253, 95, 95, 0.379)', opacity:'1'})}} onMouseLeave={()=>{setRedBg({backgroundColor: 'transparent', opacity:'0.4'})}} onClick={()=>{
+              setSrchBtnD('block')
+              setHDisplay('none')
+            }} />
+        </div>
+          <div className='search-container'>
+            <div className='srch-container-child1'>
+            <span className='srch-header'>Search {srchMode}</span>
+            </div>
+            <div className='srch-container-child2'>
+            <input type="text" className='srch-input'/>
+            <span className='selector'>{srchMode}</span>
+            <input type="text" className='srch-input' />
+            </div>
+          </div>
+          <div className='frwd-icon-div'>
+            <IoChevronForward className='srch-frwd-icon' style={greenBgColor} onMouseEnter={()=>{setGreenBg({backgroundColor: 'rgba(127, 255, 212, 0.378)', opacity:'1'})}} onMouseLeave={()=>{setGreenBg({backgroundColor: 'transparent', opacity:'0.4'})}}/>
+          </div>
+      </div>
     </div>
   )
 }
 
-export default Feed
+export default Feed;

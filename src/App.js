@@ -13,6 +13,7 @@ import './styles/popupTwo.css'
 import './styles/popupThree.css'
 import './styles/offers.css';
 import './styles/feed.css';
+import './styles/srchPopup.css';
 function App() {
 
   return (

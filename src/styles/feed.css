@@ -1,20 +1,23 @@
 .feed-main-div{
     width: 100%;
-    height: 100vh;    
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    /* background-image:linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%); */
+    background-image: linear-gradient(to right, #8360c3, #2ebf91);
 }
 
 .offers-main-div{
     width: 70%;
-    height: 100vh;
+    height: auto;
     margin: auto;
     display: flex;
     justify-content: space-around;
-    /* background-color: orangered; */
 }
 
 .offers-list{
     width:40%;
-    height: 100vh;
+    height: auto;
     /* background-color: brown; */
     display: flex;
     flex-direction: column;
@@ -24,6 +27,7 @@
 .offers-detail{
     width: 53%;
     /* background-color: burlywood; */
+    height: fit-content;
 }
 
 .offer-card{
@@ -63,7 +67,7 @@
 .detailes-preview{
     width: 100%;
     /* background-color: cornflowerblue; */
-    height: 22vh;
+    height: 18vh;
     margin-top: 10px;
     display: flex;
     justify-content: center;
@@ -83,6 +87,11 @@
     justify-content: space-around;
     box-shadow: 1px 1px 2px black;
     border: 0.5px solid aquamarine;
+}
+
+.dtl-card:hover{
+    transform: scale(1.1);
+    
 }
 
 .card-line{
@@ -162,7 +171,7 @@
 
 .info-icons{
     margin: 4px 4px 4px 0;
-    font-size: 18px;
+    font-size: 23px;
 }
 
 .date-icon{
@@ -174,16 +183,16 @@
 
 .pay-icon{
     border-left: 10px solid #184a45ff;
-    /* border-right: 0.5px solid #184a45ff;
+    border-right: 0.5px solid #184a45ff;
     border-top: 0.5px solid #184a45ff;
-    border-bottom: 0.5px solid #184a45ff; */
+    border-bottom: 0.5px solid #184a45ff;
 }
 
 .location2-icon{
     border-left: 10px solid #FC766AFF;
-    /* border-right: 0.5px solid #FC766AFF;
+    border-right: 0.5px solid #FC766AFF;
     border-top: 0.5px solid #FC766AFF;
-    border-bottom: 0.5px solid #FC766AFF; */
+    border-bottom: 0.5px solid #FC766AFF;
 }
 
 .title-h4{
@@ -229,6 +238,7 @@
     background-color: rgb(243, 243, 243);
     margin: 10px;
     border-radius: 10px;
+    /* position: fixed; */
 }
 
 .des-span{
@@ -236,11 +246,18 @@
     font-weight: bold;
 }
 
+.emp-img-div{
+    padding:0px 0 5px 5px;
+}
+
 .employer-img{
     width: 40px;
     height: 40px;
+    border: 0.5px solid rgb(115, 0, 255);
     border-radius: 20px;
-    /* margin: 5px; */
+    background-color: black;
+    padding-top: 0.1px;
+
 }
 
 .apply-div{
@@ -287,7 +304,85 @@
     margin-top: -13px;
 }
 
+.employer-content div{
+    display: flex;
+    margin-bottom: 5px;
+
+}
+
+.phone-icon{
+    padding: 4px;
+    background-color: #2ebf91;
+    color: white;
+    border: 0.5px solid black;
+    margin-right: 3px;
+    border-radius: 15px;
+}
+
+.email-icon{
+    padding: 4px;
+    background-color: #4678d6;
+    color: white;
+    border: 0.5px solid black;
+    margin-right: 3px;
+    border-radius: 15px;
+}
+
 .offer-page{
     box-shadow: 3px 3px 6px;
     margin-top: -15px;
+}
+
+.dte-span{
+    background-color: #94abf4;
+    margin: 1px;
+    padding: 3px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px;
+
+}
+
+.pmnt-span{
+    background-color: rgb(95, 141, 136);
+    padding: 3px;
+    border-radius: 3px;
+    margin: 1px;  
+    box-shadow: 1px 1px 2px;
+}
+
+.adrs-span{
+    background-color: #FC766AFF;
+    padding: 3px;
+    border-radius: 3px;
+    margin: 1px;  
+    box-shadow: 1px 1px 2px;
+}
+
+.app-text{
+    font-size: 8px;
+    color: rgb(206, 206, 206);
+}
+
+.employer-span{
+    font-weight: bold;
+    color: black;
+}
+
+.emp-number{
+  font-size: small;
+}
+
+.emp-email{
+  font-size: small;  
+}
+
+.employer-name{
+    font-weight: bold;
+    margin-bottom: 3px;
+    margin-top: -7px;
+}
+.profile-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
 }

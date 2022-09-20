@@ -1,6 +1,17 @@
+body{
+    margin-bottom: -10px;
+}
+
 .pro-main-div{
     width: 100%;
     height: 100vh;
+    /* overflow-x: hidden; */
+    /* overflow-y: hidden !important; */
+    margin-bottom: -30px;
+    padding: 0;
+    /* background-color: blueviolet; */
+    background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+
 }
 
 .pro-nav{
@@ -23,8 +34,73 @@
 }
 
 .nav-child2{
-  display: flex;
-justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+
+.pro-section-child3{
+    /* background: #000; */
+    height: 57.2vh;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+
+}
+
+.pro-options{
+    display: flex;
+    margin-bottom: 10px;
+    /* background-image: linear-gradient(to top, #09203f 0%, #537895 100%); */
+    width: 70%;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+    height: 24vh;
+    /* border-top-left-radius: 10px; */
+}
+
+.test-option{
+    height: 17vh;
+    width: 8vw;
+    /* background:rgb(205, 233, 240); */
+    margin: 5px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+
+.opt-icon{
+    font-size: 30px;
+    margin-bottom: -20px;
+    background-color: #e0fbfc;
+    border: 1px solid orange;
+    padding: 15px;
+    box-shadow: 1px 5px 2px black;
+    border-radius: 10px;
+    background-color:lightblue;
+    margin-bottom: 2px;
+}
+
+.icn-span{
+    font-weight: lighter;
+    color: #e0fbfc;
+    /* border-bottom: 1px solid blueviolet; */
+}
+
+.ofr-icon{
+    background-color:lightblue ;
+    color: rgb(207, 251, 237);
+}
+
+.wrkd-icon{
+    color:cornflowerblue;
 }
 
 .pro-icons{
@@ -39,9 +115,8 @@ justify-content: space-around;
 }
 
 .pro-section{
-    background-color: blueviolet;
-    height: 45%;
-
+    /* background-color: blueviolet; */
+    height: 90vh;
 }
 
 .user-main-img{
@@ -73,15 +148,24 @@ justify-content: space-around;
     
 }
 
-.btn-bar button{
-    width: 110px;
-    height: 35px;
-}
 .btn-bar{
-    margin-top: 35px;
-    display: flex;
-    justify-content: space-between;
     height: 15vh;
+    /* background-color: #98c1d9; */
+    width: 400px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.create-btn{
+    width: 160px ;
+    border-radius: 20px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(82, 82, 255);
+    color: white;
+    margin: auto;
 }
 
 .pro-section-child1{
@@ -122,15 +206,6 @@ justify-content: space-around;
 }
 
 
-.create-btn{
-    margin-right: 30px;
-    margin-top: -20px; 
-    width: 130px !important;
-    border-radius: 20px;
-    border: none;
-    background-color: rgb(82, 82, 255);
-    color: white;
-}
 
 /* OFFER Creaction popup Form Styles 🔻*/
 
@@ -140,7 +215,7 @@ justify-content: space-around;
     height: auto;
     position: absolute;
     left: 33%;
-    top: 17%;
+    top: 10%;
     border: none;
     border-radius: 15px;
     box-shadow: 3px 3px 19px 2px black;
