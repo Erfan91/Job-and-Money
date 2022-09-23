@@ -7,6 +7,7 @@
     background-image: linear-gradient(to right, #8360c3, #2ebf91);
 }
 
+
 .offers-main-div{
     width: 70%;
     height: auto;
@@ -204,6 +205,7 @@
 .description-container{
     width: 100%;
     margin-top: 10px;
+    /* overflow-y: auto; */
    
 }
 
@@ -215,8 +217,15 @@
 
 .text-container{
     padding: 0 5px;
-   align-items: center;
+    align-items: center;
+    height: 40vh;
+    overflow-y: auto;
 }
+
+.text-container::-webkit-scrollbar-thumb{
+    background-color: #2ebf91;
+}
+
 .desp-div{
     width: 100%;
     text-align: center;
@@ -238,6 +247,7 @@
     background-color: rgb(243, 243, 243);
     margin: 10px;
     border-radius: 10px;
+    height: 90vh !important;
     /* position: fixed; */
 }
 
@@ -277,6 +287,11 @@
     border: none;
     background-color: rgb(57, 57, 255);
     color: white;
+    cursor: pointer;
+}
+
+.apply-btn:hover{
+    background-color: rgb(49, 49, 168);
 }
 
 .msg-btn{
@@ -331,6 +346,7 @@
 .offer-page{
     box-shadow: 3px 3px 6px;
     margin-top: -15px;
+    width: 100%;
 }
 
 .dte-span{
@@ -385,4 +401,10 @@
     width: 50px;
     height: 50px;
     border-radius: 25px;
+}
+
+.invisible-div{
+    background: #000;
+    width: 150px;
+    height: 10vh;
 }
