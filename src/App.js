@@ -6,6 +6,9 @@ import SignUp from './Components/SignUp';
 import Profile from './Components/Profile';
 import Offers from './Components/Offers';
 import Feed from './Components/Feed';
+import EmployeeProfile from './Components/EmployeeProfile';
+import Cv from './Components/Cv';
+import CvForm from './Components/CvForm';
 import './styles/signup.css';
 import './styles/login.css'
 import './styles/profile.css'
@@ -14,6 +17,10 @@ import './styles/popupThree.css'
 import './styles/offers.css';
 import './styles/feed.css';
 import './styles/srchPopup.css';
+import './styles/employeePro.css';
+import './styles/cv.css';
+import './styles/cvForm.css';
+
 function App() {
 
   return (
@@ -23,6 +30,9 @@ function App() {
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/feed' element={<Feed/>}/>
+        <Route path='/empe-profile' element={<EmployeeProfile/>}/>
+        <Route path='/cv' element={<Cv/>}/>
+        <Route path='/cvForm' element={<CvForm/>}/>
       </Routes>
     </div>
   );

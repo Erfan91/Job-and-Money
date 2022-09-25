@@ -78,33 +78,40 @@ const Feed = () => {
   // onMouseMove={()=>{ console.log(window.pageYOffset,"SCROLL HEIGHT///////")}}
   // console.log(window.innerHeight,"INNER HEIGHT")
 
-  const updater = (e) =>{
+  const updater = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3001/offer',{
-      method:'PUT',
-      headers:new Headers({"content-type":"application/json"}),
-      body:JSON.stringify({
-        offerId:offerId,
-        workerId:ids
+    fetch('http://localhost:3001/offer', {
+      method: 'PUT',
+      headers: new Headers({ "content-type": "application/json" }),
+      body: JSON.stringify({
+        offerId: offerId,
+        workerId: ids
       })
-    }).then(result=>result.json())
-    .then(json=>{
-      console.log(json,"THIS IS JSON")
-    })
+    }).then(result => result.json())
+      .then(json => {
+        console.log(json, "THIS IS JSON")
+      })
   }
   return (
     <div className='feed-main-div'>
-      <nav className='pro-nav'>
-        <div className='nav-child1'>
-          <span className='pro-nav-span'>Job&Money</span>
-        </div>
-        <div className='nav-child2'>
-          <BiNotification className='pro-icons' />
-          <BiMessage className='pro-icons' />
-          {/* <img src={info[0].image} alt="profile image" className='profile-image'/> */}
-          <div className='pro-pic-div'></div>
-        </div>
-      </nav>
+      {info.map(user => {
+        console.log(user,"USERUSER")
+        return (
+          <div>
+            <nav className='pro-nav'>
+              <div className='nav-child1'>
+                <span className='pro-nav-span'>Job&Money</span>
+              </div>
+              <div className='nav-child2'>
+                <BiNotification className='pro-icons' />
+                <BiMessage className='pro-icons' />
+                <img src={user.image} alt="profile image" className='profile-image'/>
+              </div>
+            </nav>
+          </div>
+        )
+      })
+      }
       <div className="offers-main-div">
         <section className='offers-list'>
           {
