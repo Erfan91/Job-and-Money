@@ -1,0 +1,103 @@
+.cv-main-div{
+    background: linear-gradient(140deg, #2C3E50, #000000);
+    height: 100vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.cv-section-continer{
+    height: 100vh;
+    width: 75vw;
+    background-color: #2C3E50;
+    display: flex;
+}
+
+.cv-exp-section{
+  
+    width: 33%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 13px;
+    justify-content: flex-end;
+}
+
+.exp-h3{
+    border: 1px dashed whitesmoke;
+    border-left: none;
+    border-right: none;
+    padding: 6px 0;
+    width: 100%;
+    text-align: center;
+   
+}
+
+.exp-head-content{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.exp-content-container{
+    text-align: left;
+
+}
+
+.exp-company-span{
+    font-weight: bold;
+    font-size: large;
+    color: rgb(114, 156, 199);
+}
+
+.exp-content-container p{
+    font-size: 13px;
+    color: aliceblue;
+}
+
+
+
+.cv-personal-content{
+    width: 33.5%;
+    background-color: aquamarine;
+}
+
+
+
+.cv-edu-section{
+    width: 33.5%;
+    height: 100vh;
+    background-color:darkred;
+    padding: 0 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;
+}
+
+.exp-skill-content{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;;
+}
+
+.exp-skill-content div{
+    width: 50%;
+    text-align: center;
+}
+
+.exp-skill-content div>p{
+    /* text-align: center; */
+    border-left: 1px dashed whitesmoke;
+    width: 100%;
+}
+
+
+.exp-skill-content ul{
+    list-style:none;
+    text-align: left;
+}
+

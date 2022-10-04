@@ -1,26 +1,81 @@
 .cv-form-main-div{
     width: 100%;
-    height: 100vh;
+    height: 93vh;
     text-align: center;
 }
 
 .cv-form-container{
-    background: blueviolet;
+    background-image: url(../images/banner-default.jpg);
+    background-size: cover;
+    background-position: center;
     display: flex;
-    flex-direction: column;
+    height: 92vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .cvF-container-child{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     margin: 5px;
-    background-color: cadetblue;
-    border: 1px solid blue;
+    background-color: rgba(250, 250, 250, 0.359);
+    border-right: 1px solid rgb(75, 41, 75);
+    border-top: 1px solid rgb(75, 41, 75);
+    border-left: 1px solid  rgb(69, 68, 68);
+    border-bottom: 1px solid  rgb(69, 68, 68);
+    color: rgb(184, 184, 184);
+    height: 70vh;
+    width: 34vw;
+    font-size: small;
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(75, 41, 75, 0.44);
 }
 
 .cv-personal-info{
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+.cv-personal-info input{
+    padding: 5px;
+    border: none;
+    /* border-radius: 13px; */
+    /* border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 13px;
+    border-top-right-radius: 13px;
+    background-color:gainsboro; */
+    background-color: rgba(75, 41, 75, 0.644);
+    border: 0.5px solid cadetblue;
+    border-radius: 3px;
+    color: rgb(209, 209, 209);
+    /* border-top-left-radius: 5px; */
+    box-shadow: 1px 5px 25px rgba(0, 0, 0, 0.438);
+}
+
+.cv-personal-info input:focus{
+    border: none;
+    /* border-bottom: 1px solid cadetblue; */
+    border-bottom: 1px solid cadetblue;
+    color: azure;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.194);
+}
+
+.cv-personal-info input::placeholder{
+    color: rgb(161, 170, 177);
+    font-size: smaller;
+}
+
+.dark-purple-line{
+ width: 3vw !important;
+ height: 0.5px !important;
+ background-color: aquamarine;
+ padding: 0 !important;
+ border: 0.1px solid black;
 }
 
 .cvF-name-div{
@@ -34,18 +89,44 @@
     margin: 5px;
 }
 
+.child-main-container{
+    
+
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.last-name-container{
+    display: flex;
+    justify-content: end;
+}    
+
+.cvF-info-child2{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
 .cvF-info-child3{
     display: flex;
     flex-direction: column;
     text-align: left;
+    align-items: center;
 }
 
 .cvF-info-child3-title-holder{
     display: flex;
     flex-direction: column;
     width: fit-content;
-    margin: 5px;
+    margin: 8px;
     text-align: left;
+}
+
+.cvF-address-holder{
+    margin-left: 14px;
 }
 
 .cvF-contactInfo-container{
@@ -59,4 +140,128 @@
     margin: 5px;
 }
 
+/* cv form personal contact information  input styles */
+.cvF-phone-input{
+    border: none;
+    border-top: 0.5px solid grey;
+    background-color: cadetblue;
+}
+
+.cvF-phone-input:focus{
+    /* outline: none;
+    background-color: rgba(99, 127, 128, 0.548);
+    border-top: none;
+    border-bottom: 0.5px solid rgb(177, 12, 12);
+    border-radius: 2px; */
+}
+
+
 /* Experience input styles 🔽 */
+
+.cvF-experience-div{
+    background: #000;
+    align-items: center;
+}
+
+.exp-all-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.cvF-exp-description-container{
+    display: flex;
+    flex-direction: column;
+    /* text-align: left; */
+}
+
+.cvF-exp-date-container{
+    margin: 0;
+}
+
+
+
+.cvF-exp-input-container{
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: left;
+  
+}
+
+.cvF-desc-child{
+    display: flex;
+}
+
+.cvF-desc-child div{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    text-align: left;
+}
+
+.cvF-exp-desc-child{
+    display: flex;
+}
+
+.cvF-exp-desc-child div{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Education div and input styles 🔽*/
+.cvF-education-div{
+    display: flex;
+    justify-content: center;
+    background: #000;
+    text-align: center;
+    align-items: center;
+}
+
+
+
+/* Skills div styles  🔽*/
+.cvF-skills-div{
+    display: flex;
+    background: #000;
+    justify-content: center;
+    align-items: center;
+}
+
+.cvF-skills-div div{
+    text-align: left;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* Experience documet upload div Styles 🔽 */
+.cvF-exp-docs{
+    background: #000;
+    text-align: center;
+    align-items: center;
+}
+
+/* Achievements docs div 🔽*/
+.cvF-achievements-div{
+    align-items: center;
+}
+
+.back-close-window-div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cvF-icn-div{
+    background: #000;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 20px;
+    /* clip-path: ellipse(70px 20px at 99% 79%) !important; */
+}
