@@ -14,9 +14,14 @@
 
 .content-div{
     width: 250px;
-    background: #000;
+    background: rgba(255, 255, 255, 0.103);
     height: 70vh;
-    border: 1px solid rebeccapurple;
+    /* border: 1px solid rebeccapurple; */
+    margin: 2px ;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 7px;
+    box-shadow: 2px 2px 4px black;
 }
 
 .personal-info{
@@ -52,7 +57,83 @@
 /* Empployee Cv section */
 .empe-cv{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
     align-items: center;
     color: #8cb5ea;
+    background-image: radial-gradient( circle farthest-corner at -8.9% 68.2%,  rgba(16,66,157,1) 0%, rgba(16,66,157,1) 15.9%, rgba(11,27,103,1) 15.9%, rgba(11,27,103,1) 24.4%,  rgba(0,152,155,1) 0.1%, rgba(0,94,120,1) 94.2% );
+    /* border: 0.5px solid rgb(0, 251, 255); */
+}
+
+.empe-cv div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.103);
+    height: 75vh;
+    box-shadow: 2px 2px 40px rgba(255, 255, 255, 0.103);
+    border-top: none;
+    border-bottom: none;
+
+}
+
+.empe-cv div>span{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: -20px;
+    font-family:monospace;
+    background-color: rgba(255, 255, 255, 0.103);
+    width: 80px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 4px black;
+    border: 0.2px solid rgb(0, 251, 255);
+    background-color: black;
+    color: rgb(0, 251, 255);
+}
+
+.cv-icon{
+
+    /* border-top: 60px solid rgba(255, 255, 255, 0.103);
+    border-bottom: 70px solid rgba(255, 255, 255, 0.103);
+    border-left: 55px solid rgba(255, 255, 255, 0.103);
+    border-right: 55px solid rgba(255, 255, 255, 0.103); */
+    box-shadow: 2px 2px 5px black;
+    border-radius: 190px;
+    /* padding: 50px; */
+    width: 40px;
+    height: 110px;
+    padding-right: 35px;
+    padding-left: 35px;
+    /* border: 0.5px solid rgb(0, 251, 255); */
+    color: rgb(0, 251, 255);
+    margin-bottom: 40px;
+    margin-top: 110px;
+}
+
+
+/* Employee offer section */
+.empe-offers{
+    background-image: radial-gradient( circle farthest-corner at -8.9% 68.2%,  rgba(0,152,155,1) 0%, rgba(0,152,155,1) 15.9%, rgba(0,94,120,1) 15.9%, rgba(0,94,120,1) 24.4%,rgba(16,66,157,1) 24.4%, rgba(16,66,157,1) 66%);
+}
+
+.deal-icon{
+    color:#8cb5ea;
+}
+
+.deal-icon{
+    /* border: 0.5px solid rgb(61, 61, 203); */
+    border: none;
+}
+
+/* employee information document */
+
+.information-documents{
+    background-image: radial-gradient(circle farthest-corner at 108% 24.2%,  rgba(19,30,37,1) 0%, rgba(19,30,37,1) 15.9%, rgba(255, 255, 255, 0.103) 15.9%, rgba(255, 255, 255, 0.103) 24.4%,  rgba(5,111,146,1) 24.4%, rgba(6,57,84,1) 66%);
+}
+
+/* employee rating section */
+.rating-comments{
+    background-image: radial-gradient( circle farthest-corner at -8.9% 68.2%,  rgba(5,111,146,1) 0%, rgba(5,111,146,1) 15.9%, rgba(6,57,84,1) 15.9%, rgba(6,57,84,1) 24.4%, rgba(19,30,37,1) 24.5%, rgba(19,30,37,1) 66% );
 }

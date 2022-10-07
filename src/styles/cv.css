@@ -1,7 +1,7 @@
 .cv-main-div{
     background: linear-gradient(140deg, #2C3E50, #000000);
     height: 100vh;
-    height: 100vh;
+    height: auto;
     display: flex;
     justify-content: center;
 }
@@ -59,13 +59,6 @@
 
 
 
-.cv-personal-content{
-    width: 33.5%;
-    background-color: aquamarine;
-}
-
-
-
 .cv-edu-section{
     width: 33.5%;
     height: 100vh;
@@ -77,6 +70,7 @@
     text-align: center;
     justify-content: flex-end;
 }
+
 
 .exp-skill-content{
   display: flex;
@@ -101,3 +95,67 @@
     text-align: left;
 }
 
+
+/* Cv Personal content/center section 🔽*/
+.cv-personal-content{
+    width: 33.5%;
+    height: fit-content;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.cv-personal-content-main-div{
+    text-align: center;
+    background-color: blueviolet;
+    padding: 0 15px;
+    width: 70%;
+    height: 100vh;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+.cv-personal-info{
+    padding-bottom: 15px;
+    border-bottom: 1px dashed whitesmoke;
+}
+
+.cv-name-title-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.cv-name-title-container h2{
+    margin: 0;
+}
+
+.cv-name-title-container p{
+    margin: 0;
+}
+
+.personal-desc-p{
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    font-size: small;
+}
+
+.cv-content-child{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin-bottom: 7px;
+}
+
+.cv-content-child h5{
+    margin: 0;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+
+ .cv-content-child p{
+    margin:0;
+    font-size: small;
+
+}

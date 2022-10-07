@@ -53,28 +53,28 @@ const Cv = () => {
                     <img src={content.ownerId.image} alt="image not found" style={{width:'100px', height:'100px'}}/>
                     <div className='cv-personal-info'>
                       <div className='cv-name-title-container'>
-                        <h4>{content.ownerId.name} {content.ownerId.surName}</h4>
-                        <p>Director</p>
+                        <h2>{content.ownerId.name} {content.ownerId.surName}</h2>
+                        <p><i>Director</i></p>
                       </div>
                       <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem error alias praesentium nesciunt consequatur ullam architecto, enim, quod culpa eveniet earum rem tempora facere cumque?</p>
+                        <p className='personal-desc-p'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem error alias praesentium nesciunt consequatur ullam architecto, enim, quod culpa eveniet earum rem tempora facere cumque?</p>
                       </div>
                     </div>
-                    <div className='cv-personal-data'>
-                      <div className='cv-address-div'>
-                          <h5>Address</h5>
+                    <div className='cv-personal-data' >
+                      <div className='cv-address-div cv-content-child'>
+                          <h5>ADDRESS</h5>
                           <p>{content.address}</p>
                       </div>
-                      <div className='cv-number-div'>
-                        <h5>Phone Number</h5>
+                      <div className='cv-number-div cv-content-child'>
+                        <h5>PHONE NUMBER</h5>
                         <p>{content.ownerId.phoneNumber}</p>
                       </div>
-                      <div className='cv-email-div'>
-                        <h5>Email</h5>
+                      <div className='cv-email-div cv-content-child'>
+                        <h5>EMAIL</h5>
                         <p>{content.ownerId.email}</p>
                       </div>
-                      <div className='cv-website-div'>
-                        <h5>Website</h5>
+                      <div className='cv-website-div cv-content-child'>
+                        <h5>WEBSITE</h5>
                         <p>||</p>
                       </div>
                     </div>

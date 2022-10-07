@@ -1,6 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { BiMessage, BiNotification, BiSearch } from "react-icons/bi";
+import { BsFilePerson } from "react-icons/bs";
+import { FaRegHandshake } from "react-icons/fa";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi";
+import { MdOutlineDocumentScanner, MdOutlineAutoGraph } from "react-icons/md";
+
 const EmployeeProfile = () => {
     const [info, setInfo] = useState([])
     const id = JSON.stringify(localStorage.getItem('_id'))
@@ -29,9 +34,15 @@ const EmployeeProfile = () => {
         </nav>
 
         <div className='empe-content-div'>
-            <div className="empe-offers content-div"></div>
+            <div className="empe-offers content-div empe-cv">
+              <div>
+                <FaRegHandshake className="deal-icon cv-icon"/>
+                <span>My offers</span>
+              </div>
+            </div>
             <div className="empe-cv content-div">
               <div>
+                <BsFilePerson className='cv-icon'/>
                 <span>My Cv</span>
               </div>
             </div>
@@ -48,8 +59,18 @@ const EmployeeProfile = () => {
                 })
               }
             </div>
-            <div className="information-documents content-div"></div>
-            <div className="rating-comments content-div"></div>
+            <div className="information-documents content-div empe-cv">
+              <div>
+                <HiOutlineDocumentDuplicate className='doc-icon cv-icon'/>
+                <span>My Documents</span>
+              </div>
+            </div>
+            <div className="rating-comments content-div empe-cv">
+              <div>
+                <MdOutlineAutoGraph className='rating-icon cv-icon'/>
+                <span>Reviews</span>
+              </div>
+            </div>
         </div>
     </div>
   )
