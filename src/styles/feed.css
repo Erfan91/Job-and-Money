@@ -4,7 +4,7 @@
     flex-direction: column;
     height: fit-content;
     /* background-image:linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%); */
-    background-image: linear-gradient(to right, #8360c3, #2ebf91);
+    background-image: linear-gradient( 171.8deg,  rgba(5,111,146,1) 13.5%, rgba(6,57,84,1) 78.6% );
 }
 
 
@@ -408,4 +408,10 @@
     background: #000;
     width: 150px;
     height: 10vh;
+}
+
+.offer-desc-page{
+    position: fixed;
+    width: 40%;
+    top: 8%;
 }

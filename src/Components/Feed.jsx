@@ -204,7 +204,7 @@ const Feed = () => {
           }
         </section>
         <section className='offers-detail' ref={bref}>
-          <div style={{ position: position, width: width }}>
+          <div className='offer-desc-page' style={{ position: position, width: width }}>
             <div className='offer-page'>
               <div className='offer-info'>
                 <h4 className='title-h4'>{title}</h4>

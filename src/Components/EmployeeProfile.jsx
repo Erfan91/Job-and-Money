@@ -46,7 +46,7 @@ const EmployeeProfile = () => {
                 <span>My Cv</span>
               </div>
             </div>
-            <div className="personal-info content-div">
+            <div className="personal-info content-div empe-cv">
               {
                 info.map(user=>{
                   return(
@@ -71,7 +71,19 @@ const EmployeeProfile = () => {
                 <span>Reviews</span>
               </div>
             </div>
+        <div className='glass-div '>
         </div>
+        <div className='glass-div glass-2 '>
+        </div>
+        <div className='glass-div glass-3'>
+        </div>
+        <div className='glass-div glass-4 '>
+        </div>
+        <div className="glass-div glass-5"></div>
+        <div className="glass-div glass-6 "></div>
+
+        </div>
+        
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { BiMessage, BiNotification, BiSearch, BiArrowBack } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
-
+import axios from 'axios';
 const CvForm = () => {
     const Navigate = useNavigate()
     const [display, setDisplay] = useState('none');
@@ -42,7 +42,7 @@ const CvForm = () => {
                 setNumberHolder(json.phoneNumber);
                 setDisable(true)
             }
-        )
+            )
     }
     // input vlaues below 🔽
     const [cvName, setCvName] = useState('');
@@ -67,17 +67,86 @@ const CvForm = () => {
                 email: email,
                 softSkills: softSkills,
                 hardSkills: hardSkills,
+                achievement:file1,
+                experienceDocs:file,
                 ownerId: ids
             })
         }).then(result => result.json())
             .then(json => {
                 console.log(json);
             })
-            Navigate('/empe-profile')
-            sendExp()
+        Navigate('/empe-profile')
+        sendExp()
     }
 
-   
+    // documents upload functions🔽
+    const [myImage, setImage] = useState('');
+    const [file, setFile] = useState([]);
+    const [file1, setFile1] = useState([])
+    let [changer, setChanger] = useState(Boolean)
+
+    const imageUploader = React.useRef(null);
+    let uploadedImage = React.useRef(null);
+    const imageChanger = e => {
+        const [file] = e.target.files;
+        if (file) {
+            setChanger(changer = false)
+            const reader = new FileReader();
+            const { current } = uploadedImage;
+            setImage(e.target.files[0])
+            current.file = file;
+            reader.onload = e => {
+                current.src = e.target.result
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+    const imageUploader1 = React.useRef(null);
+    let uploadedImage1 = React.useRef(null);
+    const imageChanger1 = e => {
+        const [file] = e.target.files;
+        if (file) {
+            setChanger(changer = true)
+            const reader = new FileReader();
+            const { current } = uploadedImage1;
+            setImage(e.target.files[0])
+            current.file = file;
+            reader.onload = e => {
+                current.src = e.target.result
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+    // console.log(changer)
+    const uploadImage = e => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('myImage', myImage)
+        axios({
+            method: "post",
+            url: 'http://localhost:3001/cv/upload-image',
+            data: formData
+            
+        })
+            .then(result => {
+                const { data } = result;
+                if(!changer){
+                    setFile(file => [...file, data.url])
+                    console.log(file, 'FIELLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLSSSSSSSSSSSSESESE', file.length)
+                }else{
+                    setFile1(file1 => [...file1, data.url])
+                    console.log(file1, '111', file1.length)
+
+                }
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        setDisplay('none')
+    }
+
+
 
     // exprience input values🔽
     const [expTitle, setExpTitle] = useState('');
@@ -105,7 +174,7 @@ const CvForm = () => {
             .then(json => {
                 console.log(json);
             })
-            sendEdu()
+        sendEdu()
     }
 
     // education input values🔽
@@ -309,7 +378,7 @@ const CvForm = () => {
                                         setExpDesc(e.target.value)
                                     }} />
                                 </div>
-                                <button className='next-btn' onClick={(e)=>{
+                                <button className='next-btn' onClick={(e) => {
                                     e.preventDefault()
                                     setDisplay('none')
                                     setDisplayC('flex')
@@ -395,7 +464,7 @@ const CvForm = () => {
                                 setEduDesc(e.target.value)
                             }} />
                         </div>
-                        <button className='next-btn' onClick={(e)=>{
+                        <button className='next-btn' onClick={(e) => {
                             e.preventDefault()
                             setDisplayC('none')
                             setDisplayD('flex')
@@ -480,11 +549,21 @@ const CvForm = () => {
                         <span><strong>Experience Documents</strong></span>
                         <label htmlFor="">Upload the documents that justifies your experience</label>
                         <p><small><i>by uploading experience documents you can earn the professional badge and get paid more than a regular worker</i></small></p>
-                        <input type="file" className='cvF-expDoc-input' />
+                        <div className='issue-img1-div'>
+                            <input type="file" accept='/image*' ref={imageUploader} onChange={imageChanger} style={{ display: 'none' }} />
+                            <div className='issue-img1-div2' onClick={() => {
+                                imageUploader.current.click()
+                                setDisplay('none')
+                            }}>
+                                <img ref={uploadedImage} className='issue-image' />
+                            </div>
+                            <button onClick={uploadImage} className='upload-btn'>Upload</button>
+                        </div>
                         <button className='next-btn' onClick={(e) => {
                             e.preventDefault()
                             setDisplayE('none')
                             setDisplayF('flex')
+                            setChanger(changer = true)
                         }}>Next</button>
                     </div>
                     <div className='cvF-achievements-div cvF-container-child' style={{ display: displayF }}>
@@ -492,6 +571,7 @@ const CvForm = () => {
                             <div className='cvF-back-icon-div cvF-icn-div' onClick={() => {
                                 setDisplayF('none')
                                 setDisplayE('flex')
+                                setChanger(changer = false)
                             }}>
                                 <BiArrowBack className='cvF-back-icon' />
                             </div>
@@ -503,7 +583,16 @@ const CvForm = () => {
                         </div>
                         <span><strong>Professional Achievements</strong></span>
                         <label htmlFor="">Upload what you achieved professionally in your career</label>
-                        <input type="file" className='cvF-achievements-input' />
+                        <div className='issue-img1-div'>
+                            <input type="file" accept='/image*' ref={imageUploader1} onChange={imageChanger1} style={{ display: 'none' }} />
+                            <div className='issue-img1-div2' onClick={() => {
+                                imageUploader1.current.click()
+                                setDisplay('none')
+                            }}>
+                                <img ref={uploadedImage1} className='issue-image' />
+                            </div>
+                            <button onClick={uploadImage} className='upload-btn'>Upload</button>
+                        </div>
                         <button type='submit' onClick={sendInfo}>Submit</button>
                     </div>
                 </div>
