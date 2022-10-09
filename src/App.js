@@ -20,6 +20,8 @@ import './styles/srchPopup.css';
 import './styles/employeePro.css';
 import './styles/cv.css';
 import './styles/cvForm.css';
+import Docs from './Components/Docs';
+import './styles/docs.css';
 
 function App() {
 
@@ -33,6 +35,7 @@ function App() {
         <Route path='/empe-profile' element={<EmployeeProfile/>}/>
         <Route path='/cv' element={<Cv/>}/>
         <Route path='/cvForm' element={<CvForm/>}/>
+        <Route path='/docs' element={<Docs/>}/>
       </Routes>
     </div>
   );

@@ -1,0 +1,178 @@
+.docs-main-div{
+    width: 100%;
+    height: 100vh;
+   
+}
+
+.docs-main-child{
+    background-image: linear-gradient( 171.8deg,  rgba(5,111,146,1) 13.5%, rgba(6,57,84,1) 78.6% );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Bank card styles 🔽 */
+.bank-acc-main-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.card-err-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.card-err-container div{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    color: aliceblue;
+    width: 190px;
+    /* border: 0.5px solid rgba(190,24,49,1); */
+    margin: 3px;
+    height: 90px;
+}
+
+.card-err-div{
+    background-color: rgba(255, 0, 0, 0.427);
+    border: 1px solid red;
+}
+
+.add-card-div{
+    background-color: rgba(0, 255, 170, 0.422);
+    border: 1px solid aquamarine;
+}
+
+.err-icon{
+    width: 50px;
+    height: 50px;
+    color: rgb(207, 14, 14);
+}
+
+.err-sm-icon{
+    width: 20px;
+    height: 20px;
+    color: rgb(207, 14, 14);
+}
+
+.card-icon{
+    width: 45px;
+    height: 45px;
+    color: rgb(17, 108, 221);
+}
+
+.att-p{
+    color: rgb(188, 110, 110);
+    margin-top: -0.1px;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    padding: 0 5px;
+}
+
+.bank-card-create-model{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: red;
+    width: 40%;
+    height: 27vh;
+    border-radius: 8px;
+}
+
+.card-chip{
+    width: 80%;
+    /* background: #000; */
+    text-align: left;
+}
+
+.card-chip-icon{
+    width: 35px;
+    height: 35px;
+}
+/*  */
+.docs-section{
+    height: 33.33vh;
+    width: 65%;
+    /* margin: auto; */
+    background-image: radial-gradient( circle 976px at 51.2% 51%,  rgba(11,27,103,1) 0%, rgba(16,66,157,1) 0%, rgba(11,27,103,1) 17.3%, rgba(11,27,103,1) 58.8%, rgba(11,27,103,1) 71.4%, rgba(16,66,157,1) 100.2%, rgba(187,187,187,1) 100.2% );
+    margin: 5px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(190,24,49,1);
+    box-shadow: 3px 3px 6px black;
+
+}
+
+.docs-image{
+    width: 70px;
+    height: 70px;
+    border: 1px solid rgba(11,27,103,1);
+ 
+}
+
+.exp-docs-div{
+    display: flex;
+    justify-content: center;
+}
+
+.docs-div-child{
+    width: 120px;
+    height: 120Px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.103);
+    margin: 2px;
+    margin-top: 7px;
+    box-shadow: 2px 2px 6px black;
+    border: 0.5px solid rgba(190,24,49,1);
+}
+.docs-div-child p{
+    font-size: 8px;
+    color: blueviolet;
+    font-weight: bold;
+}
+
+.docs-container-parent{
+    text-align: center;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.index-num-p{
+    background-image: linear-gradient( 179.4deg,  rgba(132,56,122,1) 14.6%, rgba(190,24,49,1) 104.7% );
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border: 0.5px solid rgba(190,24,49,1);
+    color: rgb(118, 128, 137);
+    box-shadow: 2px 2px 6px black;
+}
+
+.docs-h3{
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient( 179.4deg,  rgba(132,56,122,1) 14.6%, rgba(190,24,49,1) 104.7% );
+    padding: 5px;
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: -4px;
+    box-shadow: 2px 2px 10px rgba(11,27,103,1);
+    border: 1px solid rgba(190,24,49,1);
+    color: rgb(118, 128, 137);
+}
