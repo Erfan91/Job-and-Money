@@ -109,6 +109,12 @@ body{
 
 }
 
+.notif-red-icon{
+    color: rgb(176, 76, 216);
+    font-size: 22px;
+    cursor: pointer;
+}
+
 .pro-nav-button{
     margin: 15px;
     height: 3vh;
@@ -130,7 +136,6 @@ body{
     margin: auto;
     width: 40%;
     text-align: center;
-    margin-top: -66px;
 }
 
 .user-content{

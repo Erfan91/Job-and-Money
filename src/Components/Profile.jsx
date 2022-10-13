@@ -11,7 +11,7 @@ import { SiHandshake} from "react-icons/si";
 import { RiSettingsLine } from "react-icons/ri";
 import { IoDocumentsOutline } from "react-icons/io5";
 import { IoIosDocument } from "react-icons/io";
-
+import Notification from './Notification';
 import PopupTwo from './popups/PopupTwo';
 import Offers from './Offers';
 const Profile = (props) => {
@@ -53,14 +53,19 @@ const Profile = (props) => {
         fetch(`http://localhost:3001/user/${ids}`)
             .then(result => result.json())
             .then(json => {
-                console.log(json)
+                // console.log(json)
                 setInfo([json])
             })
-        console.log(userInfo)
+        // console.log(userInfo)
     }, [])
 
     const [timePHolder, setTholder] = useState('');
     const [hourDis, setDisplay] = useState('hidden');
+    const [isNotif, setIsNotif] = useState(Boolean)
+
+    const isNotification = (notif) =>{
+        return setIsNotif(notif)
+    }
     return (
         <div className='pro-main-div'>
             <nav className='pro-nav'>
@@ -68,7 +73,7 @@ const Profile = (props) => {
                     <span className='pro-nav-span'>Job&Money</span>
                 </div>
                 <div className='nav-child2'>
-                    <BiNotification className='pro-icons' />
+                    {isNotif ? <BiNotification className='pro-icons notif-red-icon' />:<BiNotification className='pro-icons' />}
                     <BiMessage className='pro-icons' />
                     <button className='pro-nav-button'>Job Mode</button>
                     {/* <img src={} alt="profile image"/> */}
@@ -76,16 +81,7 @@ const Profile = (props) => {
                 </div>
             </nav>
             <section className="pro-section">
-                <div className='pro-section-child1'>
-                    < div className='search-div' >
-                        <div>
-                            <label>Search a user</label>
-                            <input type="text" />
-                            <BiSearch className='search-icon' />
-                        </div>
-                    </div >
-                </div>
-
+                <Notification isTrue={isNotification()}/>   
                 {
                     userInfo.map(data => {
                         return (

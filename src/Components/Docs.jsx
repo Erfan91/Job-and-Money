@@ -1,21 +1,31 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { BiMessage, BiNotification, BiErrorCircle } from "react-icons/bi";
-import { BsCreditCard2BackFill, BsClock, BsReplyAllFill, BsFillCalendarDateFill, BsPlus } from "react-icons/bs";
+import { BsCreditCard2BackFill, BsClock, BsReplyAllFill, BsFillCalendarDateFill, BsPlus, BsFillCheckCircleFill } from "react-icons/bs";
 import { FcSimCardChip } from "react-icons/fc";
+import { HiOutlineSave } from "react-icons/hi";
+import { AiOutlineFieldTime, AiOutlinePhone, AiOutlineSearch, AiOutlineRollback } from "react-icons/ai";
+
 // BsFillCreditCardFill
 const Docs = () => {
   const [cvInfo, setCvInfo] = useState([]);
+  const [accInfo, setAccInfo] = useState([])
   const [info, setInfo] = useState([]);
   const [inputIndex, setInputIndex] = useState(null)
   const [display, setDisplay] = useState('none')
   const [errDisplay, setErrDisplay] = useState('none')
   const [errContainerDis, setContainerDis] = useState('flex')
-  const [icon, setIcon] = useState('')
+  const [cardFrontDis, setFrontDis] = useState('flex')
+  const [cardCvvDis, setCvvDis] = useState('none')
   const [isCard, setCard] = useState(Boolean)
   const [container, setConatiner] = useState([])
-  const [pName, setPName] = useState('')
-
+  const [docName, setDocName] = useState('');
+  const [cardNum, setCardNum] = useState('');
+  const [cardDate, setCardDate] = useState('');
+  const [cardHolder, setCardHolder] = useState('');
+  const [cvvVal, setCvvVal] = useState('')
+  const [cardNameVal, setNameVal] = useState('')
+  const [cardSubmitMessage, setMessage] = useState('')
   const id = JSON.stringify(localStorage.getItem('_id'))
   const ids = JSON.parse(id)
 
@@ -43,13 +53,36 @@ const Docs = () => {
       .then(result => result.json())
       .then(json => {
         if (json) {
-          // setDisplay('flex')
+          setAccInfo([json])
           setCard(true)
         } else {
           setCard(false)
         }
       })
   }, [])
+
+  const sendCardInfo = (e) =>{
+    e.preventDefault()
+    fetch('http://localhost:3001/acc',{
+      method:'POST',
+      headers: new Headers({"content-type":"application/json"}),
+      body: JSON.stringify({
+        fullName: cardHolder,
+        validityDate: cardDate,
+        cardNumber: cardNum,
+        cvv:cvvVal,
+        cardName: cardNameVal,
+        ownerId:ids
+      })
+    }).then(result=>result.json())
+    .then(json=>{
+      if(json){
+        console.log(json)
+      }else{
+        setMessage(json.message)
+      }
+    })
+  }
 
   return (
     <div className='docs-main-div'>
@@ -75,14 +108,14 @@ const Docs = () => {
         <h3 className='docs-h3'>Bank Account Info</h3>
         <section className='bank-acc-section docs-section'>
           <div className='bank-acc-main-div'>
-          <BiErrorCircle className='err-sm-icon' style={{display:errDisplay}}/>
+            <BiErrorCircle className='err-sm-icon' style={{ display: errDisplay }} />
             {!isCard ?
-              <div className='card-err-container' style={{errContainerDis}}>
+              <div className='card-err-container' style={{ errContainerDis }}>
                 <div className='card-err-div'>
                   <BiErrorCircle className='err-icon' />
                   <span>Card not found ! :(</span>
                 </div>
-                <div className='add-card-div' onClick={()=>{
+                <div className='add-card-div' onClick={() => {
                   setDisplay('flex')
                   setErrDisplay('block')
                   setContainerDis('none')
@@ -91,26 +124,100 @@ const Docs = () => {
                   <BsCreditCard2BackFill className='card-icon' />
                   <span>Add my Bank Card</span>
                 </div>
-                  <p className='att-p'><small><i>Attention! without registering a vaild Bank card you can't apply nor create an offer</i></small></p>
+                <p className='att-p'><small><i>Attention! without registering a vaild Bank card you can't apply nor create an offer</i></small></p>
               </div>
               :
-              <div className='bank-card-model' style={{display:errContainerDis}}>
-                
+              <div className='bank-card-create-model' style={{ display: errContainerDis }}>
+                {
+                  accInfo.map(card=>{
+                    let spaced = card.cardNumber
+                    for(var i = 0; i <= spaced.length; i++){
+                      if(i > 4){
+                         i=i+ " "
+                        return spaced += spaced[i] 
+                      }else{
+                        console.log('faild')
+                      }
+                    }
+                    return(
+                      <>
+                      <FcSimCardChip className='card-chip-icon'/>
+                      <div className="card-num-div">
+                        <span>{spaced}</span>
+                      </div>
+                      <div className='card-date-div'>
+                        <span>{card.validityDate}</span>
+                      </div>
+                      <div className='cardHolder-div'>
+                        <span>{card.fullName}</span>
+                      </div>
+                      </>
+                    )
+                  })
+                }
               </div>
             }
             <div className="bank-card-create-model" style={{ display: display }}>
-              <div className='card-chip'>
-                <FcSimCardChip className='card-chip-icon'/>
+              <div className='card-num-div' style={{ display: cardFrontDis }}>
+                <label htmlFor="" className='card-label'>Card number</label>
+                <input type="text" maxLength={16} className='card-num-input' placeholder='#0000' onChange={(e) => {
+                  e.preventDefault()
+                  setCardNum(e.target.value)
+                }} />
               </div>
-              <div className='card-num-div'>
-                <input type="text" className='card-num-input'/>
+              <div className='card-date-div' style={{ display: cardFrontDis }}>
+                <label htmlFor="" className='card-label'>Date of validity</label>
+                <input type="date" className='card-date-input card-num-input' onChange={(e) => {
+                  e.preventDefault()
+                  setCardDate(e.target.value)
+                }} />
               </div>
-              <div className='card-date-div'>
-                  <input type="date" className='card-date-input'/>
+              <div className='cardHolder-div' style={{ display: cardFrontDis }}>
+                <label htmlFor="" className='card-label'>Card Holder</label>
+                <input type="text" className='card-fullName-input card-num-input' placeholder='Card holder full Name' onChange={(e) => {
+                  e.preventDefault()
+                  setCardHolder(e.target.value)
+                }} />
               </div>
-              <div className='cardHolder-div'>
-                <input type="text" className='card-fullName-div'/>
+              <div className='cardName-cvv-container' style={{ display: cardCvvDis }}>
+                <div className='name-cvv-child'>
+                  <div className='card-name-div'>
+                    <label htmlFor="" className='card-label'>Card Name</label>
+                    <input type="text" className='card-name-input' placeholder='example bank card' onChange={(e)=>{
+                      e.preventDefault()
+                      setNameVal(e.target.value)
+                    }}/>
+                  </div>
+                  <div className='card-cvv-div'>
+                    <label htmlFor="" className='card-label'>CVV</label>
+                    <input type="text" maxLength={3} className='card-cvv-input' onChange={(e)=>{
+                      e.preventDefault()
+                      setCvvVal(e.target.value)
+                    }}/>
+                  </div>
+                </div>
+                <div className='cvv-child2'>
+                  <div onClick={()=>{
+                    setFrontDis('flex')
+                    setCvvDis('none')
+                  }}>
+                    <AiOutlineRollback className='roll-back-icon cvv-side-icon' />
+                    <span>Back</span>
+                  </div>
+                  <div>
+                   {cardNameVal && cvvVal !== ""? <button onClick={sendCardInfo}><HiOutlineSave className='save-icon cvv-side-icon' /></button>: <HiOutlineSave className='save-icon save-red-icon cvv-side-icon' />}
+                    <span>Save Card</span>
+                  </div>
+                </div>
+                <p><small><i>{cardSubmitMessage}</i></small></p>
               </div>
+              {
+                cardNum && cardDate && cardHolder !== "" ? <BsFillCheckCircleFill className='checked-icon' style={{ display: cardFrontDis }} onClick={() => {
+                  setFrontDis('none')
+                  setCvvDis('flex')
+                }} /> : <BsFillCheckCircleFill className='checked-red-icon' />
+              }
+
             </div>
             <button>Add my card later</button>
           </div>
@@ -136,12 +243,12 @@ const Docs = () => {
                             }}>give a name</p>
                           </div>
                           {inputIndex === index && <input type="text" onChange={(e) => {
-                            setPName(e.target.value)
+                            setDocName(e.target.value)
                           }} />
                           }
                           <button onClick={(e) => {
                             e.preventDefault()
-                            setConatiner(container => [...container, pName])
+                            setConatiner(container => [...container, docName])
                           }}>valid</button>
                         </div>
                       )
@@ -173,12 +280,12 @@ const Docs = () => {
                             }}>give a name</p>
                           </div>
                           {inputIndex === index && <input type="text" onChange={(e) => {
-                            setPName(e.target.value)
+                            setDocName(e.target.value)
                           }} />
                           }
                           <button onClick={(e) => {
                             e.preventDefault()
-                            setConatiner(container => [...container, pName])
+                            setConatiner(container => [...container, docName])
                           }}>valid</button>
                         </div>
                       )

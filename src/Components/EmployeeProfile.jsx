@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BiMessage, BiNotification, BiSearch } from "react-icons/bi";
 import { BsFilePerson } from "react-icons/bs";
 import { FaRegHandshake } from "react-icons/fa";
@@ -7,6 +8,7 @@ import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { MdOutlineDocumentScanner, MdOutlineAutoGraph } from "react-icons/md";
 
 const EmployeeProfile = () => {
+    const Navigate = useNavigate()
     const [info, setInfo] = useState([])
     const id = JSON.stringify(localStorage.getItem('_id'))
     const ids = JSON.parse(id)
@@ -42,7 +44,9 @@ const EmployeeProfile = () => {
             </div>
             <div className="empe-cv content-div">
               <div>
-                <BsFilePerson className='cv-icon'/>
+                <BsFilePerson className='cv-icon' onClick={()=>{
+                  Navigate('/cv')
+                }}/>
                 <span>My Cv</span>
               </div>
             </div>
@@ -61,7 +65,9 @@ const EmployeeProfile = () => {
             </div>
             <div className="information-documents content-div empe-cv">
               <div>
-                <HiOutlineDocumentDuplicate className='doc-icon cv-icon'/>
+                <HiOutlineDocumentDuplicate className='doc-icon cv-icon' onClick={()=>{
+                  Navigate('/docs')
+                }}/>
                 <span>My Documents</span>
               </div>
             </div>

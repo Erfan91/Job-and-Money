@@ -80,10 +80,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: red;
+    /* background: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea); */
+    background: linear-gradient(to right, #f46b45, #eea849);
     width: 40%;
     height: 27vh;
     border-radius: 8px;
+    /* padding: 0 20px; */
 }
 
 .card-chip{
@@ -96,6 +98,158 @@
     width: 35px;
     height: 35px;
 }
+
+.card-num-div{
+    width: 80%;
+    text-align: left;
+    margin: 5px;
+    flex-direction: column;
+}
+
+.card-num-input{
+    width: 90%;
+    border: none;
+    border-bottom: 0.5px solid silver;
+    background-color: rgba(251, 251, 251, 0.449);
+    height: 3.5vh;
+    color:dimgrey;
+    padding-left: 7px;
+}
+
+.card-num-input:focus{
+    outline: none;
+    border: none;
+    border-bottom: 0.5px solid aqua;
+}
+
+.card-date-div{
+    width: 73%;
+    text-align: left;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    /* margin-right: 25px; */
+    margin: 5px 25px 5px 0;
+}
+
+.card-date-input{
+    width: 50%;
+}
+
+.cardHolder-div{
+    width: 80%;
+    text-align: left;
+    margin: 5px 0 15px;
+    flex-direction: column;
+}
+
+.card-label{
+    font-size: 13px;
+    font-weight: lighter;
+}
+
+.checked-red-icon{
+    color: red;
+}
+
+.checked-icon{
+    color: aquamarine;
+}
+
+.cardName-cvv-container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.card-name-div{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-name-input{
+    border: none;
+    border-bottom: 0.5px solid silver;
+    height: 3.2vh;
+    padding-left: 5px;
+}
+
+.card-name-input:focus{
+    outline: none;
+}
+
+.card-cvv-div{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin: -1px 0 0 3px;
+}
+
+.card-cvv-input{
+    width: 60px;
+    height: 3.3vh;
+    border: 0.5px solid orangered;
+    background: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
+    color: azure;
+}
+
+.card-cvv-input:focus{
+    outline: none;
+}
+
+.name-cvv-child{
+    display: flex;
+}
+
+.cvv-child2{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.cvv-child2 div{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin: 7px;
+    background: rgb(228, 168, 125);
+    width: 50px;
+    padding: 3px;
+    box-shadow: 1px 1px 4px black;
+    border-radius: 1px;
+}
+
+.cvv-child2 div>span{
+    font-size: 11px;
+    color: antiquewhite;
+}
+
+.cvv-side-icon{
+    width: 25px;
+    height: 25px;
+}
+
+.save-icon{
+    color: #40e083;
+}
+
+.save-red-icon{
+    color: rgba(151, 146, 146, 0.503);
+}
+
+.roll-back-icon{
+    color: #ef3636;
+}
+
+
+
+
+
+
 /*  */
 .docs-section{
     height: 33.33vh;

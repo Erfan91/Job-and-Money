@@ -22,6 +22,7 @@ import './styles/cv.css';
 import './styles/cvForm.css';
 import Docs from './Components/Docs';
 import './styles/docs.css';
+import './styles/notification.css';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
         <Route path='/cv' element={<Cv/>}/>
         <Route path='/cvForm' element={<CvForm/>}/>
         <Route path='/docs' element={<Docs/>}/>
+        <Route path='/emp-offers' element={<Offers/>}/> 
       </Routes>
     </div>
   );
