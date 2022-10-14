@@ -66,6 +66,9 @@ const Profile = (props) => {
     const isNotification = (notif) =>{
         return setIsNotif(notif)
     }
+
+    const [ntfnDisplay, setNtfnDisplay] = useState('none')
+    let [openBool, setOpenBool] = useState(null)
     return (
         <div className='pro-main-div'>
             <nav className='pro-nav'>
@@ -73,7 +76,21 @@ const Profile = (props) => {
                     <span className='pro-nav-span'>Job&Money</span>
                 </div>
                 <div className='nav-child2'>
-                    {isNotif ? <BiNotification className='pro-icons notif-red-icon' />:<BiNotification className='pro-icons' />}
+                    {isNotif ? <BiNotification className='pro-icons notif-red-icon' onClick={()=>{
+                       if(!openBool){
+                        setOpenBool(openBool = true)
+                       }else{
+                        setOpenBool(openBool = false)
+                       }
+                        setNtfnDisplay('flex')
+                    }}/>:<BiNotification className='pro-icons' onClick={()=>{
+                        if(!openBool){
+                            setOpenBool(openBool = true)
+                           }else{
+                            setOpenBool(openBool = false)
+                           }
+                        setNtfnDisplay('flex')
+                    }}/>}
                     <BiMessage className='pro-icons' />
                     <button className='pro-nav-button'>Job Mode</button>
                     {/* <img src={} alt="profile image"/> */}
@@ -81,7 +98,7 @@ const Profile = (props) => {
                 </div>
             </nav>
             <section className="pro-section">
-                <Notification isTrue={isNotification()}/>   
+                <Notification isTrue={isNotification} display={openBool}/>   
                 {
                     userInfo.map(data => {
                         return (
