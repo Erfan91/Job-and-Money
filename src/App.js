@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, Routes, Route} from 'react-router-dom'
-import { useState, useContext,useEffect } from 'react';
+import { useState, useContext,useEffect} from 'react';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import Profile from './Components/Profile';
@@ -9,6 +9,7 @@ import Feed from './Components/Feed';
 import EmployeeProfile from './Components/EmployeeProfile';
 import Cv from './Components/Cv';
 import CvForm from './Components/CvForm';
+import ProfileInView from './Components/NtfnOffer';
 import './styles/signup.css';
 import './styles/login.css'
 import './styles/profile.css'
@@ -23,11 +24,15 @@ import './styles/cvForm.css';
 import Docs from './Components/Docs';
 import './styles/docs.css';
 import './styles/notification.css';
-
+import './styles/ntfnOffer.css';
+import { createContext } from 'react';
+export const OfferContext = createContext('default value')
 function App() {
+ 
 
   return (
     <div className="App">     
+    <OfferContext.Provider>
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
@@ -38,7 +43,9 @@ function App() {
         <Route path='/cvForm' element={<CvForm/>}/>
         <Route path='/docs' element={<Docs/>}/>
         <Route path='/emp-offers' element={<Offers/>}/> 
+        <Route path='/ntfn-offer/:id' element={<ProfileInView/>}/>
       </Routes>
+    </OfferContext.Provider>
     </div>
   );
 }

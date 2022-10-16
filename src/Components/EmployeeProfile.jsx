@@ -6,12 +6,14 @@ import { BsFilePerson } from "react-icons/bs";
 import { FaRegHandshake } from "react-icons/fa";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { MdOutlineDocumentScanner, MdOutlineAutoGraph } from "react-icons/md";
-
+import { OfferContext } from '../App';
+import { useContext } from 'react';
 const EmployeeProfile = () => {
     const Navigate = useNavigate()
     const [info, setInfo] = useState([])
     const id = JSON.stringify(localStorage.getItem('_id'))
     const ids = JSON.parse(id)
+  
     useEffect(() => {
         fetch(`http://localhost:3001/user/${ids}`)
           .then(result => result.json())

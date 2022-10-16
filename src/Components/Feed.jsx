@@ -10,7 +10,9 @@ import { IoIosNotifications, IoIosCheckmarkCircle } from "react-icons/io";
 import random from '../images/up.jpg'
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer'
+import { useNavigate } from 'react-router-dom';
 const Feed = () => {
+  const Navigate = useNavigate()
   const [offers, setOffers] = useState([]);
   const [title, setTitle] = useState('');
   const [payment, setPayment] = useState('');
@@ -130,7 +132,9 @@ const Feed = () => {
               <div className='nav-child2'>
                 <BiNotification className='pro-icons' />
                 <BiMessage className='pro-icons' />
-                <img src={user.image} alt="profile image" className='profile-image' />
+                <img src={user.image} alt="profile image" className='profile-image' onClick={()=>{
+                  Navigate('/empe-profile')
+                }}/>
               </div>
             </nav>
           </div>

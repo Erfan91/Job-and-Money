@@ -14,6 +14,8 @@ import { IoIosDocument } from "react-icons/io";
 import Notification from './Notification';
 import PopupTwo from './popups/PopupTwo';
 import Offers from './Offers';
+import { OfferContext } from '../App';
+import { useContext } from 'react';
 const Profile = (props) => {
     const [userInfo, setInfo] = useState([])
     const [visible, setVisiblity] = useState('hidden')
@@ -69,6 +71,7 @@ const Profile = (props) => {
 
     const [ntfnDisplay, setNtfnDisplay] = useState('none')
     let [openBool, setOpenBool] = useState(null)
+ 
     return (
         <div className='pro-main-div'>
             <nav className='pro-nav'>
@@ -98,7 +101,7 @@ const Profile = (props) => {
                 </div>
             </nav>
             <section className="pro-section">
-                <Notification isTrue={isNotification} display={openBool}/>   
+                <Notification isTrue={isNotification} display={openBool} />   
                 {
                     userInfo.map(data => {
                         return (
