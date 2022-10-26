@@ -13,9 +13,7 @@ import { IoDocumentsOutline } from "react-icons/io5";
 import { IoIosDocument } from "react-icons/io";
 import Notification from './Notification';
 import PopupTwo from './popups/PopupTwo';
-import Offers from './Offers';
-import { OfferContext } from '../App';
-import { useContext } from 'react';
+import Messages from './Messages';
 const Profile = (props) => {
     const [userInfo, setInfo] = useState([])
     const [visible, setVisiblity] = useState('hidden')
@@ -71,7 +69,7 @@ const Profile = (props) => {
 
     const [ntfnDisplay, setNtfnDisplay] = useState('none')
     let [openBool, setOpenBool] = useState(null)
- 
+    const [msgDisplay, setMsgDis] = useState('none')
     return (
         <div className='pro-main-div'>
             <nav className='pro-nav'>
@@ -86,6 +84,7 @@ const Profile = (props) => {
                         setOpenBool(openBool = false)
                        }
                         setNtfnDisplay('flex')
+                        setMsgDis('none')
                     }}/>:<BiNotification className='pro-icons' onClick={()=>{
                         if(!openBool){
                             setOpenBool(openBool = true)
@@ -93,15 +92,24 @@ const Profile = (props) => {
                             setOpenBool(openBool = false)
                            }
                         setNtfnDisplay('flex')
+                        setMsgDis('none')
                     }}/>}
-                    <BiMessage className='pro-icons' />
+                    <BiMessage className='pro-icons' onClick={()=>{
+                        if(msgDisplay == "none"){
+                            setMsgDis("flex")
+                        }else{
+                            setMsgDis('none')
+                        }
+                        setOpenBool(openBool = false)
+                    }}/>
                     <button className='pro-nav-button'>Job Mode</button>
                     {/* <img src={} alt="profile image"/> */}
                     <div className='pro-pic-div'></div>
                 </div>
             </nav>
             <section className="pro-section">
-                <Notification isTrue={isNotification} display={openBool} />   
+                <Notification isTrue={isNotification} display={openBool} />
+                <Messages display={msgDisplay}/>   
                 {
                     userInfo.map(data => {
                         return (

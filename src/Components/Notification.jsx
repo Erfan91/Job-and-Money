@@ -101,7 +101,7 @@ const getIndex = (content) =>{
               return (
                 <>
                   {arr[i].seen ?
-                   <Link to={"/ntfn-offer/"+  arr[i].subjectId._id }> 
+                   <Link className='link' to={"/ntfn-offer/"+  arr[i].subjectId._id }> 
                    <div className='ntfn-content seen-ntfn-content' onClick={()=>{
                       setIndex(ntfnIndex => ntfnIndex === index ? null : index)
                       refresher()

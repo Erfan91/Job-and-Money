@@ -91,3 +91,8 @@
     padding: 2px;
     color: rgb(73, 222, 173);
 }
+
+.link{
+    text-decoration: none;
+    color: black;
+}

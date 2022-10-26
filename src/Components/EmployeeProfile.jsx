@@ -6,8 +6,7 @@ import { BsFilePerson } from "react-icons/bs";
 import { FaRegHandshake } from "react-icons/fa";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { MdOutlineDocumentScanner, MdOutlineAutoGraph } from "react-icons/md";
-import { OfferContext } from '../App';
-import { useContext } from 'react';
+import Messages from './Messages';
 const EmployeeProfile = () => {
     const Navigate = useNavigate()
     const [info, setInfo] = useState([])
@@ -38,6 +37,7 @@ const EmployeeProfile = () => {
         </nav>
 
         <div className='empe-content-div'>
+          <Messages />
             <div className="empe-offers content-div empe-cv">
               <div>
                 <FaRegHandshake className="deal-icon cv-icon"/>
@@ -47,7 +47,7 @@ const EmployeeProfile = () => {
             <div className="empe-cv content-div">
               <div>
                 <BsFilePerson className='cv-icon' onClick={()=>{
-                  Navigate('/cv')
+                  Navigate(`/cv/${ids}`)
                 }}/>
                 <span>My Cv</span>
               </div>

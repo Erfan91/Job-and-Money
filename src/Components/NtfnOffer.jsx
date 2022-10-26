@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { OfferContext } from '../App'
 import Notification from './Notification'
 import { AiOutlineFieldTime, AiOutlinePhone } from 'react-icons/ai'
@@ -13,11 +13,14 @@ import { BsPlus } from 'react-icons/bs'
 import { BsFillPersonCheckFill, BsFillPersonXFill } from 'react-icons/bs'
 
 const ProfileInView = (props) => {
-  const ft = props.id
+   const id = JSON.stringify(localStorage.getItem('_id'))
+   const ids = JSON.parse(id)
+
    const params = useParams()
    const [offer, setOffer] = useState([])
    const [images, setImages] = useState([])
    const [candids, setCandids] = useState([])
+   const [offerId, setOfferId] = useState('')
    useEffect(()=>{
     fetch(`http://localhost:3001/offer/ntfn/${params.id}`)
     .then(result=>result.json())
@@ -25,9 +28,36 @@ const ProfileInView = (props) => {
       console.log(json)
       setOffer([json])
       setImages(json.images)
+      setOfferId(json._id)
       setCandids(candids =>(candids = json.candidates))
     })
    },[])
+
+  //  const rejectUser = (id) =>{
+  //   fetch('http://localhost:3001/offer/rejectUser',{
+  //     method: 'PUT',
+  //     headers: new Headers({"content-type":"application/json"}),
+  //     body: JSON.stringify({
+  //       _id: offerId,
+  //       ownerId: id,
+  //       userId: ids
+  //     })
+  //   }).then(result=>result.json())
+  //   .then(json=>{
+  //     console.log(json, "JDODJODJOD")
+  //   })
+
+  //   fetch(`http://localhost:3001/offer/ntfn/${params.id}`)
+  //   .then(result=>result.json())
+  //   .then(json=>{
+  //     console.log(json)
+  //     setOffer([json])
+  //     setImages(json.images)
+  //     setOfferId(json._id)
+  //     setCandids(candids =>(candids = json.candidates))
+  //   })
+  //  }
+
   return (
     <div className='ntfn-offer-main'>
       { 
@@ -78,11 +108,11 @@ const ProfileInView = (props) => {
                       console.log(arr[i], "ARRI")
                       return(
                           <div className='candidates-content'>
-                          <img src={arr[i].image} className="employer-img"/>
+                          <Link to={`/pro-nvu/${arr[i]._id}`}> <img src={arr[i].image} className="employer-img"/></Link>
                           <span>{arr[i].name} {arr[i].surName}</span>
                           <p><small>@{arr[i].userName}</small></p>
                           <div className='candidates-btn-div'>
-                            <button className='reject-btn'><BsFillPersonXFill className='reject-candidate-icon'/></button>
+                            <button className='reject-btn'><BsFillPersonXFill className='reject-candidate-icon' onClick={rejectUser(arr[i]._id)}/></button>
                             <button className='accept-btn'><BsFillPersonCheckFill className='accept-candidate-icon'/></button>
                           </div>
                           </div>
@@ -93,23 +123,6 @@ const ProfileInView = (props) => {
                   }
 
                   </div>
-                  {/* <div className="apply-div" >
-                    <div className='emp-img-div'>
-                      <img src={offer.posterID.image} alt="offer owner" className='employer-img' />
-                      <button className='msg-btn'><BsPlus className='pls-icon' /> Message</button>
-                    </div>     
-                  </div>
-                  <div className='employer-content' >
-                    <span className='employer-name'>{offer.posterID.name + offer.posterID.surName}</span>
-                    <div>
-                      <AiOutlinePhone className='phone-icon' />
-                      <span className='emp-number'><strong>phone</strong>: {offer.posterID.phoneNumber}</span>
-                    </div>
-                    <div>
-                      <MdOutlineMailOutline className='email-icon' />
-                      <span className='emp-email'><strong>email</strong>: {offer.posterID.email}</span>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>

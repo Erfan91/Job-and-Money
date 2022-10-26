@@ -1,17 +1,27 @@
 import React from 'react'
 import { useState, useEffect} from 'react';
-const Cv = () => {
+import { useParams } from 'react-router-dom';
+const Cv = (props) => {
   const [cvInfo, setCvInfo] = useState([]);
   const id = JSON.stringify(localStorage.getItem('_id'))
   const ids = JSON.parse(id)
-
+  const params = useParams() 
   useEffect(()=>{
-    fetch(`http://localhost:3001/cv/${ids}`)
-    .then(result=>result.json())
-    .then(json=>{
-      console.log(json)
-      setCvInfo([json])
-    })
+    if(params.id !== ids){
+      fetch(`http://localhost:3001/cv/${params.id}`)
+      .then(result=>result.json())
+      .then(json=>{
+        console.log(json)
+        setCvInfo([json])
+      })
+    }else{
+      fetch(`http://localhost:3001/cv/${ids}`)
+      .then(result=>result.json())
+      .then(json=>{
+        console.log(json)
+        setCvInfo([json])
+      })
+    }
   },[])
   return (
     <div className='cv-main-div'>
