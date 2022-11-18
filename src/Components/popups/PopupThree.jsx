@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlineDownSquare, AiOutlineCloseSquare } from "react-icons/ai";
 import { IoIosImages } from "react-icons/io";
 import { IoArrowBackSharp } from "react-icons/io5";
@@ -6,6 +6,8 @@ import { BsCreditCard2BackFill, BsClock } from "react-icons/bs";
 
 const PopupThree = (props) => {
   console.log(props.images, "¨POP THREE FILE")
+  let [numbers, setNumbers] = useState([]);
+  const [display, setDisplay] = useState('none')
 
   const sender = (e)=>{
     e.preventDefault()
@@ -30,6 +32,20 @@ const PopupThree = (props) => {
 
       })
     })
+  }
+
+  const numberFunc = () =>{
+    setDisplay('flex')
+    if(numbers.length == 0){
+       for(var i = 0; i<=9;i++ ){
+      setNumbers([numbers += i])
+      setDisplay('flex')
+    }
+    }else{
+      setDisplay('none')
+      setNumbers([])
+    }
+   
   }
 
   return (
@@ -58,11 +74,25 @@ const PopupThree = (props) => {
                         <span><small>{data.email}</small></span>
                         <span><small>(+33){data.phoneNumber}</small></span>
                         <div className='creditCard-div'>
-                            <span className='visa-spn'>Visa</span> <span>49..........4290</span> <BsCreditCard2BackFill className='card-icon'/>
+                            <span className='visa-spn'>Visa</span> 
+                            <span>49..........4290</span>
+                            <div>
+                            <BsCreditCard2BackFill className='card-icon'/>
+                            </div> 
                         </div>
-                        <div className='verfication-div'>
+                        <div className='verfication-div' onClick={numberFunc}>
                             <div className="cercle"></div><div className="cercle"></div><div className="cercle"></div><div className="cercle"></div>
                         </div>
+                        {/* <div className='number-board' style={{display}}>
+                            {
+                              numbers.map(num=>{
+                              return <div className='n-board-child'>
+
+                                <span className='n-span'>{num}</span>
+                              </div>
+                              })
+                            }
+                        </div> */}
                         <span className='sms-msg'>Enter the code received by sms</span>
                         <button className='popUp-next-btn popupTwo-nxt-btn' onClick={sender}>Verify</button>
                     </div>

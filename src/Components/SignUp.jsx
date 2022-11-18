@@ -2,6 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { BsCheckCircleFill, BsQuestionCircleFill } from 'react-icons/bs'
+import { MdError } from "react-icons/md";
+import { GrStatusGood } from "react-icons/gr";
+import { OfferContext } from '../App';
+import { useContext } from 'react';
+import { useEffect } from 'react';
 const SignUp = () => {
 
   let [isEmployer, setEmployer] = useState('')
@@ -16,6 +21,7 @@ const SignUp = () => {
   const [userNameErr, setNameErr] = useState('')
   const [emailErr, setEmailErr] = useState('')
   const [pssErr, setPssErr] = useState("Your password doesn't match")
+  const {setDisplayN} = useContext(OfferContext)
   const sender = (e) => {
     e.preventDefault()
     fetch('http://localhost:3001/user', {
@@ -43,6 +49,20 @@ const SignUp = () => {
         }
 
       })
+
+  }
+
+  useEffect(()=>{
+    setDisplayN('none')
+  },[])
+
+  const values = ()=>{
+    const array = [userName, name, surName, birthDate, email, code, phoneNum]
+    for(var i = 0; i <= array.length; i++){
+      if(array[i] === ""){
+        return console.log("Empty", array[i])
+      }
+    }
   }
 
   const uploadedImage = React.useRef(null);
@@ -88,8 +108,11 @@ const SignUp = () => {
     const target = e.target.value;
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/
     if (reg.test(target) === false) {
-      setEmailErr('incorrect email')
+      setEmailErr(<MdError className='mdError-icon'/>)
     } else {
+      setEmailErr(<GrStatusGood className='mdError-icon2'/>)
+    }
+    if(target === ""){
       setEmailErr('')
     }
     setEmail(target)
@@ -114,7 +137,7 @@ const SignUp = () => {
           </div>
           <button onClick={uploadImage} className='upload-btn'>Upload</button>
         </div>
-        <span>Choose What you're looking for <BsQuestionCircleFill className='question-icon'/></span>
+        <span>Choose What you're looking for <BsQuestionCircleFill className='question-icon' /></span>
         <div className='empe-btn-div'>
           <div>
             {/* <p>If you're looking for someone to get your job done, click on the button below</p> */}
@@ -133,42 +156,44 @@ const SignUp = () => {
               setUserName(e.target.value)
             }
             } />
+            <span className='err-span'>{userNameErr}</span>
           </div>
-          <span className='err-span'>{userNameErr}</span>
           <div className='form-names'>
             <div>
-              <label className='global-label'>Enter your name</label>
+              <label className='global-label'>Enter your name*</label>
               <input type="name" placeholder='Erfan' className='global-input' onChange={(e) => setName(e.target.value)} />
             </div>
             <div>
-              <label className='global-label'>Surname</label>
+              <label className='global-label'>Surname*</label>
               <input type='text' placeholder='Sayed' className='global-input' onChange={(e) => setSurName(e.target.value)} />
             </div>
           </div>
         </div>
         <div className='sup-birthDate'>
-          <label className='global-label'>Date of birth</label>
+          <label className='global-label'>Date of birth*</label>
           <input type="Date" placeholder='12/2/1999' className='global-input' onChange={(e) => setBirthDate(e.target.value)} />
         </div>
         <div className='form-names email-sup'>
           <div>
-            <label className='global-label'>Enter your Email</label>
-            <input type="email" placeholder='someone@example.com' className='global-input' onChange={forms} />
-            <span className='err-span'>{emailErr}</span>
+            <label className='global-label'>Enter your Email*</label>
+            <div className='email-input-div'>
+              <input type="email" placeholder='someone@example.com' className='global-input' onClick={() => setEmailErr('')} onChange={forms} />
+              <span className='err-span'>{emailErr}</span>
+            </div>
           </div>
           <div className=''>
-            <label className='global-label'>Enter your phone numnber</label>
+            <label className='global-label'>Enter your phone numnber*</label>
             <input type="text" placeholder='0101002222' className='global-input' onChange={(e) => setPhoneNum(e.target.value)} />
           </div>
         </div>
         <div className='pswd-container'>
           <div className="pswd-sup">
             <div className="pswd-sup">
-              <label className='global-label'>Enter your Password</label>
+              <label className='global-label'>Enter your Password*</label>
               <input type="password" className='global-input' onChange={(e) => setTestCode(e.target.value)} />
             </div>
             <div className="pswd-sup">
-              <label className='global-label'>Enter your Password</label>
+              <label className='global-label'>Confirm your Password*</label>
               <input type="password" className='global-input' onChange={(e) => {
                 setCode(e.target.value)
                 setPssErr('')

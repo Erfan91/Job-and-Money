@@ -23,6 +23,8 @@ const CvForm = () => {
     const [numberPholder, setNumberHolder] = useState('0791234567');
     const [disable, setDisable] = useState(Boolean)
     const [info, setInfo] = useState([])
+    const [listDisplay, setListDisplay] = useState('none')
+    const [listDisplay1, setListDisplay1] = useState('none')
     const id = JSON.stringify(localStorage.getItem('_id'))
     const ids = JSON.parse(id)
     const fillInfo = (e) => {
@@ -67,8 +69,8 @@ const CvForm = () => {
                 email: email,
                 softSkills: softSkills,
                 hardSkills: hardSkills,
-                achievement:file1,
-                experienceDocs:file,
+                achievement: file1,
+                experienceDocs: file,
                 ownerId: ids
             })
         }).then(result => result.json())
@@ -126,14 +128,14 @@ const CvForm = () => {
             method: "post",
             url: 'http://localhost:3001/cv/upload-image',
             data: formData
-            
+
         })
             .then(result => {
                 const { data } = result;
-                if(!changer){
+                if (!changer) {
                     setFile(file => [...file, data.url])
                     console.log(file, 'FIELLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLSSSSSSSSSSSSESESE', file.length)
-                }else{
+                } else {
                     setFile1(file1 => [...file1, data.url])
                     console.log(file1, '111', file1.length)
 
@@ -235,14 +237,14 @@ const CvForm = () => {
                         </div>
                         <span><strong>Job&Money CV</strong></span>
                         <span>To create your Job&Money cv please fill this form below, You're few steps away </span>
-                        {disable ? <button onClick={(e) => {
+                        {disable ? <button className='autofill-btn' onClick={(e) => {
                             e.preventDefault()
                             setDisable(false)
                             setNameHolder('First Name')
                             setLastNameHolder('Last Name')
                             setEmailHolder('name@example.com')
                             setNumberHolder('0791234567');
-                        }}>Fill Manually</button> : <button onClick={fillInfo}>Autofill</button>}
+                        }}>Fill Manually</button> : <button className='autofill-btn' onClick={fillInfo}>Autofill</button>}
                         <div className='cvF-name-div child-main-container'>
                             <div className='cvF-name-child '>
                                 <label htmlFor="">Your Name*</label>
@@ -332,48 +334,51 @@ const CvForm = () => {
                             <span>Add your professional experiences simply by filling the form below</span>
                             <p><small>Adding experiences attracts employers attention and helps you to get more offers</small></p>
                             <div className='cvF-exp-input-container'>
-                                <div className='cvF-info-child3-title-holder'>
+                                <div className='cvF-exp-title-holder'>
                                     <label htmlFor="">Title</label>
-                                    <input type="text" className='cvF-exp-title-input' onChange={(e) => {
+                                    <input type="text" className='cvF-exp-title-input glbl-input' onChange={(e) => {
                                         e.preventDefault()
                                         setExpTitle(e.target.value)
                                     }} />
+                                    <div className='dark-purple-line'></div>
                                     <div className='cvF-name-div cvF-contactInfo-container cvF-exp-date-container'>
                                         <div>
-                                            <label htmlFor="">from</label>
-                                            <input type="date" className='cvF-exp-startDate-input' onChange={(e) => {
+                                            <label htmlFor="">From</label>
+                                            <input type="date" className='cvF-exp-startDate-input glbl-input' onChange={(e) => {
                                                 e.preventDefault()
                                                 setExpStartDate(e.target.value)
                                             }} />
                                         </div>
                                         <div>
-                                            <label htmlFor="">to</label>
-                                            <input type="date" className='cvF-exp-endDate-input' onChange={(e) => {
+                                            <label htmlFor="">To</label>
+                                            <input type="date" className='cvF-exp-endDate-input glbl-input' onChange={(e) => {
                                                 e.preventDefault()
                                                 setExpEndDate(e.target.value)
                                             }} />
                                         </div>
                                     </div>
                                 </div>
+                                <div className='dark-purple-line'></div>
                                 <div className='cvF-exp-description-container'>
                                     <div className='cvF-exp-desc-child'>
                                         <div>
-                                            <label htmlFor="">city</label>
-                                            <input type="text" className='cvF-exp-city-input' onChange={(e) => {
+                                            <label htmlFor="">City</label>
+                                            <input type="text" className='cvF-exp-city-input glbl-input' onChange={(e) => {
                                                 e.preventDefault()
                                                 setExpCity(e.target.value)
                                             }} />
                                         </div>
                                         <div>
-                                            <label htmlFor="">company</label>
-                                            <input type="text" className='cvF-exp-company-input' onChange={(e) => {
+                                            <label htmlFor="">Company</label>
+                                            <input type="text" className='cvF-exp-company-input glbl-input' onChange={(e) => {
                                                 e.preventDefault()
                                                 setExpCompany(e.target.value)
                                             }} />
                                         </div>
                                     </div>
-                                    <label htmlFor="">description</label>
-                                    <textarea type="text" className='cvF-exp-description' onChange={(e) => {
+                                    <div className='dark-purple-line dark2'></div>
+                                    <label htmlFor="">Description</label>
+                                    <textarea type="text" className='cvF-exp-description glbl-input' rows={5} onChange={(e) => {
                                         e.preventDefault()
                                         setExpDesc(e.target.value)
                                     }} />
@@ -402,64 +407,68 @@ const CvForm = () => {
                         </div>
                         <span><strong>Education And Training</strong></span>
                         <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati eaque inventore voluptate ducimus?</span>
-                        <div className="cvF-info-child3-title-holder">
+                        <div className="cvF-edu-head">
                             <label htmlFor="">Title</label>
-                            <input type="text" className='cvF-edu-title-input' onChange={(e) => {
+                            <input type="text" className='cvF-edu-title-input glbl-input' onChange={(e) => {
                                 e.preventDefault()
                                 setEduTitle(e.target.value)
                             }} />
-                            <div className='cvF-name-div cvF-contactInfo-container cvF-exp-date-container'>
+                            <div className='dark-purple-line'></div>
+                            <div className='cvF-name-div cvF-contactInfo-container cvF-exp-date-container cvF-edu-date-div'>
                                 <div>
-                                    <label htmlFor="">from</label>
-                                    <input type="date" className='cvF-edu-startDate-input' onChange={(e) => {
+                                    <label htmlFor="">From</label>
+                                    <input type="date" className='cvF-edu-startDate-input glbl-input' onChange={(e) => {
                                         e.preventDefault()
                                         setEduStartDate(e.target.value)
                                     }} />
                                 </div>
                                 <div>
-                                    <label htmlFor="">to</label>
-                                    <input type="date" className='cvF-edu-endDate-input' onChange={(e) => {
+                                    <label htmlFor="">To</label>
+                                    <input type="date" className='cvF-edu-endDate-input glbl-input' onChange={(e) => {
                                         e.preventDefault()
                                         setEduEndDate(e.target.value)
                                     }} />
                                 </div>
                             </div>
                         </div>
-                        <div className='cvF-exp-description-container'>
+                        <div className='dark-purple-line'></div>
+                        <div className='cvF-edu-description-div'>
                             <div className='cvF-desc-child'>
                                 <div>
-                                    <label htmlFor="">city</label>
-                                    <input type="text" className='cvF-edu-city-input' onChange={(e) => {
+                                    <label htmlFor="">City</label>
+                                    <input type="text" className='cvF-edu-city-input glbl-input' onChange={(e) => {
                                         e.preventDefault()
                                         setEduCity(e.target.value)
                                     }} />
                                 </div>
                                 <div>
                                     <label htmlFor="">Establishment</label>
-                                    <input type="text" className='cvF-edu-establishment-input' onChange={(e) => {
+                                    <input type="text" className='cvF-edu-establishment-input glbl-input' onChange={(e) => {
                                         e.preventDefault()
                                         setEduEstablishment(e.target.value);
                                     }} />
                                 </div>
                             </div>
+                            <div className='dark-purple-line dark2'></div>
                             <div className='cvF-desc-child'>
                                 <div>
-                                    <label htmlFor="">major</label>
-                                    <input type="text" className='cvF-edu-major-input' onChange={(e) => {
+                                    <label htmlFor="">Field</label>
+                                    <input type="text" className='cvF-edu-major-input glbl-input' onChange={(e) => {
                                         e.preventDefault()
                                         setField(e.target.value)
                                     }} />
                                 </div>
                                 <div>
-                                    <label htmlFor="">degree</label>
-                                    <input type="text" className='cvF-edu-degree-input' onChange={(e) => {
+                                    <label htmlFor="">Degree</label>
+                                    <input type="text" className='cvF-edu-degree-input glbl-input' onChange={(e) => {
                                         e.preventDefault()
                                         setDegree(e.target.value)
                                     }} />
                                 </div>
                             </div>
-                            <label htmlFor="">description</label>
-                            <textarea type="text" className='cvF-edu-description' onChange={(e) => {
+                            <div className='dark-purple-line dark2'></div>
+                            <label htmlFor="">Description</label>
+                            <textarea type="text" className='cvF-edu-description glbl-input' rows={5} onChange={(e) => {
                                 e.preventDefault()
                                 setEduDesc(e.target.value)
                             }} />
@@ -479,53 +488,64 @@ const CvForm = () => {
                                 <BiArrowBack className='cvF-back-icon' />
                             </div>
                             <div className='cvF-close-icon-div cvF-icn-div' onClick={() => {
-                                setDisplayD('none')
+                                setDisplayC('none')
                             }}>
                                 <AiOutlineClose className='cvF-close-icon' />
                             </div>
                         </div>
                         <span><strong>Skills</strong></span>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur ea quam voluptatem!</span>
-                        <div>
-                            <label htmlFor="">Soft-skills</label>
-                            <input type="text" className='cvF-softskills-input' onChange={(e) => {
-                                e.preventDefault()
-                                setSkill(e.target.value)
-                            }} />
-                            <button onClick={(e) => {
-                                e.preventDefault();
-                                setSoftSkills(softSkills => [...softSkills, skill])
-                            }}><small>Add</small></button>
-                            {
-                                softSkills.map(skill => {
-                                    return (
-                                        <ul>
-                                            <li>{skill}</li>
-                                        </ul>
-                                    )
-                                })
-                            }
+                        <span><small><i>The skills on your resume can differentiate you from the competition so you can land the position you want.</i></small></span>
+                        <div className='skill-parent-container'>
+                            <div className='skill-container'>
+                                <label htmlFor="">Soft-skills</label>
+                                <input type="text" className='cvF-softskills-input glbl-input' onChange={(e) => {
+                                    e.preventDefault()
+                                    setSkill(e.target.value)
+                                }} />
+                                <button onClick={(e) => {
+                                    e.preventDefault();
+                                    setSoftSkills(softSkills => [...softSkills, skill])
+                                    setListDisplay1('flex')
+                                }}><small>Add</small></button>
+                                <div className='skill-list' style={{display: listDisplay1}}>
+                                    {
+                                    softSkills.map(skill => {
+                                        return (
+                                            <ul>
+                                                <li>{skill}</li>
+                                            </ul>
+                                        )
+                                    })
+                                }
+                                </div>
+                                
+                            </div>
+                            <div className='skill-container'>
+                                <label htmlFor="">Hard-skills</label>
+                                <input type="text" className='cvF-hardskills-input glbl-input' value={hSkill} onClick={()=>setHSkill('')} onChange={(e) => {
+                                    e.preventDefault()
+                                    setHSkill(e.target.value)
+                                }} />
+                                <button onClick={(e) => {
+                                    e.preventDefault();
+                                    setHardSkills(hardSkills => [...hardSkills, hSkill])
+                                    setHSkill('')
+                                    setListDisplay('flex')
+                                }}><small>Add</small></button>
+                                <div className='skill-list' style={{display: listDisplay}}>
+                                {
+                                    hardSkills.map(skill => {
+                                        return (
+                                            <ul>
+                                                <li>{skill}</li>
+                                            </ul>
+                                        )
+                                    })
+                                }
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor="">Hard-skills</label>
-                            <input type="text" className='cvF-hardskills-input' onChange={(e) => {
-                                e.preventDefault()
-                                setHSkill(e.target.value)
-                            }} />
-                            <button onClick={(e) => {
-                                e.preventDefault();
-                                setHardSkills(hardSkills => [...hardSkills, hSkill])
-                            }}><small>Add</small></button>
-                            {
-                                hardSkills.map(skill => {
-                                    return (
-                                        <ul>
-                                            <li>{skill}</li>
-                                        </ul>
-                                    )
-                                })
-                            }
-                        </div>
+                        <div className='dark-purple-line'></div>
                         <button className='next-btn' onClick={(e) => {
                             e.preventDefault()
                             setDisplayD('none')
@@ -583,7 +603,7 @@ const CvForm = () => {
                         </div>
                         <span><strong>Professional Achievements</strong></span>
                         <label htmlFor="">Upload what you achieved professionally in your career</label>
-                        <div className='issue-img1-div'>
+                        <div className='issue-img1-div doc-holder-div'>
                             <input type="file" accept='/image*' ref={imageUploader1} onChange={imageChanger1} style={{ display: 'none' }} />
                             <div className='issue-img1-div2' onClick={() => {
                                 imageUploader1.current.click()
@@ -593,7 +613,7 @@ const CvForm = () => {
                             </div>
                             <button onClick={uploadImage} className='upload-btn'>Upload</button>
                         </div>
-                        <button type='submit' onClick={sendInfo}>Submit</button>
+                        <button type='submit' className='cvF-submit-btn' onClick={sendInfo}>Submit</button>
                     </div>
                 </div>
             </form>

@@ -1,0 +1,101 @@
+.main-search-window{
+    width: 30vw;
+    height: 35vh;
+    border: 1px solid rgb(103, 193, 163);
+    position: fixed;
+    top: 46.8%;
+    left: 31.5%;
+    background-color: azure;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: inset 0px 0px 3px rgb(103, 193, 163);
+}
+
+.search-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.result-content-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 5px;
+
+}
+
+.result-name{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.result-username{
+    padding: 0;
+    margin: 0;
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.result-content-details{
+
+    text-align: center;
+    justify-content: center;
+}
+
+.result-content-icons{
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+
+.result-icons{
+    border-radius: 25px;
+    margin: 0;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 1px 2px black;
+    margin-top: 5px;
+}
+
+.result-wrkd-icon-div{
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    padding: 8px 11px;
+    color: aquamarine;
+}
+
+.result-handshake{
+    font-size: 18px;
+    
+}
+
+.result-contact-div{
+    background-color: #08AEEA;
+    background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+    padding: 9px 9px;
+    color:rgb(100, 51, 249);
+}
+
+.result-contact{
+    font-size: 22px;
+    padding: 0;
+    margin: 0;
+}
+
+.result-rating-div{
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    padding: 9px 9px;
+    color:#6ecef1;
+}
+
+.result-rating{
+    font-size: 22px;
+}

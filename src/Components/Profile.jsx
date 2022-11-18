@@ -14,21 +14,20 @@ import { IoIosDocument } from "react-icons/io";
 import Notification from './Notification';
 import PopupTwo from './popups/PopupTwo';
 import Messages from './Messages';
+import { BsCheckCircleFill, BsQuestionCircleFill, BsFillInfoCircleFill } from 'react-icons/bs';
+import { IoIosClose } from 'react-icons/io';
+import {motion} from 'framer-motion'
+import { OfferContext } from '../App';
+import { useContext } from 'react';
 const Profile = (props) => {
     const [userInfo, setInfo] = useState([])
     const [visible, setVisiblity] = useState('hidden')
     const [visibleB, setVisiblityB] = useState('hidden')
-    const [image, setImage] = useState('')
-    const [name, setName] = useState('')
-    const [surName, setSurName] = useState('')
-    const [userName, setUserName] = useState('')
-    const [email, setEmail] = useState('')
-    const [number, setNumber] = useState('')
     const [proOption, setProO] = useState('Pro')
     const id = JSON.stringify(localStorage.getItem('_id'))
     const ids = JSON.parse(id)
     const [placeholder, setPlaceHolder] = useState('Per-Hour');
-    const [payBoxDisplay, setPBDisplay] = useState('hidden')
+    const [payBoxDisplay, setPBDisplay] = useState('none')
     const [addInfo,setAddInfo] = useState('none')
     console.log(ids)
     // <Form Values> 
@@ -47,6 +46,44 @@ const Profile = (props) => {
     const startTime = JSON.stringify(startFrom)
     const startHour = JSON.parse(startTime)
     const values = {title, ids, pro, workers, date, estimatedTime, startHour, payment, amount, address, city, codePostal, reply}
+    const [infoBox, setInfoBox] = useState('Hover on anything and see the info here!')
+    const [infoDis, setInfoDis] = useState('flex')
+    const [infoStyle, setInfoStyle] = useState('')
+    const [topPosition, setTopPosition] = useState('69.5%')
+    const [bGColor, setBgColor] = useState({})
+
+    const background1 = {backgroundColor: "#0093E9",
+    backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)"}
+    const bg2 = {backgroundColor: "#85FFBD",
+        backgroundImage: "linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%)"
+    }
+    const bg3 = {backgroundColor: "#8EC5FC",
+        backgroundImage: "linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)"
+    } 
+    const bg4 = {backgroundColor: "#08AEEA",
+        backgroundImage: "linear-gradient(0deg, #08AEEA 0%, #2AF598 100%)"
+    }
+    const bg5 = {backgroundColor: "#21D4FD",
+        backgroundImage: "linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)"
+    }
+    const bg6 = {backgroundColor: "#3EECAC",
+        backgroundImage: "linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%)"
+    }
+    const bg7 = {backgroundColor: "#3EECAC",
+        backgroundImage: "linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%)"
+    }
+    const bg8 = {backgroundColor: "#FF9A8B",
+    backgroundImage: "linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%)"
+    }
+    const bg9 = {backgroundColor: "#74EBD5",
+        backgroundImage: "linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%)"
+    }
+    const bg10 = {backgroundColor: "#FAACA8",
+        backgroundImage: "linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%)"
+        }
+
+    const {setDisplayN} = useContext(OfferContext)
+    
     // </Form values>
     const [bgColor, setColor] = useState('');
     useEffect(() => {
@@ -56,60 +93,18 @@ const Profile = (props) => {
                 // console.log(json)
                 setInfo([json])
             })
-        // console.log(userInfo)
+            setDisplayN('flex')
     }, [])
 
     const [timePHolder, setTholder] = useState('');
     const [hourDis, setDisplay] = useState('hidden');
     const [isNotif, setIsNotif] = useState(Boolean)
 
-    const isNotification = (notif) =>{
-        return setIsNotif(notif)
-    }
-
-    const [ntfnDisplay, setNtfnDisplay] = useState('none')
-    let [openBool, setOpenBool] = useState(null)
-    const [msgDisplay, setMsgDis] = useState('none')
     return (
-        <div className='pro-main-div'>
-            <nav className='pro-nav'>
-                <div className='nav-child1'>
-                    <span className='pro-nav-span'>Job&Money</span>
-                </div>
-                <div className='nav-child2'>
-                    {isNotif ? <BiNotification className='pro-icons notif-red-icon' onClick={()=>{
-                       if(!openBool){
-                        setOpenBool(openBool = true)
-                       }else{
-                        setOpenBool(openBool = false)
-                       }
-                        setNtfnDisplay('flex')
-                        setMsgDis('none')
-                    }}/>:<BiNotification className='pro-icons' onClick={()=>{
-                        if(!openBool){
-                            setOpenBool(openBool = true)
-                           }else{
-                            setOpenBool(openBool = false)
-                           }
-                        setNtfnDisplay('flex')
-                        setMsgDis('none')
-                    }}/>}
-                    <BiMessage className='pro-icons' onClick={()=>{
-                        if(msgDisplay == "none"){
-                            setMsgDis("flex")
-                        }else{
-                            setMsgDis('none')
-                        }
-                        setOpenBool(openBool = false)
-                    }}/>
-                    <button className='pro-nav-button'>Job Mode</button>
-                    {/* <img src={} alt="profile image"/> */}
-                    <div className='pro-pic-div'></div>
-                </div>
-            </nav>
+        <div className='pro-main-div' style={bGColor}>
             <section className="pro-section">
-                <Notification isTrue={isNotification} display={openBool} />
-                <Messages display={msgDisplay}/>   
+                {/* <Notification isTrue={isNotification} display={openBool} />
+                <Messages display={msgDisplay}/>    */}
                 {
                     userInfo.map(data => {
                         return (
@@ -144,6 +139,28 @@ const Profile = (props) => {
                         <div className='test-option stng-option'>
                             <RiSettingsLine className="stng-icon opt-icon"/>
                             <span className='icn-span'>Setting</span>
+                            <div className='bgChanger-container' style={{display: "none"}} >
+                                    <div className='bgChanger background' onClick={()=>setBgColor(background1)}>
+                                    </div>
+                                    <div className='bgChanger bg1' onClick={()=>setBgColor(bg2)}>
+                                    </div>
+                                    <div className='bgChanger bg2' onClick={()=>setBgColor(bg3)}>
+                                    </div>
+                                    <div className='bgChanger bg3' onClick={()=>setBgColor(bg4)}>
+                                    </div>
+                                    <div className='bgChanger bg4' onClick={()=>setBgColor(bg5)}>
+                                    </div>
+                                    <div className='bgChanger bg5' onClick={()=>setBgColor(bg6)}>
+                                    </div>
+                                    <div className='bgChanger bg6' onClick={()=>setBgColor(bg7)}>
+                                    </div>
+                                    <div className='bgChanger bg7' onClick={()=>setBgColor(bg8)}>
+                                    </div>
+                                    <div className='bgChanger bg8' onClick={()=>setBgColor(bg9)}>
+                                    </div>
+                                    <div className='bgChanger bg9' onClick={()=>setBgColor(bg10)}>
+                                    </div>
+                            </div>
                         </div>
                     </div>
                     <div className='btn-bar'>
@@ -153,22 +170,49 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className='offer-popUp1' style={{ visibility: visible }}>
+                    <form>
+                        <div className='form-main-div'>
                     <div className='close-window'>
+                        <div></div>
+                        <div className='offer-form-head'>
+                            <span className='form-head-span'>Offer creation form</span>
+                            <span className='fill-info-span'>fill the information below to create your offer</span>
+                        </div>
                         <AiOutlineCloseSquare className='close-icon' onClick={() => {
                             setVisiblity('hidden')
                             setAddInfo('none')
                         }} />
                     </div>
-                    <form>
-                        <div className='form-main-div'>
                             <label htmlFor="">Title</label>
                             <div className='form-title-div'>
-                                <input type="text" className='popUp-input' onChange={(e) => {
+                                <input type="text" className='popUp-input' 
+                                onMouseEnter={()=>{
+                                    setInfoBox('Choose what type of worker you need, like Plumber...')
+                                    setInfoDis('none')
+                                    setInfoStyle('flex-start')
+                                }}
+                                onMouseLeave={()=>{
+                                    setInfoBox('Hover on anything and see the info here!')
+                                    setInfoDis('flex')
+                                    setInfoStyle('')
+                                }}
+                                 onChange={(e) => {
                                     e.preventDefault()
                                     setTitle(e.target.value)
                                 }} />
                                 <div className="dropDown">
-                                    <button className='pro-btn' style={{ background: bgColor }} onClick={(e) => {
+                                    <button className='pro-btn' style={{ background: bgColor }}
+                                       onMouseEnter={()=>{
+                                        setInfoBox('if You need a professional select pro,!remember hiring a pro worker could cost you more')
+                                        setInfoDis('none')
+                                        setInfoStyle('flex-start')
+                                    }}
+                                    onMouseLeave={()=>{
+                                        setInfoBox('Hover on anything and see the info here!')
+                                        setInfoDis('flex')
+                                        setInfoStyle('')
+                                    }}
+                                    onClick={(e) => {
                                         e.preventDefault()
                                     }}>{proOption} <AiOutlineDownSquare className='chev-down' /></button>
                                     <div className="dropDown-content">
@@ -187,7 +231,18 @@ const Profile = (props) => {
                             </div>
                             <label htmlFor="">Workers</label>
                             <div>
-                                <input type="text" onChange={(e) => {
+                                <input type="text" 
+                                   onMouseEnter={()=>{
+                                    setInfoBox('How many Workers do you exactly need?')
+                                    setInfoDis('none')
+                                    setInfoStyle('flex-start')
+                                }}
+                                onMouseLeave={()=>{
+                                    setInfoBox('Hover on anything and see the info here!')
+                                    setInfoDis('flex')
+                                    setInfoStyle('')
+                                }}
+                                onChange={(e) => {
                                     e.preventDefault()
                                     setWorkers(e.target.value)
                                 }} />
@@ -199,10 +254,27 @@ const Profile = (props) => {
                             </div>
                             <label htmlFor="">When</label>
                             <div className="popUp-date-div form-title-div">
-                                <input type="date" className='popUp-input' onChange={(e) => {
+                                <div className='info-box-div'>
+                                <input type="date" className='popUp-input'
+                                   onMouseEnter={()=>{
+                                    setInfoBox('Specify the exact date and time to start the work')
+                                    setInfoDis('none')
+                                    setInfoStyle('flex-start')
+                                }}
+                                onMouseLeave={()=>{
+                                    setInfoBox('Hover on anything and see the info here!')
+                                    setInfoDis('flex')
+                                    setInfoStyle('')
+                                }}
+                                onChange={(e) => {
                                     e.preventDefault()
                                     setDate(e.target.value)
                                 }} />
+                                <div style={{justifyContent: infoStyle}} className="info-box">
+                                <BsFillInfoCircleFill style={{display: infoDis}} className='info-icon'/>
+                                <p>{infoBox}</p>
+                                </div>
+                                </div>
                                 <div className='date-div-child '>
                                     <label htmlFor="">Estimated Time</label>
                                     <button className='pro-btn hours-btn' onClick={(e) => {
@@ -211,6 +283,7 @@ const Profile = (props) => {
                                         setEstimated(timePHolder + "-Hours")
                                     }}>{timePHolder}-Hours <AiOutlineDownSquare className='chev-down' /></button>
                                     <div className='hours-div' style={{ visibility: hourDis }} onClick={() => { setDisplay('hidden') }}>
+                                        <span className='hour-span' onClick={() => setTholder('')}><IoIosClose  className='hours-close'/></span>
                                         <span className='hour-span' onClick={() => setTholder('3')}>3</span>
                                         <span className='hour-span' onClick={() => setTholder('4')}>4</span>
                                         <span className='hour-span' onClick={() => setTholder('5')}>5</span>
@@ -219,7 +292,7 @@ const Profile = (props) => {
                                         <span className='hour-span' onClick={() => setTholder('8')}>8</span>
                                     </div>
                                     <label htmlFor="">Starting from</label>
-                                    <input type="time" onChange={(e) => {
+                                    <input type="date" onChange={(e) => {
                                         e.preventDefault()
                                         setStart(e.target.value)
                                     }} />
@@ -230,13 +303,30 @@ const Profile = (props) => {
                                 <span>Payment</span>
                                 <div className="vertical-line"></div>
                             </div>
-                            <label htmlFor="">Payment</label>
+                            <label htmlFor="">Payment*</label>
                             <div className='form-title-div popUp-payment-div'>
-                                <input type="text" placeholder={placeholder} onChange={(e) => {
+                                <input type="text" placeholder={placeholder}
+                                 onMouseEnter={()=>{
+                                    setInfoBox('Select how would you like to pay')
+                                    setInfoDis('none')
+                                    setInfoStyle('center')
+                                }}
+                                onMouseLeave={()=>{
+                                    setInfoBox('Hover on anything and see the info here!')
+                                    setInfoDis('flex')
+                                    setInfoStyle('')
+                                }}
+                                onChange={(e) => {
                                     e.preventDefault()
                                    
-                                }} onClick={()=>setPBDisplay('visible')} />
-                                <div className="payment-options" style={{ visibility: payBoxDisplay }}>
+                                }} onClick={()=>{
+                                    if(payBoxDisplay == 'none'){
+                                        setPBDisplay('flex')
+                                    }else{
+                                        setPBDisplay('none')
+                                    }
+                                    }} />
+                                <div className="payment-options" style={{ display: payBoxDisplay, top: topPosition }}>
                                     <div className='per-hour pay-box' onClick={() => {
                                         setPlaceHolder('Per-Hour')
                                         setPBDisplay('hidden')
@@ -251,8 +341,19 @@ const Profile = (props) => {
                                     }}><span>Issue</span></div>
                                 </div>
                                 <div className='payment-child date-div-child'>
-                                    <label htmlFor="">Amount</label>
-                                    <input type="text" onChange={(e) => {
+                                    <label htmlFor="">Amount*</label>
+                                    <input type="text"
+                                     onMouseEnter={()=>{
+                                        setInfoBox('insert the exact amount you want to pay per-hour, mission, issue')
+                                        setInfoDis('none')
+                                        setInfoStyle('flex-start')
+                                    }}
+                                    onMouseLeave={()=>{
+                                        setInfoBox('Hover on anything and see the info here!')
+                                        setInfoDis('flex')
+                                        setInfoStyle('')
+                                    }}
+                                    onChange={(e) => {
                                         e.preventDefault()
                                         setAmount(e.target.value)
                                     }} />
@@ -263,12 +364,16 @@ const Profile = (props) => {
                                 <span>Address</span>
                                 <div className="vertical-line"></div>
                             </div>
-                            <label htmlFor="">Address</label>
+                            <label htmlFor="">Address*</label>
                             <div className='popUp-address-div form-title-div'>
                                 <input type="text" className='popUp-input' onChange={(e) => {
                                     e.preventDefault()
                                     setAddress(e.target.value)
-                                }} onClick={()=>setAddInfo('flex')}/>
+                                }} onClick={()=>{
+                                    setAddInfo('flex')
+                                    setPBDisplay('none')
+                                    setTopPosition('58.5%')
+                                    }}/>
                                 <div className='address-child date-div-child'>
                                     <label htmlFor="">Respond in...</label>
                                     <input type="text" placeholder='30-Minutes' onChange={(e) => {
@@ -280,18 +385,18 @@ const Profile = (props) => {
                             <div className="address-info" style={{display: addInfo}}>
                                 <div className="city-country">
                                     <div>
-                                    <label htmlFor="">City</label>
+                                    <label htmlFor="">City*</label>
                                     <input type="text" className="city-input" onChange={(e)=>{
                                         e.preventDefault()
                                         setCity(e.target.value)
                                     }}/>
                                     </div>
                                     <div>
-                                    <label>Country</label>
+                                    <label>Country*</label>
                                     <input type="text" placeholder="France" disabled className="country-input"/>
                                     </div>
                                 </div>
-                                    <label htmlFor="">Postal Code</label>
+                                    <label htmlFor="">Postal Code*</label>
                                     <input type="text" className="postal-code-input" onChange={(e)=>{
                                         e.preventDefault()
                                         setPostalCode(e.target.value)

@@ -2,16 +2,18 @@
     width: 20%;
     background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
     display: flex;
-
     flex-direction: column;
-    float: right;
+    /* float: right; */
     margin-right: 100px;
     height: 40vh !important;
     border-radius: 2px;
     border: 1px solid aquamarine;
     border-top: 0;
     overflow: auto;
-}
+    position: absolute;
+    left: 73%;
+    top: 8%;
+ }
 
 .ntfn-content{
 

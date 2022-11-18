@@ -50,26 +50,6 @@ const ProfileInView = (props) => {
 
     return (
         <>
-            {info.map(user => {
-                console.log(user, "USERUSER")
-                return (
-                    <div>
-                        <nav className='pro-nav'>
-                            <div className='nav-child1'>
-                                <span className='pro-nav-span'>Job&Money</span>
-                            </div>
-                            <div className='nav-child2'>
-                                <BiNotification className='pro-icons' />
-                                <BiMessage className='pro-icons' />
-                                <img src={user.image} alt="profile image" className='profile-image' onClick={() => {
-                                    Navigate('/empe-profile')
-                                }} />
-                            </div>
-                        </nav>
-                    </div>
-                )
-            })
-            }
             <div className='proNVu-main-div'>
                 <div className='pnvu-main-child'>
                     {
@@ -124,7 +104,7 @@ const ProfileInView = (props) => {
                                                             </div>
                                                             
                                                             <div className='msg-section'>
-                                                                {/* {
+                                                                {
                                                                     msgArray.map(content=>{
                                                                         return(
                                                                             <>
@@ -139,7 +119,7 @@ const ProfileInView = (props) => {
                                                                             </>
                                                                         )
                                                                     })
-                                                                } */}
+                                                                }
                                                             </div>
                                                             <div className='npt-container'>
                                                                 <input type="text" className='message-npt' onChange={(e) => {

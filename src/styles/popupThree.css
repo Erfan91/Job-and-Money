@@ -35,16 +35,18 @@
 }
 
 .card-icon{
-    font-size: 12px;
-    margin-top: 4.5px;
-    margin-left: 3px;
+    /* font-size: 10px !important; */
+   height: 2.2vh !important;
+
 }
 
 .creditCard-div{
     display: flex;
-    background-color: blueviolet;
-    width: 105px;
-
+    background-color: azure;
+    width: 125px;
+    height: 3vh;
+    border-radius: 2px;
+    box-shadow: inset 0 0 1px black;
 }
 
 .visa-spn{
@@ -67,4 +69,25 @@
 
 .sms-msg{
     font-size: 10px;
+}
+
+.number-board{
+    position: absolute;
+
+}
+
+.n-board-child{
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+    width: 20vw;
+    background-color: blanchedalmond;
+}
+
+.n-span{
+    color: red;
+    margin: 3px !important;
+    background-color: #646460;
+    display: flex;
+    flex-direction: column;
 }

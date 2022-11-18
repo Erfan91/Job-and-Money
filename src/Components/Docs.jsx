@@ -5,13 +5,14 @@ import { BsCreditCard2BackFill, BsClock, BsReplyAllFill, BsFillCalendarDateFill,
 import { FcSimCardChip } from "react-icons/fc";
 import { HiOutlineSave } from "react-icons/hi";
 import { AiOutlineFieldTime, AiOutlinePhone, AiOutlineSearch, AiOutlineRollback } from "react-icons/ai";
-
+import moment from 'moment';
 // BsFillCreditCardFill
 const Docs = () => {
   const [cvInfo, setCvInfo] = useState([]);
   const [accInfo, setAccInfo] = useState([])
   const [info, setInfo] = useState([]);
   const [inputIndex, setInputIndex] = useState(null)
+  const [inputIndexB, setInputIndexB] = useState(null)
   const [display, setDisplay] = useState('none')
   const [errDisplay, setErrDisplay] = useState('none')
   const [errContainerDis, setContainerDis] = useState('flex')
@@ -34,7 +35,11 @@ const Docs = () => {
       .then(result => result.json())
       .then(json => {
         console.log(json)
-        setCvInfo([json])
+        setCvInfo([json.result])
+        if(!json.result){
+          console.log("cv not found")
+          setCvInfo(["cv not found"])
+        }
       })
   }, [])
 
@@ -146,7 +151,7 @@ const Docs = () => {
                         <span>{spaced}</span>
                       </div>
                       <div className='card-date-div'>
-                        <span>{card.validityDate}</span>
+                        <span>{moment(card.validityDate).format('MMM YY')}</span>
                       </div>
                       <div className='cardHolder-div'>
                         <span>{card.fullName}</span>
@@ -225,11 +230,12 @@ const Docs = () => {
         <h3 className='docs-h3'>Experience Docs</h3>
         <section className='exp-docs-section docs-section'>
           {
-            cvInfo.map(content => {
+            cvInfo?.map(content => {
+              console.log("content", content)
               return (
                 <div className='exp-docs-div '>
                   {
-                    content.experienceDocs.map((doc, index) => {
+                    content?.experienceDocs?.map((doc, index) => {
                       return (
                         <div className='docs-container-parent'>
                           <p className='index-num-p'>{index + 1}</p>
@@ -262,11 +268,11 @@ const Docs = () => {
         <h3 className='docs-h3'>Achievements</h3>
         <section className='ach-docs-section docs-section'>
           {
-            cvInfo.map(content => {
+            cvInfo?.map(content => {
               return (
                 <div className='exp-docs-div '>
                   {
-                    content.achievement.map((doc, index) => {
+                    content?.achievement?.map((doc, index) => {
                       return (
                         <div className='docs-container-parent'>
                           <p className='index-num-p'>{index + 1}</p>
@@ -276,10 +282,10 @@ const Docs = () => {
                               // by clicking on p i assigne the inputIndex to the index of each element, 
                               // but if inputIndex already equals to for example to index 1 and user clicks on the same element again, 
                               // so it wil change its value to null to prevent dispalying the same input for all of them in one click.
-                              setInputIndex(inputIndex => inputIndex === index ? null : index)
+                              setInputIndexB(inputIndexB => inputIndexB === index ? null : index)
                             }}>give a name</p>
                           </div>
-                          {inputIndex === index && <input type="text" onChange={(e) => {
+                          {inputIndexB === index && <input type="text" onChange={(e) => {
                             setDocName(e.target.value)
                           }} />
                           }

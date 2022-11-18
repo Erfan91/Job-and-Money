@@ -30,7 +30,25 @@ const Notification = (props) => {
         }
         setNotifications(json)
       })
+  }, [])
 
+  useEffect(() => {
+    fetch(`http://localhost:3001/ntfn/${ids}`)
+      .then(result => result.json())
+      .then(json => {
+        const arr = [json]
+        for (var i = arr.length - 1; i >= 0; i--) {
+          arr[i].map((content, index) => {
+            if (content.seen !== true) {
+              props.isTrue(true)
+            }else{
+              props.isTrue(false)
+            }
+          })
+        }
+        setNotifications(json)
+      })
+      refresher()
   }, [])
 
   const ntfnChecked = (id) => {
@@ -45,6 +63,7 @@ const Notification = (props) => {
       .then(json => {
         console.log(json)
       })
+      refresher()
   }
 
   const refresher = () => {
@@ -85,6 +104,7 @@ const getIndex = (content) =>{
   for(var i = 0; i<= arr.length; i++ ){
     console.log(content, "COntentebdugjdhb")
   }
+  refresher()
 }
   return (
     <div className='ntfn-main-div' style={{display: display}}>
@@ -112,11 +132,7 @@ const getIndex = (content) =>{
                         <span className='ntfn-title-span'>{content.subjectId.title}</span>
                         <p className='ntfn-p'> <span>@{content.userId.userName}</span> {content.message}</p>
                       </div>
-                      {
-                        // ()=>{
-                        //   return <ProfileInView id={JSON.parse(offerId)}/>
-                        // }
-                      }
+
                     </div></Link>
                     :
                     <div className='ntfn-content' onClick={() => {

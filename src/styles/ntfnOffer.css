@@ -8,6 +8,10 @@
     justify-content: center;
 }
 
+.ntfn-offer-window{
+    margin-top: -30px !important;
+}
+
 .candidates-div{
     display: flex;
     justify-content: space-evenly;

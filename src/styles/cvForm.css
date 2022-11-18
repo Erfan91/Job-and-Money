@@ -24,7 +24,7 @@
     border-top: 1px solid rgb(75, 41, 75);
     border-left: 1px solid  rgb(69, 68, 68);
     border-bottom: 1px solid  rgb(69, 68, 68);
-    color: rgb(184, 184, 184);
+    color: rgb(255, 255, 255);
     height: 70vh;
     width: 34vw;
     font-size: small;
@@ -43,22 +43,15 @@
 .cv-personal-info input{
     padding: 5px;
     border: none;
-    /* border-radius: 13px; */
-    /* border-bottom-right-radius: 13px;
-    border-bottom-left-radius: 13px;
-    border-top-right-radius: 13px;
-    background-color:gainsboro; */
     background-color: rgba(75, 41, 75, 0.644);
     border: 0.5px solid cadetblue;
     border-radius: 3px;
     color: rgb(209, 209, 209);
-    /* border-top-left-radius: 5px; */
     box-shadow: 1px 5px 25px rgba(0, 0, 0, 0.438);
 }
 
 .cv-personal-info input:focus{
     border: none;
-    /* border-bottom: 1px solid cadetblue; */
     border-bottom: 1px solid cadetblue;
     color: azure;
     outline: none;
@@ -66,8 +59,27 @@
 }
 
 .cv-personal-info input::placeholder{
-    color: rgb(161, 170, 177);
+    color: rgb(130, 183, 225) !important;
     font-size: smaller;
+}
+
+
+.glbl-input{
+    padding: 5px;
+    border: none;
+    background-color: rgba(75, 41, 75, 0.644);
+    border: 0.5px solid cadetblue;
+    border-radius: 3px;
+    color: rgb(209, 209, 209);
+    box-shadow: 1px 5px 25px rgba(0, 0, 0, 0.438);
+}
+
+.glbl-input:focus{
+    border: none;
+    border-bottom: 1px solid cadetblue;
+    color: azure;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.194);
 }
 
 .dark-purple-line{
@@ -76,6 +88,10 @@
  background-color: aquamarine;
  padding: 0 !important;
  border: 0.1px solid black;
+}
+
+.dark2{
+    margin: auto;
 }
 
 .cvF-name-div{
@@ -123,6 +139,20 @@
     width: fit-content;
     margin: 8px;
     text-align: left;
+    /* width: 90%; */
+}
+
+.cvF-exp-title-holder{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.cvF-exp-title-input{
+    width: 50%;
 }
 
 .cvF-address-holder{
@@ -159,8 +189,9 @@
 /* Experience input styles 🔽 */
 
 .cvF-experience-div{
-    background: #000;
+    /* background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%); */
     align-items: center;
+    justify-content: flex-start;
 }
 
 .exp-all-container{
@@ -171,13 +202,13 @@
 .cvF-exp-description-container{
     display: flex;
     flex-direction: column;
-    /* text-align: left; */
+    justify-content: center;
+    width: 90%;
 }
 
 .cvF-exp-date-container{
     margin: 0;
 }
-
 
 
 .cvF-exp-input-container{
@@ -209,26 +240,51 @@
     flex-direction: column;
 }
 
+.cvF-exp-desc-child div>input{
+    width: 90%;
+}
+
 /* Education div and input styles 🔽*/
 .cvF-education-div{
     display: flex;
-    justify-content: center;
-    background: #000;
+    justify-content: flex-start;
     text-align: center;
     align-items: center;
 }
 
+.cvF-edu-head{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 90%;
+    padding-left: 11px;
+}
+
+.cvF-edu-title-input{
+    width: 40%;
+}
+
+.cvF-edu-description-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.cvF-edu-date-div{
+    margin-left: -10px;
+}
 
 
 /* Skills div styles  🔽*/
 .cvF-skills-div{
     display: flex;
-    background: #000;
-    justify-content: center;
-    align-items: center;
+    align-items:center;
+    justify-content: flex-start;
+
 }
 
-.cvF-skills-div div{
+.skill-container{
     text-align: left;
     width: fit-content;
     display: flex;
@@ -236,16 +292,60 @@
 
 }
 
+.skill-parent-container{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.skill-list{
+    display: flex;
+    flex-direction: column;
+    height: 150px !important;
+    overflow-y: auto;
+    background-color: rgb(189, 189, 189);
+    border-radius: 3px;
+    box-shadow: inset 0 0 4px black;
+
+}
+
 /* Experience documet upload div Styles 🔽 */
 .cvF-exp-docs{
-    background: #000;
+    display: flex;
+    justify-content: flex-start;
     text-align: center;
     align-items: center;
 }
 
 /* Achievements docs div 🔽*/
 .cvF-achievements-div{
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
     align-items: center;
+}
+
+.doc-holder-div{
+    padding: 35px 0 10px 0;
+}
+
+.cvF-submit-btn{
+    width: 110px;
+    height: 110px;
+    border-radius: 55px;
+    border: none;
+    background: linear-gradient(to right, #007991, #78ffd6);
+    box-shadow: inset 0 0 5px black;
+    cursor: pointer;
+    font-size: large;
+    font-weight: lighter;
+    color:rgb(212, 212, 212);
+}
+
+.cvF-submit-btn:hover{
+    transform: scale(0.9);
+    box-shadow: inset 0 0 20px black;
 }
 
 .back-close-window-div{
@@ -255,7 +355,6 @@
 }
 
 .cvF-icn-div{
-    background: #000;
     width: 40px;
     height: 40px;
     display: flex;
@@ -264,4 +363,37 @@
     align-items: center;
     border-radius: 20px;
     /* clip-path: ellipse(70px 20px at 99% 79%) !important; */
+}
+
+.cvF-back-icon{
+    color:dodgerblue;
+    font-size: large;
+    cursor: pointer;
+}
+
+.cvF-back-icon:hover{
+    transform: scale(0.9);
+    color: rgb(83, 169, 255);
+}
+
+.next-btn{
+    width: 150px;
+    padding: 5px 0;
+    border-radius: 15px;
+    margin-top: 15px;
+    border: 0.5px solid white;
+    box-shadow: inset 0 0 5px rgba(75, 41, 75, 0.644);
+    color: blueviolet;
+    cursor: pointer;
+}
+
+.autofill-btn{
+    width: auto;
+    padding: 3px 8px;
+    border-radius: 15px;
+    border: none;
+    background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
+    color: rgb(81, 229, 165);
+    cursor: pointer;
+    margin-top: 5px;
 }

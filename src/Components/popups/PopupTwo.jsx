@@ -5,6 +5,7 @@ import { IoIosImages } from "react-icons/io";
 import { IoArrowBackSharp } from "react-icons/io5";
 import PopupThree from './PopupThree';
 import axios from 'axios';
+import { BsChevronBarRight, BsChevronBarDown, BsChevronDown } from 'react-icons/bs';
 
 const PopupTwo = (props) => {
   const [visibleC, setVisibleC] = useState('hidden')
@@ -150,18 +151,17 @@ const PopupTwo = (props) => {
             }} />
           </div>
           <div className='desc-input-div'>
-            <p className='desc-p'>describe your issue here</p>
+            <p className='desc-p'><BsChevronBarRight className='chevRight-icon'/>Describe your issue here <BsChevronDown className='chevRight-icon downChev-icon'/></p>
             <textarea type="text" className='desc-input' height="60" onChange={(e) => {
               e.preventDefault()
               setIssue(e.target.value)
             }} />
           </div>
           <div className='images-container'>
-            {/* <div className='desc-upload-div'>
-              <span className='desc-img-span'>images</span>
-              <button className='desc-upload-btn'>upload images</button>
-              <span className='desc-upload-span'>you can upload up to six images</span>
-            </div> */}
+            <div className='images-text-container'>
+            <span className='img-txt-span'>images</span>
+            <span className='img-txt-span2'><BsChevronBarRight className='chevRight-icon'/>you can upload up to six images to help the workers have a better view of your offer</span>
+            </div>
             <div className='img-names-div'>
               <div className='issue-img1-div'>
                 <input type="file" accept='/image*' ref={imageUploader} onChange={imageChanger} style={{ display: 'none' }} />
@@ -171,7 +171,7 @@ const PopupTwo = (props) => {
                 }}>
                   <img ref={uploadedImage} className='issue-image' />
                 </div>
-                <button onClick={uploadImage} className='upload-btn'>Upload</button>
+                <button onClick={uploadImage} className='upload-btn upld-btn'>Upload</button>
               </div>
               <div className='issue-img1-div'>
                 <input type="file" accept='/image*' ref={imageUploader1} onChange={imageChanger1} style={{ display: 'none' }} />
@@ -181,7 +181,7 @@ const PopupTwo = (props) => {
                 }}>
                   <img ref={uploadedImage1} className='issue-image' />
                 </div>
-                <button onClick={uploadImage} className='upload-btn'>Upload</button>
+                <button onClick={uploadImage} className='upload-btn upld-btn'>Upload</button>
               </div>
               <div className='issue-img1-div'>
                 <input type="file" accept='/image*' ref={imageUploader2} onChange={imageChanger2} style={{ display: 'none' }} />
@@ -191,7 +191,7 @@ const PopupTwo = (props) => {
                 }}>
                   <img ref={uploadedImage2} className='issue-image' />
                 </div>
-                <button onClick={uploadImage} className='upload-btn'>Upload</button>
+                <button onClick={uploadImage} className='upload-btn upld-btn'>Upload</button>
               </div>
               <div className='issue-img1-div'>
                 <input type="file" accept='/image*' ref={imageUploader3} onChange={imageChanger3} style={{ display: 'none' }} />
@@ -201,7 +201,7 @@ const PopupTwo = (props) => {
                 }}>
                   <img ref={uploadedImage3} className='issue-image' />
                 </div>
-                <button onClick={uploadImage} className='upload-btn'>Upload</button>
+                <button onClick={uploadImage} className='upload-btn upld-btn'>Upload</button>
               </div>
               <div className='issue-img1-div'>
                 <input type="file" accept='/image*' ref={imageUploader4} onChange={imageChanger4} style={{ display: 'none' }} />
@@ -211,7 +211,7 @@ const PopupTwo = (props) => {
                 }}>
                   <img ref={uploadedImage4} className='issue-image' />
                 </div>
-                <button onClick={uploadImage} className='upload-btn'>Upload</button>
+                <button onClick={uploadImage} className='upload-btn upld-btn'>Upload</button>
               </div>
               <div className='issue-img1-div'>
                 <input type="file" accept='/image*' ref={imageUploader5} onChange={imageChanger5} style={{ display: 'none' }} />
@@ -221,7 +221,7 @@ const PopupTwo = (props) => {
                 }}>
                   <img ref={uploadedImage5} className='issue-image' />
                 </div>
-                <button onClick={uploadImage} className='upload-btn'>Upload</button>
+                <button onClick={uploadImage} className='upload-btn upld-btn'>Upload</button>
               </div>
             </div>
           </div>

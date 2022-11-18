@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { IoIosSend, IoIosArrowBack, IoIosMore, IoIosMic } from "react-icons/io";
 import { BsImage } from 'react-icons/bs';
+import moment from 'moment';
 const Messages = (props) => {
     const [messages, setMessages] = useState([])
     const id = JSON.stringify(localStorage.getItem('_id'))
@@ -34,8 +35,8 @@ const Messages = (props) => {
             .then(json => {
                 console.log(json)
                 setMsgArr(json)
-                myMsg()
             })
+            myMsg()
     }
 
 
@@ -46,6 +47,7 @@ const Messages = (props) => {
             .then(json => {
                 console.log(json)
                 setMessages(json)
+                myMsg()
             })
     }, [])
 
@@ -57,12 +59,13 @@ const Messages = (props) => {
                 console.log(json)
                 setMsgArr(json)
             })
-            fetch(`http://localhost:3001/msg/${ids}`)
+        fetch(`http://localhost:3001/msg/${ids}`)
             .then(result => result.json())
             .then(json => {
                 console.log(json)
                 setMessages(json)
             })
+    
     }
 
     useEffect(() => {
@@ -71,21 +74,31 @@ const Messages = (props) => {
             .then(json => {
                 console.log(json)
                 setMsgArr(json)
+                myMsg()
             })
     }, [])
 
     return (
-        <div className='messages-main-div ntfn-main-div' style={{display: props.display}}>
+        <div className='messages-main-div ntfn-main-div' style={{ display: props.display, position:'fixed'}}>
             <div className='msg-main-child'>
                 {
                     messages.map(message => {
+                       
                         return (
-                            <div className='msg-container' style={{ display: displayB }} onClick={async () => {
+                            <div className='msg-container' style={{ display: displayB }} onMouseEnter={()=>{
+                                fetch(`http://localhost:3001/msg/${ids}`)
+                                .then(result => result.json())
+                                .then(json => {
+                                    console.log(json)
+                                    setMessages(json)
+                                    myMsg()
+                                })
+                            }} onClick={() => {
+                                myMsg()
                                 setReceivedMsg([message])
                                 setDisplay('flex')
                                 setDisplayB('none')
                                 setSenderId(message.sender._id)
-
                             }} >
                                 <img src={message.sender.image} className='msg-profile-img' alt="" />
                                 <div>
@@ -116,12 +129,12 @@ const Messages = (props) => {
                                     </div>
                                 </div>
                                 <div className='message-window'>
-
                                     {
                                         content.content.map(msg => {
                                             return <div className='msgr-text-div'>
                                                 <img src={content.sender.image} className="msgr-pro-sm-img" alt="not found" />
                                                 <li>{msg}</li>
+                                                {/* <p>{moment(content.updatedAt).format("h:mm a")}</p> */}
                                             </div>
                                         })
                                     }
@@ -136,6 +149,7 @@ const Messages = (props) => {
                                                             return <div className='msgr-text-div sent-txt-div'>
                                                                 <li className='sent-li'>{message}</li>
                                                                 <img src={msg.sender.image} className="msgr-pro-sm-img" alt="not found" />
+                                                                {/* <p>{moment(msg.updatedAt).format("h:mm a")}</p> */}
                                                             </div>
                                                         })
                                                     }

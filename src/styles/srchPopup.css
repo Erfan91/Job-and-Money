@@ -1,6 +1,4 @@
 .srch-popup{
-    /* background: aquamarine; */
-    /* background-image: linear-gradient(0deg, #fcc5e4 0%, #fda34b 15%, #ff7882 35%, #c8699e 52%, #7046aa 71%, #0c1db8 87%, #020f75 100%); */
     background-image:linear-gradient( 135deg, #92FFC0 10%, #002661 100%);;
     background-size: 300%;
     animation: bg-animation 10s infinite alternate;
@@ -70,8 +68,9 @@
 }
 
 .srch-header{
-    margin-top: 10px;
+    margin-bottom: 10px !important;
     padding: 0;
+    color: aquamarine;
 }
 
 .close-icon-div{
@@ -112,9 +111,11 @@
 
 .selector{
     margin: 0 10px;
-    background: green;
+    background-image: linear-gradient( 110.5deg,  rgba(71,114,148,1) 14.9%, rgba(149,245,211,1) 77.9% );
     width: 55px;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+    border: 0.5px solid aquamarine;
+    color: white;
 }

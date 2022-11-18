@@ -11,6 +11,11 @@ import random from '../images/up.jpg'
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer'
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
+import { OfferContext } from '../App';
+import { useContext } from 'react';
+import {motion} from 'framer-motion'
+import SearchWindow from './SearchWindow';
 const Feed = () => {
   const Navigate = useNavigate()
   const [offers, setOffers] = useState([]);
@@ -30,6 +35,8 @@ const Feed = () => {
   const [info, setInfo] = useState([])
   const [updateMsg, setUpdateMsg] = useState('');
   const [srchMode, setSrchMode] = useState('User');
+  const [placeholder1, setPlaceHolder1] = useState('username');
+  const [placeholder2, setPlaceHolder2] = useState('City')
   const [redBgColor, setRedBg] = useState({});
   const [greenBgColor, setGreenBg] = useState('');
   const [images, setImages] = useState([]);
@@ -41,26 +48,20 @@ const Feed = () => {
   const [offerId, setOfferId] = useState('');
   const [empDivJcontent, setJcontent] = useState('')
   const [posterId, setPosterId] = useState('')
-  useEffect(() => {
-    console.log(inView, "IN VIEWWW")
-    // setHeight(bref.current.clientHeight)
-    // console.log(height)
-    // if(inView){
-    //   setPosition('fixed')
-    //   setWidth('37%')
-    //  }//else{
-    //   setPosition('')
-    //   setWidth('')
-    // }
-    // console.log(window.scrollY, "SCROLLLL YYY")
-    // console.log(bref.current.scrollHeight, "FIFTEEEEEEEEEEEENNNNN")
-    //  if(window.scrollY >= bref.current.scrollHeight){
-    //     console.log("Cocaine Model", window.scrollY ,"Y", bref.current.scrollHeight )
-    //  } 
-  })
-
+  const [winHeight, setwinHeight] = useState('')
   const id = JSON.stringify(localStorage.getItem('_id'))
   const ids = JSON.parse(id)
+  const {setDisplayN} = useContext(OfferContext)
+  const [searchName, setSearchName] = useState('');
+  const [searchCity, setSearchCity] = useState('');
+  const [searchResult, setSearchResult] = useState([]);
+  const [searchBorder, setSearchBorder] = useState('');
+  // Animation States
+  const [transit, setTransit] = useState({})
+  const [initial, setInitial] = useState({y:-2})
+  const [animate, setAnimation] = useState({y:0})
+
+  const [displayS, setDisplayS] = useState('none')
   useEffect(() => {
     fetch('http://localhost:3001/offer')
       .then(result => result.json())
@@ -69,7 +70,7 @@ const Feed = () => {
         setOffers(json)
         setTitle(json[0].title)
         setPayment(json[0].paymentMethod)
-        setDate(json[0].startingFrom)
+        setDate(moment(json[0].startingFrom).format("MMM Do YY, h:mm:ss a"))
         setAddress(json[0].address + ", " + json[0].city + " (" + json[0].postalCode + ")")
         setDescription(json[0].description)
         setAmount(json[0].amount)
@@ -83,6 +84,11 @@ const Feed = () => {
         setOfferId(json[0]._id)
 
       })
+      if(offers.length > 3){
+        setwinHeight('auto')
+      }else{
+        setwinHeight('100vh')
+      }
   }, [])
 
   useEffect(() => {
@@ -92,7 +98,7 @@ const Feed = () => {
         console.log(json)
         setInfo([json])
       })
-    // console.log(info[0].image)
+      setDisplayN('flex')
   }, [])
   // onMouseMove={()=>{ console.log(window.pageYOffset,"SCROLL HEIGHT///////")}}
   // console.log(window.innerHeight,"INNER HEIGHT")
@@ -119,29 +125,50 @@ const Feed = () => {
         }
       })
   }
+
+
+  const searchUser = () =>{
+    if(searchName == ""){
+      setSearchBorder('0.5px solid red')
+      setDisplayS('flex')
+
+    }else{
+       fetch('http://localhost:3001/user/srchd',{
+      method: 'POST',
+      headers: new Headers({"content-type":"application/json"}),
+      body: JSON.stringify({
+        username: searchName,
+        city: searchCity
+      })
+    }).then(result=>result.json())
+    .then(json=>{
+      console.log(json, "Search Result")
+      setSearchResult(json)
+    })
+    setDisplayS('flex')
+    }
+   
+  }
+
+  const searchOffer = () =>{
+    fetch('http://localhost:3001/offer/srchd',{
+      method: 'POST',
+      headers: new Headers({"content-type":"application/json"}),
+      body: JSON.stringify({
+        title: searchName,
+        city: searchCity
+      })
+    }).then(result=>result.json())
+    .then(json=>{
+      console.log(json)
+      setSearchResult(json)
+    })
+    setDisplayS('flex')
+  }
+
   return (
     <>
-      {info.map(user => {
-        console.log(user, "USERUSER")
-        return (
-          <div>
-            <nav className='pro-nav'>
-              <div className='nav-child1'>
-                <span className='pro-nav-span'>Job&Money</span>
-              </div>
-              <div className='nav-child2'>
-                <BiNotification className='pro-icons' />
-                <BiMessage className='pro-icons' />
-                <img src={user.image} alt="profile image" className='profile-image' onClick={()=>{
-                  Navigate('/empe-profile')
-                }}/>
-              </div>
-            </nav>
-          </div>
-        )
-      })
-      }
-      <div className='feed-main-div'>
+      <div className='feed-main-div' style={{height: winHeight}}>
         <div className="offers-main-div">
           <section className='offers-list'>
             {
@@ -226,7 +253,7 @@ const Feed = () => {
                     </div>
                     <div className="app-messages">
                       <p className='app-text'>This offer requires skills as you have and its nearby </p>
-                      <p className='app-text'>posted on {postDate} by <span className='employer-span'>{offer.posterID.name + " " + offer.posterID.surName}</span> </p>
+                      <p className='app-text'>posted on {moment(postDate).format('MMM Do, h:mm a' )} by <span className='employer-span'>{offer.posterID.name + " " + offer.posterID.surName}</span> </p>
                     </div>
                   </div>
                 )
@@ -260,7 +287,7 @@ const Feed = () => {
                       {
                         images.map(img => {
                           return (
-                            <img src={img} alt="" width="450px" height="250px" style={{ marginLeft: "20px" }} />
+                            <img src={img} alt="" className='offer-images-iss' width="450px" height="250px" style={{ marginLeft: "20px" }} />
                           )
                         })
                       }
@@ -312,6 +339,9 @@ const Feed = () => {
             }} onMouseLeave={() => { setRedBg({ backgroundColor: 'transparent', opacity: '0.4' }) }} onClick={() => {
               setSrchBtnD('block')
               setHDisplay('none')
+              setDisplayS('none')
+              setSearchBorder('')
+              setSearchName('')
             }} />
           </div>
           <div className='search-container'>
@@ -319,15 +349,41 @@ const Feed = () => {
               <span className='srch-header'>Search {srchMode}</span>
             </div>
             <div className='srch-container-child2'>
-              <input type="text" className='srch-input' />
-              <span className='selector'>{srchMode}</span>
-              <input type="text" className='srch-input' />
+              <motion.input type="text" placeholder={placeholder1} className='srch-input' initial={initial} animate={animate} transition={transit} style={{border: searchBorder}} onChange={e=>setSearchName(e.target.value)} onClick={()=>setSearchBorder('')}/>
+              <button className='selector' onClick={()=>{
+                if(srchMode == 'User'){
+                  setSrchMode('Offer')
+                  setPlaceHolder1('Plumber')
+                }else if(srchMode == 'Offer'){
+                  setSrchMode('User')
+                  setPlaceHolder1('username')
+                }
+              }}>{srchMode}</button>
+              <input type="text" placeholder={placeholder2} className='srch-input' onChange={e=>setSearchCity(e.target.value)}/>
             </div>
           </div>
           <div className='frwd-icon-div'>
-            <IoChevronForward className='srch-frwd-icon' style={greenBgColor} onMouseEnter={() => { setGreenBg({ backgroundColor: 'rgba(127, 255, 212, 0.378)', opacity: '1' }) }} onMouseLeave={() => { setGreenBg({ backgroundColor: 'transparent', opacity: '0.4' }) }} />
+           {srchMode == 'User'? <IoChevronForward className='srch-frwd-icon'
+             style={greenBgColor}
+             onClick={searchUser}
+             onMouseEnter={() => { setGreenBg({ backgroundColor: 'rgba(127, 255, 212, 0.378)', opacity: '1' }) }}
+             onMouseLeave={() => { setGreenBg({ backgroundColor: 'transparent', opacity: '0.4' }) }} />
+            :
+            srchMode == 'Offer'? <IoChevronForward className='srch-frwd-icon'
+            style={greenBgColor}
+            onClick={searchOffer}
+            onMouseEnter={() => { setGreenBg({ backgroundColor: 'rgba(127, 255, 212, 0.378)', opacity: '1' }) }}
+            onMouseLeave={() => { setGreenBg({ backgroundColor: 'transparent', opacity: '0.4' }) }} />
+            : 
+            <IoChevronForward className='srch-frwd-icon'
+            style={greenBgColor}
+            onClick={()=>setSearchBorder('0.5px solid red')}
+            onMouseEnter={() => { setGreenBg({ backgroundColor: 'rgba(127, 255, 212, 0.378)', opacity: '1' }) }}
+            onMouseLeave={() => { setGreenBg({ backgroundColor: 'transparent', opacity: '0.4' }) }} />
+            }
           </div>
         </div>
+          <SearchWindow displayS={displayS} display={setDisplayS} data={searchResult}/>
       </div>
     </>
   )

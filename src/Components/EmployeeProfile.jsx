@@ -7,12 +7,16 @@ import { FaRegHandshake } from "react-icons/fa";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { MdOutlineDocumentScanner, MdOutlineAutoGraph } from "react-icons/md";
 import Messages from './Messages';
+import { OfferContext } from '../App';
+import { useContext } from 'react';
 const EmployeeProfile = () => {
     const Navigate = useNavigate()
     const [info, setInfo] = useState([])
+    const [msgDisplay, setMsgDisplay] = useState('none')
     const id = JSON.stringify(localStorage.getItem('_id'))
     const ids = JSON.parse(id)
-  
+    const {setDisplayN} = useContext(OfferContext)
+    
     useEffect(() => {
         fetch(`http://localhost:3001/user/${ids}`)
           .then(result => result.json())
@@ -20,24 +24,13 @@ const EmployeeProfile = () => {
             console.log(json)
             setInfo([json])
           })
-        
+          setDisplayN('flex')
       }, [])
 
   return (
     <div className='empe-profile-main-div'>
-        <nav className='pro-nav'>
-              <div className='nav-child1'>
-                <span className='pro-nav-span'>Job&Money</span>
-              </div>
-              <div className='nav-child2'>
-                <BiNotification className='pro-icons' />
-                <BiMessage className='pro-icons' />
-                {/* <img src={user.image} alt="profile image" className='profile-image'/> */}
-              </div>
-        </nav>
-
         <div className='empe-content-div'>
-          <Messages />
+          <Messages display={msgDisplay}/>
             <div className="empe-offers content-div empe-cv">
               <div>
                 <FaRegHandshake className="deal-icon cv-icon"/>
