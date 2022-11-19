@@ -292,7 +292,7 @@ const Profile = (props) => {
                                         <span className='hour-span' onClick={() => setTholder('8')}>8</span>
                                     </div>
                                     <label htmlFor="">Starting from</label>
-                                    <input type="date" onChange={(e) => {
+                                    <input type="time" onChange={(e) => {
                                         e.preventDefault()
                                         setStart(e.target.value)
                                     }} />
@@ -305,7 +305,7 @@ const Profile = (props) => {
                             </div>
                             <label htmlFor="">Payment*</label>
                             <div className='form-title-div popUp-payment-div'>
-                                <input type="text" placeholder={placeholder}
+                                <input type="text"  placeholder={placeholder}
                                  onMouseEnter={()=>{
                                     setInfoBox('Select how would you like to pay')
                                     setInfoDis('none')

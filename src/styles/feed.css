@@ -7,6 +7,67 @@
     background-image: linear-gradient( 171.8deg,  rgba(5,111,146,1) 13.5%, rgba(6,57,84,1) 78.6% );
 }
 
+@media(width<=414px){
+    .feed-main-div{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto !important;
+       
+    }
+    .offer-desc-page{
+        width: 350px !important;
+        height: 550px !important;
+        position: relative !important;
+        margin-left: -50px;
+    }
+    .offer-page{
+        height: 100% !important;
+    }
+    .description-container{
+        height: 220px;
+       
+    }
+    .text-container{
+        height: 86% !important;
+        overflow-x: hidden;
+    }
+    .offers-main-div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .offers-list{
+        justify-content: center;
+        align-items: center;
+        height: 300px !important;
+        overflow-y: auto;
+        width: 450px !important;
+        padding-top: 100px;
+    }
+    .offer-card{
+        width: 300px !important;
+       margin-left: 115px !important;
+    }
+    .pro-nav{
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .pro-icons{
+        font-size: 70px !important;
+        color: #4678d6;
+    }
+    .profile-image{
+        margin-left: -40px;
+    }
+}
+
+.offer-images-iss{
+    max-width: 90%;
+    height: auto;
+    margin-left: 30px;
+}
 
 
 .offers-main-div{
@@ -248,8 +309,7 @@
     background-color: rgb(243, 243, 243);
     margin: 10px;
     border-radius: 10px;
-    height: 90vh !important;
-    /* position: fixed; */
+    height: 90vh;
 }
 
 .des-span{
@@ -356,8 +416,11 @@
     padding: 3px;
     border-radius: 3px;
     box-shadow: 1px 1px 2px;
-
+    color: #ffffff;
 }
+ .info-span{
+    color: #b9f3ec;
+ }
 
 .pmnt-span{
     background-color: rgb(95, 141, 136);
@@ -377,7 +440,7 @@
 
 .app-text{
     font-size: 8px;
-    color: rgb(206, 206, 206);
+    color: rgb(34, 33, 33);
 }
 
 .employer-span{

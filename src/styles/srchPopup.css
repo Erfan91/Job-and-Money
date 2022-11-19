@@ -23,8 +23,24 @@
     100%{background-position: right;}
 }
 
-.srch-span{
-    /* margin-top: 10px; */
+@media(width<=414px){
+    .srch-footer{
+        width: 100% !important;
+        margin-left: -24%;
+    }
+    .srch-container-child2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .selector{
+        margin: 2px !important;
+    }
+    .srch-frwd-icon{
+        margin-top: 40px !important;
+        margin-left: -10px !important;
+    }
 }
 
 .srch-footer{

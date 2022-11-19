@@ -56,6 +56,7 @@ const Feed = () => {
   const [searchCity, setSearchCity] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [searchBorder, setSearchBorder] = useState('');
+  const [date1, setDate1] = useState('')
   // Animation States
   const [transit, setTransit] = useState({})
   const [initial, setInitial] = useState({y:-2})
@@ -172,7 +173,7 @@ const Feed = () => {
         <div className="offers-main-div">
           <section className='offers-list'>
             {
-              offers.map(offer => {
+              offers.map((offer,index) => {
                 // console.log(offer, "SAME THING")
                 return (
                   <div className='offer-card' onClick={() => {
@@ -189,6 +190,7 @@ const Feed = () => {
                     setPDate(offer.createdAt)
                     setImages(offer.images)
                     setOfferId(offer._id)
+                    setDate1(offer.date)
                   }}>
                     <div className='card-title'>
                       <span className='title-span'>{offer.title}</span>
@@ -253,7 +255,7 @@ const Feed = () => {
                     </div>
                     <div className="app-messages">
                       <p className='app-text'>This offer requires skills as you have and its nearby </p>
-                      <p className='app-text'>posted on {moment(postDate).format('MMM Do, h:mm a' )} by <span className='employer-span'>{offer.posterID.name + " " + offer.posterID.surName}</span> </p>
+                      <p className='app-text'>posted on {moment(offer.createdAt).format('MMM Do, h:mm a' )} by <span className='employer-span'>{offer.posterID.name + " " + offer.posterID.surName}</span> </p>
                     </div>
                   </div>
                 )
@@ -267,15 +269,15 @@ const Feed = () => {
                   <h4 className='title-h4'>{title}</h4>
                   <div className='info-container'>
                     <AiOutlineFieldTime className='date-icon info-icons' />
-                    <span className='info-span dte-span'>Date: Needed before  {date}</span>
+                    <span className='info-span dte-span'><strong style={{color: "black"}}>Date:</strong> {moment(date1).format("MMM Do")} at {date}</span>
                   </div>
                   <div className="info-container">
                     <MdPayments className='pay-icon info-icons' />
-                    <span className='info-span pmnt-span'>{payment}: {amount} Euros</span>
+                    <span className='info-span pmnt-span'><strong style={{color: "black"}}>{payment}:</strong> {amount} Euros</span>
                   </div>
                   <div className="info-container">
                     <MdLocationOn className='location2-icon info-icons' />
-                    <span className='info-span adrs-span'>Address: {address}</span>
+                    <span className='info-span adrs-span'><strong style={{color: "black"}}>Address:</strong> {address}</span>
                   </div>
                   <div className='description-container'>
                     <div className='desp-div'>
@@ -287,7 +289,7 @@ const Feed = () => {
                       {
                         images.map(img => {
                           return (
-                            <img src={img} alt="" className='offer-images-iss' width="450px" height="250px" style={{ marginLeft: "20px" }} />
+                            <img src={img} alt="" className='offer-images-iss' />
                           )
                         })
                       }
