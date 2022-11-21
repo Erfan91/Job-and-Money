@@ -294,3 +294,30 @@
     border: 0.5px solid black;
 }
 
+.pss-check-span{
+    color: #43416f;
+   margin: 2px;
+}
+
+.upper-check-span{
+    color: #43416f;
+    padding: 5px;
+}
+
+.number-check-span{
+    color: #43416f;
+    padding: 5px;
+}
+
+.symbol-check-span{
+    color: #43416f;
+    padding: 5px;
+}
+
+.icon-check{
+    color: aquamarine;
+}
+
+.icon-red{
+    color: red;
+}

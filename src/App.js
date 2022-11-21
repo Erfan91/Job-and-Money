@@ -97,7 +97,7 @@ useEffect(() => {
                         setNtfnDisplay('flex')
                         setMsgDis('none')
                     }}/>}
-                    <BiMessage className='pro-icons' onClick={()=>{
+                    <BiMessage className='pro-icons biMsg' onClick={()=>{
                         if(msgDisplay == "none"){
                             setMsgDis("flex")
                         }else{

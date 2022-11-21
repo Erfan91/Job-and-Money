@@ -10,81 +10,88 @@ import Messages from './Messages';
 import { OfferContext } from '../App';
 import { useContext } from 'react';
 const EmployeeProfile = () => {
-    const Navigate = useNavigate()
-    const [info, setInfo] = useState([])
-    const [msgDisplay, setMsgDisplay] = useState('none')
-    const id = JSON.stringify(localStorage.getItem('_id'))
-    const ids = JSON.parse(id)
-    const {setDisplayN} = useContext(OfferContext)
-    
-    useEffect(() => {
-        fetch(`http://localhost:3001/user/${ids}`)
-          .then(result => result.json())
-          .then(json => {
-            console.log(json)
-            setInfo([json])
-          })
-          setDisplayN('flex')
-      }, [])
+  const Navigate = useNavigate()
+  const [info, setInfo] = useState([])
+  const [msgDisplay, setMsgDisplay] = useState('none')
+  const id = JSON.stringify(localStorage.getItem('_id'))
+  const ids = JSON.parse(id)
+  const { setDisplayN } = useContext(OfferContext)
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/user/${ids}`)
+      .then(result => result.json())
+      .then(json => {
+        console.log(json)
+        setInfo([json])
+      })
+    setDisplayN('flex')
+  }, [])
 
   return (
     <div className='empe-profile-main-div'>
-        <div className='empe-content-div'>
-          <Messages display={msgDisplay}/>
-            <div className="empe-offers content-div empe-cv">
-              <div>
-                <FaRegHandshake className="deal-icon cv-icon"/>
-                <span>My offers</span>
-              </div>
+      <div className='empe-content-div'>
+        <Messages display={msgDisplay} />
+        <div className='resp-div-1'>
+          <div className="empe-offers content-div empe-cv">
+            <div>
+              <FaRegHandshake className="deal-icon cv-icon" />
+              <span>My offers</span>
             </div>
-            <div className="empe-cv content-div">
-              <div>
-                <BsFilePerson className='cv-icon' onClick={()=>{
-                  Navigate(`/cv/${ids}`)
-                }}/>
-                <span>My Cv</span>
-              </div>
+          </div>
+          <div className="empe-cv cc-v content-div">
+            <div>
+              <BsFilePerson className='cv-icon' onClick={() => {
+                Navigate(`/cv/${ids}`)
+              }} />
+              <span>My Cv</span>
             </div>
-            <div className="personal-info content-div empe-cv">
-              {
-                info.map(user=>{
-                  return(
-                    <div className='info-div-child'>
-                      <img src={user.image} className="empe-pro-img"/>
-                      <span className='empe-name-span'>{user.name} {user.surName}</span>
-                      <span className='username-span'>@{user.userName}</span>
-                    </div>  
-                  )
-                })
-              }
-            </div>
-            <div className="information-documents content-div empe-cv">
-              <div>
-                <HiOutlineDocumentDuplicate className='doc-icon cv-icon' onClick={()=>{
-                  Navigate('/docs')
-                }}/>
-                <span>My Documents</span>
-              </div>
-            </div>
-            <div className="rating-comments content-div empe-cv">
-              <div>
-                <MdOutlineAutoGraph className='rating-icon cv-icon'/>
-                <span>Reviews</span>
-              </div>
-            </div>
-        <div className='glass-div '>
+          </div>
+          <div className="personal-info content-div empe-cv">
+            {
+              info.map(user => {
+                return (
+                  <div className='info-div-child'>
+                    <img src={user.image} className="empe-pro-img" />
+                    <span className='empe-name-span'>{user.name} {user.surName}</span>
+                    <span className='username-span'>@{user.userName}</span>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
-        <div className='glass-div glass-2 '>
+        <div className="resp-div-1">
+          <div className="information-documents content-div empe-cv">
+            <div>
+              <HiOutlineDocumentDuplicate className='doc-icon cv-icon' onClick={() => {
+                Navigate('/docs')
+              }} />
+              <span>My Documents</span>
+            </div>
+          </div>
+          <div className="rating-comments content-div empe-cv">
+            <div>
+              <MdOutlineAutoGraph className='rating-icon cv-icon' />
+              <span>Reviews</span>
+            </div>
+          </div>
         </div>
-        <div className='glass-div glass-3'>
+        <div className="glass-container">
+          <div className='glass-div '>
+          </div>
+          <div className='glass-div glass-2 '>
+          </div>
+          <div className='glass-div glass-3'>
+          </div>
+          <div className='glass-div glass-4 '>
+          </div>
+          <div className="glass-div glass-5"></div>
+          <div className="glass-div glass-6 "></div>
         </div>
-        <div className='glass-div glass-4 '>
-        </div>
-        <div className="glass-div glass-5"></div>
-        <div className="glass-div glass-6 "></div>
 
-        </div>
-        
+
+      </div>
+
     </div>
   )
 }

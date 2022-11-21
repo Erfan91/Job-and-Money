@@ -20,8 +20,18 @@ const SignUp = () => {
   const [userName, setUserName] = useState('')
   const [userNameErr, setNameErr] = useState('')
   const [emailErr, setEmailErr] = useState('')
-  const [pssErr, setPssErr] = useState("Your password doesn't match")
+  const [pssErr, setPssErr] = useState("")
   const {setDisplayN} = useContext(OfferContext)
+  const [check, setCheck] = useState(Boolean)
+  const [pssClass, setPssClass] = useState('pss-check-span')
+  const [upperClass, setUpperClass] = useState('upper-check-span');
+  const [numClass, setNumClass] = useState('number-check-span');
+  const [symClass, setSymClass] = useState('symbol-check-span')
+  const [color1, setColor1] = useState('');
+  const [color2, setColor2] = useState('');
+  const [color3, setColor3] = useState('');
+  const [color4, setColor4] = useState('');
+  const [color5, setColor5] = useState('');
   const sender = (e) => {
     e.preventDefault()
     fetch('http://localhost:3001/user', {
@@ -104,6 +114,47 @@ const SignUp = () => {
     setDisplay('none')
   }
 
+  const checkUpper = (str)=>{
+    const reg =  /[A-Z]/.test(str)
+    if(!reg){
+     setColor2('red')
+      setCheck(false)
+    }else{
+      setColor2('aquamarine')
+      setCheck(true)
+    }
+  }
+  const checkLower = (str)=>{
+    const reg =  /[a-z]/.test(str)
+    if(!reg){
+      setColor5('red')
+      setCheck(false)
+    }else{
+      setColor5('aquamarine')
+      setCheck(true)
+    }
+  }
+  const checkSpe = (str)=>{
+    const reg =  /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+    if(!reg.test(str)){
+      setColor4('red')
+      setCheck(false)
+    }else{
+      setColor4('aquamarine')
+      setCheck(true)
+    }
+  }
+  const checkNum = (str)=>{
+    const reg = /[0-9]/
+    if(!reg.test(str)){
+      setColor3('red')
+      setCheck(false)
+    }else{
+      setColor3('aquamarine')
+      setCheck(true)
+    }
+  }
+
   const forms = (e) => {
     const target = e.target.value;
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/
@@ -182,7 +233,7 @@ const SignUp = () => {
             </div>
           </div>
           <div className=''>
-            <label className='global-label'>Enter your phone numnber*</label>
+            <label className='global-label'>Enter your phone number*</label>
             <input type="text" placeholder='0101002222' className='global-input' onChange={(e) => setPhoneNum(e.target.value)} />
           </div>
         </div>
@@ -190,38 +241,62 @@ const SignUp = () => {
           <div className="pswd-sup">
             <div className="pswd-sup">
               <label className='global-label'>Enter your Password*</label>
-              <input type="password" className='global-input' onChange={(e) => setTestCode(e.target.value)} />
+              <input type="password" className='global-input' onChange={(e) =>{
+                 setTestCode(e.target.value)
+                 if(e.target.value.length < 8){
+                  setColor1('red')
+                  setCheck(false)
+                 }else{
+                  setColor1('aquamarine')
+                  setCheck(true)
+                 }
+                 checkUpper(e.target.value)
+                 checkLower(e.target.value)
+                 checkSpe(e.target.value)
+                 checkNum(e.target.value)
+                 }} />
             </div>
             <div className="pswd-sup">
               <label className='global-label'>Confirm your Password*</label>
               <input type="password" className='global-input' onChange={(e) => {
                 setCode(e.target.value)
-                setPssErr('')
+
+                if(e.target.value !== testCode){
+                  setPssErr("Password didn't match")
+                }else if(e.target.value == ""){
+                  setPssErr('')
+                }else if(e.target.value == testCode){
+                  setPssErr('')
+                }
               }} />
-              {code !== testCode ? <span className='err-span' >{pssErr}</span> : <span className='err-span'>✔</span>}
+              <span>{pssErr}</span>
             </div>
           </div>
           <div className='pswd-info'>
             <div>
-              <BsCheckCircleFill className='check-icon' />
-              <span>More than 8 characters</span>
+              <BsCheckCircleFill className='check-icon check-pss' style={{color: color1}}/>
+              <span className={pssClass}>More than 8 characters</span>
             </div>
             <div>
-              <BsCheckCircleFill className='check-icon' />
-              <span>Must containe Uppercase</span>
+              <BsCheckCircleFill className='check-icon' style={{color: color2}}/>
+              <span className={upperClass}>Must containe Uppercase</span>
             </div>
             <div>
-              <BsCheckCircleFill className='check-icon' />
-              <span>Must containe a Number</span>
+              <BsCheckCircleFill className='check-icon' style={{color: color5}}/>
+              <span className={upperClass}>Must containe Lowercase</span>
             </div>
             <div>
-              <BsCheckCircleFill className='check-icon' />
-              <span>Must containe a Symbol</span>
+              <BsCheckCircleFill className='check-icon' style={{color: color3}}/>
+              <span className={numClass}>Must containe a Number</span>
+            </div>
+            <div>
+              <BsCheckCircleFill className='check-icon' style={{color: color4}}/>
+              <span className={symClass}>Must containe a Symbol</span>
             </div>
           </div>
         </div>
 
-        <button type='submit' className='sup-submit-button' onClick={sender}>Submit</button>
+       {check? <button type='submit' className='sup-submit-button' onClick={sender}>Submit</button>:<button type='submit' disabled className='sup-submit-button' onClick={sender}>Submit</button>}
       </div>
     </div>
   )
