@@ -13,6 +13,7 @@ const Notification = (props) => {
   const [isNotif, setIsNotif] = useState(Boolean)
   const [ntfnIndex, setIndex] = useState(null)
   const [display, setDisplay] = useState('none')
+  const [state, setState] = useState(Boolean)
 
   useEffect(() => {
     fetch(`http://localhost:3001/ntfn/${ids}`)
@@ -107,7 +108,7 @@ const getIndex = (content) =>{
   refresher()
 }
   return (
-    <div className='ntfn-main-div' style={{display: display}}>
+    <div className='ntfn-main-div' style={{display: display, position: props.position}}>
       <div className='ntfn-head-div'>
         <GoPrimitiveDot className='dot-icon' />
         <span>Notifications</span>
@@ -121,7 +122,7 @@ const getIndex = (content) =>{
               return (
                 <>
                   {arr[i].seen ?
-                   <Link className='link' to={"/ntfn-offer/"+  arr[i].subjectId._id }> 
+                   <Link className='link' to={"/ntfn-offer/"+  arr[i].subjectId._id + "/"+content.message[0]}> 
                    <div className='ntfn-content seen-ntfn-content' onClick={()=>{
                       setIndex(ntfnIndex => ntfnIndex === index ? null : index)
                       refresher()

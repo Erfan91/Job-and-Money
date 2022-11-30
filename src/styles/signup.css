@@ -164,7 +164,7 @@
     cursor: pointer;
     position: absolute;
     left: 49%;
-    top: 11.5%;
+    top: 15%;
 }
 
 .upload-btn {
@@ -266,6 +266,7 @@
     background-position: right;
     border: 0.5px solid aquamarine;
     border-radius: 5px;
+    margin-top: 3px;
 }
 
 .sup-submit-button:hover {

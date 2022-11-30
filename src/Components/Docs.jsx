@@ -91,24 +91,6 @@ const Docs = () => {
 
   return (
     <div className='docs-main-div'>
-      {info.map(user => {
-        console.log(user, "USERUSER")
-        return (
-          <div>
-            <nav className='pro-nav'>
-              <div className='nav-child1'>
-                <span className='pro-nav-span'>Job&Money</span>
-              </div>
-              <div className='nav-child2'>
-                <BiNotification className='pro-icons' />
-                <BiMessage className='pro-icons' />
-                <img src={user.image} alt="profile image" className='profile-image' />
-              </div>
-            </nav>
-          </div>
-        )
-      })
-      }
       <div className='docs-main-child'>
         <h3 className='docs-h3'>Bank Account Info</h3>
         <section className='bank-acc-section docs-section'>

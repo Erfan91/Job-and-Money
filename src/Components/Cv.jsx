@@ -7,9 +7,10 @@ import { BiMessageSquareError } from 'react-icons/bi';
 const Cv = (props) => {
   const Navigate = useNavigate()
   const [cvInfo, setCvInfo] = useState([]);
-  const [errMsg, setErrMsg] = useState('')
-  const [display, setDisplay] = useState('')
-  const [msgDisplay, setMsgDis] = useState('')
+  const [errMsg, setErrMsg] = useState('');
+  const [display, setDisplay] = useState('');
+  const [msgDisplay, setMsgDis] = useState('');
+  const [backMsg, setBackMsg] = useState('');
   const id = JSON.stringify(localStorage.getItem('_id'))
   const ids = JSON.parse(id)
   const params = useParams() 
@@ -22,6 +23,7 @@ const Cv = (props) => {
          setErrMsg(json.message)
           setDisplay('none')
           setMsgDis('flex')
+          setBackMsg(<Link to={`/pro-nvu/${params.id}`}>Back</Link>)
         }else{
           
           console.log(json)
@@ -34,9 +36,17 @@ const Cv = (props) => {
       fetch(`http://localhost:3001/cv/${ids}`)
       .then(result=>result.json())
       .then(json=>{
-        console.log(json.result)
-        setCvInfo([json.result])
-        setMsgDis('none')
+        if(!json.cv){
+          setErrMsg("you don't have a cv yet!")
+           setDisplay('none')
+           setMsgDis('flex')
+           setBackMsg(<Link to={`/cvForm`}>Create a Cv</Link>)
+         }else{
+           console.log(json)
+           setCvInfo([json.result])
+           setDisplay('flex')
+           setMsgDis('none')
+         }
       })
     }
   },[])
@@ -77,10 +87,10 @@ const Cv = (props) => {
               cvInfo.map(content=>{
                 return(
                   <div >
-                    <img src={content.ownerId?.image} alt="image not found" className='user-cv-img' />
+                    <img src={content?.ownerId?.image} alt="image not found" className='user-cv-img' />
                     <div className='cv-personal-info' >
                       <div className='cv-name-title-container'>
-                        <h2 test>{content.ownerId?.name} {content.ownerId?.surName}</h2>
+                        <h2 test>{content?.ownerId?.name} {content?.ownerId?.surName}</h2>
                         <p><i>Director</i></p>
                       </div>
                       <div>
@@ -94,11 +104,11 @@ const Cv = (props) => {
                       </div>
                       <div className='cv-number-div cv-content-child'>
                         <h5>PHONE NUMBER</h5>
-                        <p>{content.ownerId?.phoneNumber}</p>
+                        <p>{content?.ownerId?.phoneNumber}</p>
                       </div>
                       <div className='cv-email-div cv-content-child'>
                         <h5>EMAIL</h5>
-                        <p>{content.ownerId?.email}</p>
+                        <p>{content?.ownerId?.email}</p>
                       </div>
                       <div className='cv-website-div cv-content-child'>
                         <h5>WEBSITE</h5>
@@ -125,7 +135,7 @@ const Cv = (props) => {
             <div className="cv-err-msg" style={{display:msgDisplay}}>
               <BiMessageSquareError className='cv-err-icon'/>
               <span>{errMsg}</span>
-              <Link to={`/pro-nvu/${params.id}`}>Back</Link>
+              {backMsg}
             </div>
 
         <section className='cv-edu-section' style={{display: display}}>
@@ -135,7 +145,7 @@ const Cv = (props) => {
               return(
                 <div className='exp-content-container edu-content-container'>
                  {
-                  content.education?.map(exp=>{
+                  content?.education?.map(exp=>{
                     return(
                       <>
                       <div className='exp-head-content'>
@@ -154,7 +164,7 @@ const Cv = (props) => {
                   <div>
                     <p><small>Soft Skills</small></p>
                     {
-                  content.softSkills?.map(skill=>{
+                  content?.softSkills?.map(skill=>{
                     return(
                       <ul>
                         <li>{skill}</li>
@@ -166,7 +176,7 @@ const Cv = (props) => {
                   <div>
                     <p><small>Hard Skills</small></p>
                      {
-                  content.hardSkills?.map(skill=>{
+                  content?.hardSkills?.map(skill=>{
                     return(
                       <ul>
                         <li>{skill}</li>

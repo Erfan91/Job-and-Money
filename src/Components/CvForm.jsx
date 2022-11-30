@@ -212,18 +212,6 @@ const CvForm = () => {
     }
     return (
         <div className='cv-form-main-div'>
-            <nav className='pro-nav'>
-                <div className='nav-child1'>
-                    <span className='pro-nav-span'>Job&Money</span>
-                </div>
-                <div className='nav-child2'>
-                    <BiNotification className='pro-icons' />
-                    <BiMessage className='pro-icons' />
-                    <button className='pro-nav-button'>Job Mode</button>
-                    {/* <img src={} alt="profile image"/> */}
-                    <div className='pro-pic-div'></div>
-                </div>
-            </nav>
             <form>
                 <div className='cv-form-container'>
                     <div className='cv-personal-info cvF-container-child' style={{ display: displayB }}>

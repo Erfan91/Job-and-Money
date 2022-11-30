@@ -12,7 +12,7 @@ import { MdOutlineMailOutline } from 'react-icons/md'
 import { BsPlus } from 'react-icons/bs'
 import { BsFillPersonCheckFill, BsFillPersonXFill } from 'react-icons/bs'
 import moment from 'moment';
-
+import { MdOutlineCheck, MdClose } from 'react-icons/md'
 const ProfileInView = (props) => {
    const id = JSON.stringify(localStorage.getItem('_id'))
    const ids = JSON.parse(id)
@@ -22,6 +22,7 @@ const ProfileInView = (props) => {
    const [candids, setCandids] = useState([])
    const [offerId, setOfferId] = useState('')
    const [_id, set_Id] = useState('')
+   const [posterId, setPosterId] = useState('')
    useEffect(()=>{
     fetch(`http://localhost:3001/offer/ntfn/${params.id}`)
     .then(result=>result.json())
@@ -31,6 +32,7 @@ const ProfileInView = (props) => {
       setImages(json.images)
       setOfferId(json._id)
       setCandids(candids =>(candids = json.candidates))
+      setPosterId(json.posterID)
     })
    },[])
 

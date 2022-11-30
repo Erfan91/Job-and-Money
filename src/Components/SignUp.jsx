@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { BsCheckCircleFill, BsQuestionCircleFill } from 'react-icons/bs'
 import { MdError } from "react-icons/md";
@@ -8,7 +9,7 @@ import { OfferContext } from '../App';
 import { useContext } from 'react';
 import { useEffect } from 'react';
 const SignUp = () => {
-
+const Navigate = useNavigate()
   let [isEmployer, setEmployer] = useState('')
   const [name, setName] = useState('')
   const [surName, setSurName] = useState('')
@@ -56,6 +57,8 @@ const SignUp = () => {
         }
         if (!json.issue) {
           setEmailErr('Email Already exists')
+        }else{
+          Navigate('/')
         }
 
       })
@@ -138,10 +141,10 @@ const SignUp = () => {
     const reg =  /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
     if(!reg.test(str)){
       setColor4('red')
-      setCheck(false)
+      setCheck(check=>check = false)
     }else{
       setColor4('aquamarine')
-      setCheck(true)
+      setCheck(check=>check = true)
     }
   }
   const checkNum = (str)=>{
@@ -160,11 +163,14 @@ const SignUp = () => {
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/
     if (reg.test(target) === false) {
       setEmailErr(<MdError className='mdError-icon'/>)
+      setCheck(false)
     } else {
       setEmailErr(<GrStatusGood className='mdError-icon2'/>)
+      setCheck(true)
     }
     if(target === ""){
       setEmailErr('')
+    
     }
     setEmail(target)
   }

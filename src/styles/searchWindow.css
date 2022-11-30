@@ -99,3 +99,46 @@
 .result-rating{
     font-size: 22px;
 }
+
+.srch-win-opt-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+}
+
+.srch-win-opt-details div{
+    margin: 5px;
+    display: flex;
+}
+
+.email-opt-icon{
+    background-color: #08AEEA;
+    background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+    padding: 3px 5px;
+    border-radius: 5px;
+    color:white;
+    box-shadow: inset 0 0 3px white;
+}
+
+.opt-email{
+    font-size: 25px;
+    margin-top: 1px;
+    color: rgb(228, 59, 59);
+}
+
+.opt-phone{
+    font-size: 25px;
+    margin: 1px;
+    color: #2AF598;
+}
+
+.number-opt-icon{
+   background-color: #08AEEA;
+    background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+    padding: 3px 5px;
+    border-radius: 5px;
+    color:white;
+    box-shadow: inset 0 0 3px white;
+
+}

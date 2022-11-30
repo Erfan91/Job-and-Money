@@ -27,6 +27,27 @@ const EmployeeProfile = () => {
     setDisplayN('flex')
   }, [])
 
+  const sendProfession = (e)=>{
+    e.preventDefault()
+    fetch('http://localhost:3001/user/profession',{
+      method: 'PUT',
+      headers: new Headers({"content-type":"application/json"}),
+      body: JSON.stringify({
+        id: ids,
+        profession: profession
+      })
+    }).then(result=>result.json())
+    .then(json=>{
+      console.log(json)
+    })
+    fetch(`http://localhost:3001/user/${ids}`)
+      .then(result => result.json())
+      .then(json => {
+        console.log(json)
+        setInfo([json])
+      })
+  }
+  const [profession, setProfession] = useState('')
   return (
     <div className='empe-profile-main-div'>
       <div className='empe-content-div'>
@@ -54,6 +75,19 @@ const EmployeeProfile = () => {
                     <img src={user.image} className="empe-pro-img" />
                     <span className='empe-name-span'>{user.name} {user.surName}</span>
                     <span className='username-span'>@{user.userName}</span>
+                    {!user?.profession?
+                    <div className='profession-div'>
+                      <input className='profession-input' placeholder='carpenter' onChange={(e)=>{
+                        setProfession(e.target.value)
+                      }}/>
+                     {profession !==""? <button className='profession-button' onClick={sendProfession}>submit</button>: <span className='profession-sm-input'>Enter your profession</span>}
+                    </div>
+                    :
+                      <span className='profession-span'>i am {user?.profession}</span>
+                    }
+                    {/* {
+                      user?.aboutMe
+                    } */}
                   </div>
                 )
               })

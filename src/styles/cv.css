@@ -24,7 +24,7 @@
     padding: 0 13px;
     justify-content: flex-end;
     background-color: rgba(251, 251, 251, 0.449);
-    box-shadow: 0 0 10px black;
+    /* box-shadow: 0 0 10px black; */
     border-right: 1px dashed aquamarine;
     border-left: 1px dashed aquamarine;
 
@@ -86,7 +86,7 @@
     align-items: center;
     text-align: center;
     justify-content: flex-end;
-    box-shadow: 0 0 10px black;
+    /* box-shadow: 0 0 10px black; */
     border-right: 1px dashed aquamarine;
     border-left: 1px dashed aquamarine;
 }
@@ -132,7 +132,7 @@
     height: 110px;
     border-radius: 55px;
     position: absolute;
-    top: 0%;
+    top: 8.3%;
     left: 46.5%;
     border: 1px dashed aquamarine;
 }
@@ -147,7 +147,7 @@
     border-top-left-radius: 50px;
     margin-top: 20px;
     padding-top: 90px;
-    box-shadow: 0 0 10px black;
+    /* box-shadow: 0 0 10px black; */
     border: 1px dashed aquamarine;
     border-bottom: none;
 }

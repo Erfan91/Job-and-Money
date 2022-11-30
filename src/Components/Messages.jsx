@@ -79,7 +79,7 @@ const Messages = (props) => {
     }, [])
 
     return (
-        <div className='messages-main-div ntfn-main-div' style={{ display: props.display, position:'fixed'}}>
+        <div className='messages-main-div ntfn-main-div' style={{ display: props.display, position:props.position}}>
             <div className='msg-main-child'>
                 {
                     messages.map(message => {

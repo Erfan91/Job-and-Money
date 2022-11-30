@@ -16,7 +16,8 @@ import { OfferContext } from '../App';
 import { useContext } from 'react';
 import {motion} from 'framer-motion'
 import SearchWindow from './SearchWindow';
-const Feed = () => {
+
+const Feed = (props) => {
   const Navigate = useNavigate()
   const [offers, setOffers] = useState([]);
   const [title, setTitle] = useState('');
@@ -61,8 +62,11 @@ const Feed = () => {
   const [transit, setTransit] = useState({})
   const [initial, setInitial] = useState({y:-2})
   const [animate, setAnimation] = useState({y:0})
+  const [displayS, setDisplayS] = useState('none');
 
-  const [displayS, setDisplayS] = useState('none')
+  const {openBool} = useContext(OfferContext)
+  const [styles, setStyles] = useState({})
+
   useEffect(() => {
     fetch('http://localhost:3001/offer')
       .then(result => result.json())
@@ -70,7 +74,6 @@ const Feed = () => {
         console.log(json, 'MY JSON')
         setOffers(json)
         setTitle(json[0].title)
-        setPayment(json[0].paymentMethod)
         setDate(moment(json[0].startingFrom).format("MMM Do YY, h:mm:ss a"))
         setAddress(json[0].address + ", " + json[0].city + " (" + json[0].postalCode + ")")
         setDescription(json[0].description)
@@ -100,6 +103,7 @@ const Feed = () => {
         setInfo([json])
       })
       setDisplayN('flex')
+
   }, [])
   // onMouseMove={()=>{ console.log(window.pageYOffset,"SCROLL HEIGHT///////")}}
   // console.log(window.innerHeight,"INNER HEIGHT")
@@ -263,7 +267,7 @@ const Feed = () => {
             }
           </section>
           <section className='offers-detail' ref={bref}>
-            <div className='offer-desc-page' style={{ position: position, width: width }}>
+            <div className='offer-desc-page' style={{position: props.position1, width: props.width}}>
               <div className='offer-page'>
                 <div className='offer-info'>
                   <h4 className='title-h4'>{title}</h4>

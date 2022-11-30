@@ -45,11 +45,14 @@ function App() {
   const [isNotif, setIsNotif] = useState(Boolean)
   const [info, setInfo] = useState([])
   const [display, setDisplay] = useState('flex')
-
+  const [position1, setPosition] = useState('')
+  const [position2, setPosition2] = useState('')
+  const [width1, setWidth1] = useState('')
   const displayContext = {
     display: display,
     setDisplayN: setDisplay,
-    setNDisplay: setOpenBool
+    setNDisplay: setOpenBool,
+    openBool: openBool
   }
   const isNotification = (notif) =>{
     return setIsNotif(notif)
@@ -83,16 +86,25 @@ useEffect(() => {
                     {isNotif ? <BiNotification className='pro-icons notif-red-icon' onClick={()=>{
                        if(!openBool){
                         setOpenBool(openBool = true)
+                        setPosition('relative')
                        }else{
                         setOpenBool(openBool = false)
+                        setPosition('fixed')
                        }
+
                         setNtfnDisplay('flex')
                         setMsgDis('none')
                     }}/>:<BiNotification className='pro-icons' onClick={()=>{
                         if(!openBool){
                             setOpenBool(openBool = true)
+                            setPosition('unset')
+                            setWidth1('637px')
+                            setPosition2('fixed')
                            }else{
                             setOpenBool(openBool = false)
+                            setPosition('fixed')
+                            setWidth1('')
+                            setPosition2('')
                            }
                         setNtfnDisplay('flex')
                         setMsgDis('none')
@@ -100,37 +112,47 @@ useEffect(() => {
                     <BiMessage className='pro-icons biMsg' onClick={()=>{
                         if(msgDisplay == "none"){
                             setMsgDis("flex")
+                            setPosition('unset')
+                            setWidth1('637px')
+                            setPosition2('fixed')
                         }else{
                             setMsgDis('none')
+                            setPosition('fixed')
+                            setWidth1('')
+                            setPosition2('')
                         }
                         setOpenBool(openBool = false)
                     }}/>
                     {
                       info.map(user=>{
                         return(
-                          <Link to={"/empe-profile"}>
+                        <>
+                         {user.employer? <Link to={"/profile"}>
                           <img src={user.image} alt="profile image" className='profile-image'/>
-                          </Link> 
+                          </Link>: <Link to={"/empe-profile"}>
+                          <img src={user.image} alt="profile image" className='profile-image'/>
+                          </Link>}
+                          </>
                         )
                       })
 
                     }
                 </div>
             </nav>
-            <Notification isTrue={isNotification} display={openBool} />
-            <Messages display={msgDisplay}/>  
+            <Notification isTrue={isNotification} position={position2} display={openBool} />
+            <Messages display={msgDisplay} position={position2}/>  
     <OfferContext.Provider value={displayContext}>
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/profile' element={<Profile/>}/>
-        <Route path='/feed' element={<Feed/>}/>
+        <Route path='/feed' element={<Feed position1={position1} width={width1}/>}/>
         <Route path='/empe-profile' element={<EmployeeProfile/>}/>
         <Route path='/cv/:id' element={<Cv/>}/>
         <Route path='/cvForm' element={<CvForm/>}/>
         <Route path='/docs' element={<Docs/>}/>
         <Route path='/emp-offers' element={<Offers/>}/> 
-        <Route path='/ntfn-offer/:id' element={<NtfnOffer/>}/>
+        <Route path='/ntfn-offer/:id/:state' element={<NtfnOffer/>}/>
         <Route path='/pro-nvu/:id' element={<ProfileInView/>}/>
       </Routes>
     </OfferContext.Provider>
