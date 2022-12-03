@@ -133,7 +133,7 @@ const Messages = (props) => {
                                         content.content.map(msg => {
                                             return <div className='msgr-text-div'>
                                                 <img src={content.sender.image} className="msgr-pro-sm-img" alt="not found" />
-                                                <li>{msg}</li>
+                                                <li>{msg} <span style={{fontSize: "6px", color:"blue", fontWeight: "bold"}}>{msg?.createdAt}</span></li>
                                                 {/* <p>{moment(content.updatedAt).format("h:mm a")}</p> */}
                                             </div>
                                         })
@@ -145,9 +145,8 @@ const Messages = (props) => {
                                                 <>
                                                     {
                                                         msg.content.map(message => {
-
                                                             return <div className='msgr-text-div sent-txt-div'>
-                                                                <li className='sent-li'>{message}</li>
+                                                                <li className='sent-li'>{message} <span style={{fontSize: "6px", color:"blue", fontWeight: "bold"}}>{message?.createdAt}</span></li>
                                                                 <img src={msg.sender.image} className="msgr-pro-sm-img" alt="not found" />
                                                                 {/* <p>{moment(msg.updatedAt).format("h:mm a")}</p> */}
                                                             </div>
