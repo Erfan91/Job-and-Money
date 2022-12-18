@@ -82,9 +82,10 @@ const Docs = () => {
     }).then(result=>result.json())
     .then(json=>{
       if(json){
-        console.log(json)
-      }else{
         setMessage(json.message)
+      }else{
+        console.log(json)
+        setMessage('')
       }
     })
   }

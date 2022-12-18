@@ -47,6 +47,7 @@
 .add-card-div{
     background-color: rgba(0, 255, 170, 0.422);
     border: 1px solid aquamarine;
+    cursor: pointer;
 }
 
 .err-icon{
