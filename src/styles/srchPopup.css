@@ -45,10 +45,10 @@
 
 .srch-footer{
     width: 45%;
-    height: 20vh;
+    height: 12vh;
     background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
     position: fixed;
-    top: 82%;
+    top: 87.9%;
     left: 24%;
     padding: 0;
     border-radius: 100px;
@@ -62,7 +62,7 @@
    justify-content: center;
    flex-direction:column ;
    margin: auto;
-   margin-top: 20px;
+   margin-top: 7px;
    text-align: center;
 }
 
@@ -101,8 +101,8 @@
 
 .srch-close-icon{
     /* background-color: rgba(253, 95, 95, 0.379); */
-    width: 103px;
-    height: 103px;
+    width: 93px;
+    height: 93px;
     border-radius: 55px;
     opacity: 0.3;
     color: red;
@@ -116,12 +116,12 @@
     align-items: center;
     /* background: rgba(127, 255, 212, 0.378); */
     border-radius: 55px;
-    width: 103px;
-    height: 103px;
+    width: 93px;
+    height: 89px;
     opacity: 0.3;
     color: rgb(32, 255, 143);
     cursor: pointer;
-    margin-top: 18px;
+    margin-top: 1px;
     margin-right: 10px;
 }
 

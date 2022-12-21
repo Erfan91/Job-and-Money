@@ -52,7 +52,8 @@ function App() {
     display: display,
     setDisplayN: setDisplay,
     setNDisplay: setOpenBool,
-    openBool: openBool
+    openBool: openBool,
+    info1: setInfo
   }
   const isNotification = (notif) =>{
     return setIsNotif(notif)

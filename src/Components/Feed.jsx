@@ -16,7 +16,9 @@ import { OfferContext } from '../App';
 import { useContext } from 'react';
 import {motion} from 'framer-motion'
 import SearchWindow from './SearchWindow';
-
+import { RiSearchEyeLine } from 'react-icons/ri';
+import { FaSearchengin } from 'react-icons/fa';
+import { BiSearchAlt } from 'react-icons/bi';
 const Feed = (props) => {
   const Navigate = useNavigate()
   const [offers, setOffers] = useState([]);
@@ -37,7 +39,7 @@ const Feed = (props) => {
   const [updateMsg, setUpdateMsg] = useState('');
   const [srchMode, setSrchMode] = useState('User');
   const [placeholder1, setPlaceHolder1] = useState('username');
-  const [placeholder2, setPlaceHolder2] = useState('City')
+  const [placeholder2, setPlaceHolder2] = useState('postal code / zip code')
   const [redBgColor, setRedBg] = useState({});
   const [greenBgColor, setGreenBg] = useState('');
   const [images, setImages] = useState([]);
@@ -64,7 +66,7 @@ const Feed = (props) => {
   const [animate, setAnimation] = useState({y:0})
   const [displayS, setDisplayS] = useState('none');
 
-  const {openBool} = useContext(OfferContext)
+  const {info1} = useContext(OfferContext)
   const [styles, setStyles] = useState({})
 
   useEffect(() => {
@@ -101,6 +103,7 @@ const Feed = (props) => {
       .then(json => {
         console.log(json)
         setInfo([json])
+        info1([json])
       })
       setDisplayN('flex')
 
@@ -169,6 +172,14 @@ const Feed = (props) => {
       setSearchResult(json)
     })
     setDisplayS('flex')
+  }
+
+  const clicked = async () =>{
+    setSrchBtnD('block')
+    setHDisplay('none')
+    setDisplayS('none')
+    setSearchBorder('')
+    setSearchName('')
   }
 
   return (
@@ -342,13 +353,7 @@ const Feed = (props) => {
           <div className='close-icon-div'>
             <IoCloseOutline className='srch-close-icon' style={redBgColor} onMouseEnter={() => {
               setRedBg({ backgroundColor: 'rgba(253, 95, 95, 0.379)', opacity: '1' })
-            }} onMouseLeave={() => { setRedBg({ backgroundColor: 'transparent', opacity: '0.4' }) }} onClick={() => {
-              setSrchBtnD('block')
-              setHDisplay('none')
-              setDisplayS('none')
-              setSearchBorder('')
-              setSearchName('')
-            }} />
+            }} onMouseLeave={() => { setRedBg({ backgroundColor: 'transparent', opacity: '0.4' }) }} onClick={clicked} />
           </div>
           <div className='search-container'>
             <div className='srch-container-child1'>
@@ -369,7 +374,7 @@ const Feed = (props) => {
             </div>
           </div>
           <div className='frwd-icon-div'>
-           {srchMode == 'User'? <IoChevronForward className='srch-frwd-icon'
+           {srchMode == 'User'? <BiSearchAlt className='srch-frwd-icon'
              style={greenBgColor}
              onClick={searchUser}
              onMouseEnter={() => { setGreenBg({ backgroundColor: 'rgba(127, 255, 212, 0.378)', opacity: '1' }) }}

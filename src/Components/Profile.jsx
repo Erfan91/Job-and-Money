@@ -99,6 +99,16 @@ const Profile = (props) => {
     const [timePHolder, setTholder] = useState('');
     const [hourDis, setDisplay] = useState('hidden');
     const [isNotif, setIsNotif] = useState(Boolean)
+    const {info1} = useContext(OfferContext)
+    useEffect(() => {
+        fetch(`http://localhost:3001/user/${ids}`)
+          .then(result => result.json())
+          .then(json => {
+            console.log(json)
+            setInfo([json])
+            info1([json])
+          })
+      }, [])
 
     return (
         <div className='pro-main-div' style={bGColor}>
@@ -183,7 +193,7 @@ const Profile = (props) => {
                             setAddInfo('none')
                         }} />
                     </div>
-                            <label htmlFor="">Title</label>
+                            <label htmlFor="">Title*</label>
                             <div className='form-title-div'>
                                 <input type="text" className='popUp-input' 
                                 onMouseEnter={()=>{
@@ -229,7 +239,7 @@ const Profile = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            <label htmlFor="">Workers</label>
+                            <label htmlFor="">Workers*</label>
                             <div>
                                 <input type="text" 
                                    onMouseEnter={()=>{
@@ -252,7 +262,7 @@ const Profile = (props) => {
                                 <span>Date</span>
                                 <div className="vertical-line"></div>
                             </div>
-                            <label htmlFor="">When</label>
+                            <label htmlFor="">When*</label>
                             <div className="popUp-date-div form-title-div">
                                 <div className='info-box-div'>
                                 <input type="date" className='popUp-input'
@@ -276,7 +286,7 @@ const Profile = (props) => {
                                 </div>
                                 </div>
                                 <div className='date-div-child '>
-                                    <label htmlFor="">Estimated Time</label>
+                                    <label htmlFor="">Estimated Time*</label>
                                     <button className='pro-btn hours-btn' onClick={(e) => {
                                         e.preventDefault()
                                         setDisplay('visible')
@@ -291,7 +301,7 @@ const Profile = (props) => {
                                         <span className='hour-span' onClick={() => setTholder('7')}>7</span>
                                         <span className='hour-span' onClick={() => setTholder('8')}>8</span>
                                     </div>
-                                    <label htmlFor="">Starting from</label>
+                                    <label htmlFor="">Starting from*</label>
                                     <input type="time" onChange={(e) => {
                                         e.preventDefault()
                                         setStart(e.target.value)
