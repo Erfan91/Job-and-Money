@@ -51,7 +51,7 @@ const Profile = (props) => {
     const [infoStyle, setInfoStyle] = useState('')
     const [topPosition, setTopPosition] = useState('69.5%')
     const [bGColor, setBgColor] = useState({})
-
+    
     const background1 = {backgroundColor: "#0093E9",
     backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)"}
     const bg2 = {backgroundColor: "#85FFBD",
@@ -109,6 +109,19 @@ const Profile = (props) => {
             info1([json])
           })
       }, [])
+
+
+      const valuesA = arr =>{
+        var array = [...arr];
+        for(var i = array.length-1; i >= 0 ; i--){
+            if(array[i] == ""){
+                 array = false
+            }else{
+                 array = true
+            }
+        }
+        return array
+    }
 
     return (
         <div className='pro-main-div' style={bGColor}>
@@ -213,7 +226,7 @@ const Profile = (props) => {
                                 <div className="dropDown">
                                     <button className='pro-btn' style={{ background: bgColor }}
                                        onMouseEnter={()=>{
-                                        setInfoBox('if You need a professional select pro,!remember hiring a pro worker could cost you more')
+                                        setInfoBox('if You need a professional select pro,! hiring a pro worker could cost you more')
                                         setInfoDis('none')
                                         setInfoStyle('flex-start')
                                     }}
@@ -412,11 +425,17 @@ const Profile = (props) => {
                                         setPostalCode(e.target.value)
                                     }} />
                             </div>
-                            <button className='popUp-next-btn' onClick={(e) => {
+                           {valuesA([title, workers, date, startHour, estimatedTime, payment, amount, address, city, codePostal])? <button className='popUp-next-btn'  onClick={(e) => {
                                 e.preventDefault();
                                 setVisiblity('hidden')
                                 setVisiblityB('visible')
                             }}>Next</button>
+                            :
+                             <button className='popUp-next-btn' disabled onClick={(e) => {
+                                e.preventDefault();
+                                setVisiblity('hidden')
+                                setVisiblityB('visible')
+                            }}>Next</button>}
                         </div>
                     </form>
                 </div>

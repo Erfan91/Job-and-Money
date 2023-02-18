@@ -1,5 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MdOutlineDocumentScanner, MdOutlineAutoGraph, MdOutlineConnectWithoutContact} from "react-icons/md";
 import { SiHandshake} from "react-icons/si";
 import { MdPhone, MdEmail } from 'react-icons/md';
@@ -10,13 +11,14 @@ const SearchWindow = (props) => {
     const [contentIndex, setCIndex] = useState(null)    
     const [firstDisplay, setFirstDisplay] = useState('none')
     const [secondDisplay, setSecDisplay] = useState('none')
+
   return (
     <div className='main-search-window' style={{display: props.displayS}}>
         {
             props.data.map((content, index)=>{
                 return(
                     <div className='result-content-container'>
-                        <img src={content.image} className="search-image"/>
+                       <Link to={`/pro-nvu/${content._id}`}><img src={content.image} className="search-image"/></Link>
                         <div className='result-content-details'>
                             <span className='result-name'>{content.name} {content.surName}</span>
                             <p className='result-username'>@{content.userName}</p>

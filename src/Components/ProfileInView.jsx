@@ -30,7 +30,8 @@ const ProfileInView = (props) => {
     const [msgArray, setMsgArr] = useState([])
     const [msgBoolean, setMsgBoolean] = useState(Boolean)
     const [messageId, setMessageId] = useState('')
-  
+    const [bgColor, setBgColor] = useState('#5b86e5');
+    const [borderColor, setBorderColor] = useState('1px solid violet')
     const sendMessage  = (e) =>{
         e.preventDefault()
         fetch(`http://localhost:3001/msg`,{
@@ -56,8 +57,7 @@ const ProfileInView = (props) => {
                         info.map(user => {
                             return (
                                 <>
-                                    <div>
-
+                                    <div className='circle-bg' >
                                         <div className='img-msg-div'>
                                             <div className='addUser-div'>
                                                 <div>
@@ -70,7 +70,7 @@ const ProfileInView = (props) => {
                                                 </div>
                                             </div>
                                             <div>
-                                                <img src={user.image} alt="not found" className='user-main-img' />
+                                                <img src={user.image} alt="not found" className='user-main-img pnvu-pro-img' />
                                                 <div className='user-content'>
                                                     <h4>
                                                         {user.name} {user.surName}
