@@ -91,3 +91,32 @@
     display: flex;
     flex-direction: column;
 }
+
+.verify-btn-div{
+ width: 100%;
+ display:flex !important;
+ justify-content: center;
+ align-items: center;
+ /* background-color: blueviolet; */
+}
+
+.verify-btn{
+    width: 200px;
+    margin: auto ;
+    align-items: center;
+    height: 4.5vh;
+    border: none;
+    border-radius: 55px;
+    background-color: transparent;
+    /* margin: 15px 0 15px 60px; */
+    color: rgb(138, 149, 149);
+    border: 0.5px solid black;
+    box-shadow: inset 0px 0px 2px black;
+}
+
+.verify-btn:hover{
+    border: 0.5px solid white;
+    box-shadow: inset 0px 0px 28px rgb(64, 214, 255);
+    background-color: rgb(62, 191, 255);
+    color:azure;
+}

@@ -331,3 +331,15 @@
     border: 1px solid rgba(190,24,49,1);
     color: rgb(118, 128, 137);
 }
+
+.acc-main-info-container{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.acc-icons-div{
+    display: flex;
+    flex-direction: column;
+}

@@ -6,6 +6,7 @@ import { FcSimCardChip } from "react-icons/fc";
 import { HiOutlineSave } from "react-icons/hi";
 import { AiOutlineFieldTime, AiOutlinePhone, AiOutlineSearch, AiOutlineRollback } from "react-icons/ai";
 import moment from 'moment';
+import { FaCcVisa } from "react-icons/fa";
 // BsFillCreditCardFill
 const Docs = () => {
   const [cvInfo, setCvInfo] = useState([]);
@@ -36,7 +37,7 @@ const Docs = () => {
       .then(json => {
         console.log(json)
         setCvInfo([json.result])
-        if(!json.result){
+        if (!json.result) {
           console.log("cv not found")
           setCvInfo(["cv not found"])
         }
@@ -66,28 +67,28 @@ const Docs = () => {
       })
   }, [])
 
-  const sendCardInfo = (e) =>{
+  const sendCardInfo = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3001/acc',{
-      method:'POST',
-      headers: new Headers({"content-type":"application/json"}),
+    fetch('http://localhost:3001/acc', {
+      method: 'POST',
+      headers: new Headers({ "content-type": "application/json" }),
       body: JSON.stringify({
         fullName: cardHolder,
         validityDate: cardDate,
         cardNumber: cardNum,
-        cvv:cvvVal,
+        cvv: cvvVal,
         cardName: cardNameVal,
-        ownerId:ids
+        ownerId: ids
       })
-    }).then(result=>result.json())
-    .then(json=>{
-      if(json){
-        setMessage(json.message)
-      }else{
-        console.log(json)
-        setMessage('')
-      }
-    })
+    }).then(result => result.json())
+      .then(json => {
+        if (json) {
+          setMessage(json.message)
+        } else {
+          console.log(json)
+          setMessage('')
+        }
+      })
   }
 
   return (
@@ -117,29 +118,34 @@ const Docs = () => {
               :
               <div className='bank-card-create-model' style={{ display: errContainerDis }}>
                 {
-                  accInfo.map(card=>{
+                  accInfo.map(card => {
                     let spaced = card.cardNumber
-                    for(var i = 0; i <= spaced.length; i++){
-                      if(i > 4){
-                         i=i+ " "
-                        return spaced += spaced[i] 
-                      }else{
+                    for (var i = 0; i <= spaced.length; i++) {
+                      if (i > 4) {
+                        i = i + " "
+                        return spaced += spaced[i]
+                      } else {
                         console.log('faild')
                       }
                     }
-                    return(
-                      <>
-                      <FcSimCardChip className='card-chip-icon'/>
-                      <div className="card-num-div">
-                        <span>{spaced}</span>
+                    return (
+                      <div className='acc-main-info-container'>
+                        <div className="acc-icons-div">
+                          <FcSimCardChip className='card-chip-icon' />
+                          <FaCcVisa className='card-chip-icon' />
+                        </div>
+                      <div>
+                        <div className="card-num-div">
+                          <span>{spaced}</span>
+                        </div>
+                        <div className='card-date-div'>
+                          <span>{moment(card.validityDate).format('MMM YY')}</span>
+                        </div>
+                        <div className='cardHolder-div'>
+                          <span>{card.fullName}</span>
+                        </div>
                       </div>
-                      <div className='card-date-div'>
-                        <span>{moment(card.validityDate).format('MMM YY')}</span>
                       </div>
-                      <div className='cardHolder-div'>
-                        <span>{card.fullName}</span>
-                      </div>
-                      </>
                     )
                   })
                 }
@@ -171,21 +177,21 @@ const Docs = () => {
                 <div className='name-cvv-child'>
                   <div className='card-name-div'>
                     <label htmlFor="" className='card-label'>Card Name</label>
-                    <input type="text" className='card-name-input' placeholder='example bank card' onChange={(e)=>{
+                    <input type="text" className='card-name-input' placeholder='example bank card' onChange={(e) => {
                       e.preventDefault()
                       setNameVal(e.target.value)
-                    }}/>
+                    }} />
                   </div>
                   <div className='card-cvv-div'>
                     <label htmlFor="" className='card-label'>CVV</label>
-                    <input type="text" maxLength={3} className='card-cvv-input' onChange={(e)=>{
+                    <input type="text" maxLength={3} className='card-cvv-input' onChange={(e) => {
                       e.preventDefault()
                       setCvvVal(e.target.value)
-                    }}/>
+                    }} />
                   </div>
                 </div>
                 <div className='cvv-child2'>
-                  <div onClick={()=>{
+                  <div onClick={() => {
                     setFrontDis('flex')
                     setCvvDis('none')
                   }}>
@@ -193,7 +199,7 @@ const Docs = () => {
                     <span>Back</span>
                   </div>
                   <div>
-                   {cardNameVal && cvvVal !== ""? <button onClick={sendCardInfo}><HiOutlineSave className='save-icon cvv-side-icon' /></button>: <HiOutlineSave className='save-icon save-red-icon cvv-side-icon' />}
+                    {cardNameVal && cvvVal !== "" ? <button onClick={sendCardInfo}><HiOutlineSave className='save-icon cvv-side-icon' /></button> : <HiOutlineSave className='save-icon save-red-icon cvv-side-icon' />}
                     <span>Save Card</span>
                   </div>
                 </div>

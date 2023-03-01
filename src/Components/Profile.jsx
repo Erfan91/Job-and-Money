@@ -4,10 +4,10 @@ import { useState } from 'react'
 import { IoIosNotifications } from "react-icons/io";
 import { BiMessage, BiNotification, BiSearch } from "react-icons/bi";
 import { AiOutlineDownSquare, AiOutlineCloseSquare } from "react-icons/ai"
-import { MdOutlineDocumentScanner,  } from "react-icons/md";
-import {GrDocumentUser } from "react-icons/gr";
-import { GiShakingHands} from "react-icons/gi";
-import { SiHandshake} from "react-icons/si";
+import { MdOutlineDocumentScanner, } from "react-icons/md";
+import { GrDocumentUser } from "react-icons/gr";
+import { GiShakingHands } from "react-icons/gi";
+import { SiHandshake } from "react-icons/si";
 import { RiSettingsLine } from "react-icons/ri";
 import { IoDocumentsOutline } from "react-icons/io5";
 import { IoIosDocument } from "react-icons/io";
@@ -16,7 +16,7 @@ import PopupTwo from './popups/PopupTwo';
 import Messages from './Messages';
 import { BsCheckCircleFill, BsQuestionCircleFill, BsFillInfoCircleFill } from 'react-icons/bs';
 import { IoIosClose } from 'react-icons/io';
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import { OfferContext } from '../App';
 import { useContext } from 'react';
 const Profile = (props) => {
@@ -28,7 +28,7 @@ const Profile = (props) => {
     const ids = JSON.parse(id)
     const [placeholder, setPlaceHolder] = useState('Per-Hour');
     const [payBoxDisplay, setPBDisplay] = useState('none')
-    const [addInfo,setAddInfo] = useState('none')
+    const [addInfo, setAddInfo] = useState('none')
     console.log(ids)
     // <Form Values> 
     const [title, setTitle] = useState('');
@@ -45,45 +45,56 @@ const Profile = (props) => {
     const [reply, setReply] = useState('');
     const startTime = JSON.stringify(startFrom)
     const startHour = JSON.parse(startTime)
-    const values = {title, ids, pro, workers, date, estimatedTime, startHour, payment, amount, address, city, codePostal, reply}
+    const values = { title, ids, pro, workers, date, estimatedTime, startHour, payment, amount, address, city, codePostal, reply }
     const [infoBox, setInfoBox] = useState('Hover on anything and see the info here!')
     const [infoDis, setInfoDis] = useState('flex')
     const [infoStyle, setInfoStyle] = useState('')
     const [topPosition, setTopPosition] = useState('69.5%')
     const [bGColor, setBgColor] = useState({})
-    
-    const background1 = {backgroundColor: "#0093E9",
-    backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)"}
-    const bg2 = {backgroundColor: "#85FFBD",
+
+    const background1 = {
+        backgroundColor: "#0093E9",
+        backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)"
+    }
+    const bg2 = {
+        backgroundColor: "#85FFBD",
         backgroundImage: "linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%)"
     }
-    const bg3 = {backgroundColor: "#8EC5FC",
+    const bg3 = {
+        backgroundColor: "#8EC5FC",
         backgroundImage: "linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)"
-    } 
-    const bg4 = {backgroundColor: "#08AEEA",
+    }
+    const bg4 = {
+        backgroundColor: "#08AEEA",
         backgroundImage: "linear-gradient(0deg, #08AEEA 0%, #2AF598 100%)"
     }
-    const bg5 = {backgroundColor: "#21D4FD",
+    const bg5 = {
+        backgroundColor: "#21D4FD",
         backgroundImage: "linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)"
     }
-    const bg6 = {backgroundColor: "#3EECAC",
+    const bg6 = {
+        backgroundColor: "#3EECAC",
         backgroundImage: "linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%)"
     }
-    const bg7 = {backgroundColor: "#3EECAC",
+    const bg7 = {
+        backgroundColor: "#3EECAC",
         backgroundImage: "linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%)"
     }
-    const bg8 = {backgroundColor: "#FF9A8B",
-    backgroundImage: "linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%)"
+    const bg8 = {
+        backgroundColor: "#FF9A8B",
+        backgroundImage: "linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%)"
     }
-    const bg9 = {backgroundColor: "#74EBD5",
+    const bg9 = {
+        backgroundColor: "#74EBD5",
         backgroundImage: "linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%)"
     }
-    const bg10 = {backgroundColor: "#FAACA8",
+    const bg10 = {
+        backgroundColor: "#FAACA8",
         backgroundImage: "linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%)"
-        }
+    }
 
-    const {setDisplayN} = useContext(OfferContext)
-    
+    const { setDisplayN } = useContext(OfferContext)
+
     // </Form values>
     const [bgColor, setColor] = useState('');
     useEffect(() => {
@@ -93,31 +104,31 @@ const Profile = (props) => {
                 // console.log(json)
                 setInfo([json])
             })
-            setDisplayN('flex')
+        setDisplayN('flex')
     }, [])
 
     const [timePHolder, setTholder] = useState('');
     const [hourDis, setDisplay] = useState('hidden');
     const [isNotif, setIsNotif] = useState(Boolean)
-    const {info1} = useContext(OfferContext)
+    const { info1 } = useContext(OfferContext)
     useEffect(() => {
         fetch(`http://localhost:3001/user/${ids}`)
-          .then(result => result.json())
-          .then(json => {
-            console.log(json)
-            setInfo([json])
-            info1([json])
-          })
-      }, [])
+            .then(result => result.json())
+            .then(json => {
+                console.log(json)
+                setInfo([json])
+                info1([json])
+            })
+    }, [])
 
 
-      const valuesA = arr =>{
+    const valuesA = arr => {
         var array = [...arr];
-        for(var i = array.length-1; i >= 0 ; i--){
-            if(array[i] == ""){
-                 array = false
-            }else{
-                 array = true
+        for (var i = array.length - 1; i >= 0; i--) {
+            if (array[i] == "") {
+                array = false
+            } else {
+                array = true
             }
         }
         return array
@@ -148,96 +159,96 @@ const Profile = (props) => {
                 <div className='pro-section-child3'>
                     <div className='pro-options'>
                         <div className='test-option offer-option'>
-                            <IoDocumentsOutline className="ofr-icon opt-icon"/>
+                            <IoDocumentsOutline className="ofr-icon opt-icon" />
                             <span className='icn-span'>My offers</span>
                         </div>
                         <div className='test-option wrkd-option'>
-                            <SiHandshake className="wrkd-icon opt-icon"/>
+                            <SiHandshake className="wrkd-icon opt-icon" />
                             <span className='icn-span'>Worked with</span>
                         </div>
                         <div className='test-option docs-option'>
-                            <IoIosDocument className="doc-icon opt-icon"/>
+                            <IoIosDocument className="doc-icon opt-icon" />
                             <span className='icn-span'>My documents</span>
                         </div>
                         <div className='test-option stng-option'>
-                            <RiSettingsLine className="stng-icon opt-icon"/>
+                            <RiSettingsLine className="stng-icon opt-icon" />
                             <span className='icn-span'>Setting</span>
-                            <div className='bgChanger-container' style={{display: "none"}} >
-                                    <div className='bgChanger background' onClick={()=>setBgColor(background1)}>
-                                    </div>
-                                    <div className='bgChanger bg1' onClick={()=>setBgColor(bg2)}>
-                                    </div>
-                                    <div className='bgChanger bg2' onClick={()=>setBgColor(bg3)}>
-                                    </div>
-                                    <div className='bgChanger bg3' onClick={()=>setBgColor(bg4)}>
-                                    </div>
-                                    <div className='bgChanger bg4' onClick={()=>setBgColor(bg5)}>
-                                    </div>
-                                    <div className='bgChanger bg5' onClick={()=>setBgColor(bg6)}>
-                                    </div>
-                                    <div className='bgChanger bg6' onClick={()=>setBgColor(bg7)}>
-                                    </div>
-                                    <div className='bgChanger bg7' onClick={()=>setBgColor(bg8)}>
-                                    </div>
-                                    <div className='bgChanger bg8' onClick={()=>setBgColor(bg9)}>
-                                    </div>
-                                    <div className='bgChanger bg9' onClick={()=>setBgColor(bg10)}>
-                                    </div>
+                            <div className='bgChanger-container' style={{ display: "none" }} >
+                                <div className='bgChanger background' onClick={() => setBgColor(background1)}>
+                                </div>
+                                <div className='bgChanger bg1' onClick={() => setBgColor(bg2)}>
+                                </div>
+                                <div className='bgChanger bg2' onClick={() => setBgColor(bg3)}>
+                                </div>
+                                <div className='bgChanger bg3' onClick={() => setBgColor(bg4)}>
+                                </div>
+                                <div className='bgChanger bg4' onClick={() => setBgColor(bg5)}>
+                                </div>
+                                <div className='bgChanger bg5' onClick={() => setBgColor(bg6)}>
+                                </div>
+                                <div className='bgChanger bg6' onClick={() => setBgColor(bg7)}>
+                                </div>
+                                <div className='bgChanger bg7' onClick={() => setBgColor(bg8)}>
+                                </div>
+                                <div className='bgChanger bg8' onClick={() => setBgColor(bg9)}>
+                                </div>
+                                <div className='bgChanger bg9' onClick={() => setBgColor(bg10)}>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className='btn-bar'>
-                            <button className='create-btn' onClick={() => {
-                                setVisiblity('visible')
-                            }}>Create an offer</button>
+                        <button className='create-btn' onClick={() => {
+                            setVisiblity('visible')
+                        }}>Create an offer</button>
                     </div>
                 </div>
                 <div className='offer-popUp1' style={{ visibility: visible }}>
                     <form>
                         <div className='form-main-div'>
-                    <div className='close-window'>
-                        <div></div>
-                        <div className='offer-form-head'>
-                            <span className='form-head-span'>Offer creation form</span>
-                            <span className='fill-info-span'>fill the information below to create your offer</span>
-                        </div>
-                        <AiOutlineCloseSquare className='close-icon' onClick={() => {
-                            setVisiblity('hidden')
-                            setAddInfo('none')
-                        }} />
-                    </div>
+                            <div className='close-window'>
+                                <div></div>
+                                <div className='offer-form-head'>
+                                    <span className='form-head-span'>Offer creation form</span>
+                                    <span className='fill-info-span'>fill the information below to create your offer</span>
+                                </div>
+                                <AiOutlineCloseSquare className='close-icon' onClick={() => {
+                                    setVisiblity('hidden')
+                                    setAddInfo('none')
+                                }} />
+                            </div>
                             <label htmlFor="">Title*</label>
                             <div className='form-title-div'>
-                                <input type="text" className='popUp-input' 
-                                onMouseEnter={()=>{
-                                    setInfoBox('Choose what type of worker you need, like Plumber...')
-                                    setInfoDis('none')
-                                    setInfoStyle('flex-start')
-                                }}
-                                onMouseLeave={()=>{
-                                    setInfoBox('Hover on anything and see the info here!')
-                                    setInfoDis('flex')
-                                    setInfoStyle('')
-                                }}
-                                 onChange={(e) => {
-                                    e.preventDefault()
-                                    setTitle(e.target.value)
-                                }} />
-                                <div className="dropDown">
-                                    <button className='pro-btn' style={{ background: bgColor }}
-                                       onMouseEnter={()=>{
-                                        setInfoBox('if You need a professional select pro,! hiring a pro worker could cost you more')
+                                <input type="text" className='popUp-input'
+                                    onMouseEnter={() => {
+                                        setInfoBox('Choose what type of worker you need, like Plumber...')
                                         setInfoDis('none')
                                         setInfoStyle('flex-start')
                                     }}
-                                    onMouseLeave={()=>{
+                                    onMouseLeave={() => {
                                         setInfoBox('Hover on anything and see the info here!')
                                         setInfoDis('flex')
                                         setInfoStyle('')
                                     }}
-                                    onClick={(e) => {
+                                    onChange={(e) => {
                                         e.preventDefault()
-                                    }}>{proOption} <AiOutlineDownSquare className='chev-down' /></button>
+                                        setTitle(e.target.value)
+                                    }} />
+                                <div className="dropDown">
+                                    <button className='pro-btn' style={{ background: bgColor }}
+                                        onMouseEnter={() => {
+                                            setInfoBox('if You need a professional select pro,! hiring a pro worker could cost you more')
+                                            setInfoDis('none')
+                                            setInfoStyle('flex-start')
+                                        }}
+                                        onMouseLeave={() => {
+                                            setInfoBox('Hover on anything and see the info here!')
+                                            setInfoDis('flex')
+                                            setInfoStyle('')
+                                        }}
+                                        onClick={(e) => {
+                                            e.preventDefault()
+                                        }}>{proOption} <AiOutlineDownSquare className='chev-down' /></button>
                                     <div className="dropDown-content">
                                         <span onClick={() => {
                                             setProO('Pro')
@@ -254,49 +265,49 @@ const Profile = (props) => {
                             </div>
                             <label htmlFor="">Workers*</label>
                             <div>
-                                <input type="text" 
-                                   onMouseEnter={()=>{
-                                    setInfoBox('How many Workers do you exactly need?')
-                                    setInfoDis('none')
-                                    setInfoStyle('flex-start')
-                                }}
-                                onMouseLeave={()=>{
-                                    setInfoBox('Hover on anything and see the info here!')
-                                    setInfoDis('flex')
-                                    setInfoStyle('')
-                                }}
-                                onChange={(e) => {
-                                    e.preventDefault()
-                                    setWorkers(e.target.value)
-                                }} />
+                                <input type="text"
+                                    onMouseEnter={() => {
+                                        setInfoBox('How many Workers do you exactly need?')
+                                        setInfoDis('none')
+                                        setInfoStyle('flex-start')
+                                    }}
+                                    onMouseLeave={() => {
+                                        setInfoBox('Hover on anything and see the info here!')
+                                        setInfoDis('flex')
+                                        setInfoStyle('')
+                                    }}
+                                    onChange={(e) => {
+                                        e.preventDefault()
+                                        setWorkers(e.target.value)
+                                    }} />
                             </div>
                             <div className='desperator-div'>
-                                <div className='vertical-line'></div>
-                                <span>Date</span>
-                                <div className="vertical-line"></div>
+                                {/* <div className='vertical-line'></div> */}
+                                <span className='desp-span desp-date-span'>Date</span>
+                                {/* <div className="vertical-line"></div> */}
                             </div>
                             <label htmlFor="">When*</label>
-                            <div className="popUp-date-div form-title-div">
+                            <div className="popUp-date-div form-title-div desp-edit-parent-div">
                                 <div className='info-box-div'>
-                                <input type="date" className='popUp-input'
-                                   onMouseEnter={()=>{
-                                    setInfoBox('Specify the exact date and time to start the work')
-                                    setInfoDis('none')
-                                    setInfoStyle('flex-start')
-                                }}
-                                onMouseLeave={()=>{
-                                    setInfoBox('Hover on anything and see the info here!')
-                                    setInfoDis('flex')
-                                    setInfoStyle('')
-                                }}
-                                onChange={(e) => {
-                                    e.preventDefault()
-                                    setDate(e.target.value)
-                                }} />
-                                <div style={{justifyContent: infoStyle}} className="info-box">
-                                <BsFillInfoCircleFill style={{display: infoDis}} className='info-icon'/>
-                                <p>{infoBox}</p>
-                                </div>
+                                    <input type="date" className='popUp-input'
+                                        onMouseEnter={() => {
+                                            setInfoBox('Specify the exact date and time to start the work')
+                                            setInfoDis('none')
+                                            setInfoStyle('flex-start')
+                                        }}
+                                        onMouseLeave={() => {
+                                            setInfoBox('Hover on anything and see the info here!')
+                                            setInfoDis('flex')
+                                            setInfoStyle('')
+                                        }}
+                                        onChange={(e) => {
+                                            e.preventDefault()
+                                            setDate(e.target.value)
+                                        }} />
+                                    <div style={{ justifyContent: infoStyle }} className="info-box">
+                                        <BsFillInfoCircleFill style={{ display: infoDis }} className='info-icon' />
+                                        <p>{infoBox}</p>
+                                    </div>
                                 </div>
                                 <div className='date-div-child '>
                                     <label htmlFor="">Estimated Time*</label>
@@ -306,7 +317,7 @@ const Profile = (props) => {
                                         setEstimated(timePHolder + "-Hours")
                                     }}>{timePHolder}-Hours <AiOutlineDownSquare className='chev-down' /></button>
                                     <div className='hours-div' style={{ visibility: hourDis }} onClick={() => { setDisplay('hidden') }}>
-                                        <span className='hour-span' onClick={() => setTholder('')}><IoIosClose  className='hours-close'/></span>
+                                        <span className='hour-span' onClick={() => setTholder('')}><IoIosClose className='hours-close' /></span>
                                         <span className='hour-span' onClick={() => setTholder('3')}>3</span>
                                         <span className='hour-span' onClick={() => setTholder('4')}>4</span>
                                         <span className='hour-span' onClick={() => setTholder('5')}>5</span>
@@ -322,32 +333,32 @@ const Profile = (props) => {
                                 </div>
                             </div>
                             <div className='desperator-div'>
-                                <div className='vertical-line'></div>
-                                <span>Payment</span>
-                                <div className="vertical-line"></div>
+                                {/* <div className='vertical-line'></div> */}
+                                <span className='desp-span desp-pay-span'>Payment</span>
+                                {/* <div className="vertical-line"></div> */}
                             </div>
                             <label htmlFor="">Payment*</label>
                             <div className='form-title-div popUp-payment-div'>
-                                <input type="text"  placeholder={placeholder}
-                                 onMouseEnter={()=>{
-                                    setInfoBox('Select how would you like to pay')
-                                    setInfoDis('none')
-                                    setInfoStyle('center')
-                                }}
-                                onMouseLeave={()=>{
-                                    setInfoBox('Hover on anything and see the info here!')
-                                    setInfoDis('flex')
-                                    setInfoStyle('')
-                                }}
-                                onChange={(e) => {
-                                    e.preventDefault()
-                                   
-                                }} onClick={()=>{
-                                    if(payBoxDisplay == 'none'){
-                                        setPBDisplay('flex')
-                                    }else{
-                                        setPBDisplay('none')
-                                    }
+                                <input type="text" placeholder={placeholder}
+                                    onMouseEnter={() => {
+                                        setInfoBox('Select how would you like to pay')
+                                        setInfoDis('none')
+                                        setInfoStyle('center')
+                                    }}
+                                    onMouseLeave={() => {
+                                        setInfoBox('Hover on anything and see the info here!')
+                                        setInfoDis('flex')
+                                        setInfoStyle('')
+                                    }}
+                                    onChange={(e) => {
+                                        e.preventDefault()
+
+                                    }} onClick={() => {
+                                        if (payBoxDisplay == 'none') {
+                                            setPBDisplay('flex')
+                                        } else {
+                                            setPBDisplay('none')
+                                        }
                                     }} />
                                 <div className="payment-options" style={{ display: payBoxDisplay, top: topPosition }}>
                                     <div className='per-hour pay-box' onClick={() => {
@@ -366,37 +377,39 @@ const Profile = (props) => {
                                 <div className='payment-child date-div-child'>
                                     <label htmlFor="">Amount*</label>
                                     <input type="text"
-                                     onMouseEnter={()=>{
-                                        setInfoBox('insert the exact amount you want to pay per-hour, mission, issue')
-                                        setInfoDis('none')
-                                        setInfoStyle('flex-start')
-                                    }}
-                                    onMouseLeave={()=>{
-                                        setInfoBox('Hover on anything and see the info here!')
-                                        setInfoDis('flex')
-                                        setInfoStyle('')
-                                    }}
-                                    onChange={(e) => {
-                                        e.preventDefault()
-                                        setAmount(e.target.value)
-                                    }} />
+                                        placeholder="13 (Euro,$,£)"
+                                        className="popup-amount-input"
+                                        onMouseEnter={() => {
+                                            setInfoBox('insert the exact amount you want to pay per-hour, mission, issue')
+                                            setInfoDis('none')
+                                            setInfoStyle('flex-start')
+                                        }}
+                                        onMouseLeave={() => {
+                                            setInfoBox('Hover on anything and see the info here!')
+                                            setInfoDis('flex')
+                                            setInfoStyle('')
+                                        }}
+                                        onChange={(e) => {
+                                            e.preventDefault()
+                                            setAmount(e.target.value)
+                                        }} />
                                 </div>
                             </div>
-                            <div className='desperator-div'>
-                                <div className='vertical-line'></div>
-                                <span>Address</span>
-                                <div className="vertical-line"></div>
+                            <div className='desperator-div desp-address-div'>
+                                {/* <div className='vertical-line'></div> */}
+                                <span className='desp-span desp-adrs-span'>Address</span>
+                                {/* <div className="vertical-line"></div> */}
                             </div>
                             <label htmlFor="">Address*</label>
                             <div className='popUp-address-div form-title-div'>
                                 <input type="text" className='popUp-input' onChange={(e) => {
                                     e.preventDefault()
                                     setAddress(e.target.value)
-                                }} onClick={()=>{
+                                }} onClick={() => {
                                     setAddInfo('flex')
                                     setPBDisplay('none')
                                     setTopPosition('58.5%')
-                                    }}/>
+                                }} />
                                 <div className='address-child date-div-child'>
                                     <label htmlFor="">Respond in...</label>
                                     <input type="text" placeholder='30-Minutes' onChange={(e) => {
@@ -405,37 +418,39 @@ const Profile = (props) => {
                                     }} />
                                 </div>
                             </div>
-                            <div className="address-info" style={{display: addInfo}}>
+                            <div className="address-info" style={{ display: addInfo }}>
                                 <div className="city-country">
                                     <div>
-                                    <label htmlFor="">City*</label>
-                                    <input type="text" className="city-input" onChange={(e)=>{
-                                        e.preventDefault()
-                                        setCity(e.target.value)
-                                    }}/>
+                                        <label htmlFor="">City*</label>
+                                        <input type="text" className="city-input" onChange={(e) => {
+                                            e.preventDefault()
+                                            setCity(e.target.value)
+                                        }} />
                                     </div>
                                     <div>
-                                    <label>Country*</label>
-                                    <input type="text" placeholder="France" disabled className="country-input"/>
+                                        <label>Country*</label>
+                                        <input type="text" placeholder="France" disabled className="country-input" />
                                     </div>
                                 </div>
-                                    <label htmlFor="">Postal Code*</label>
-                                    <input type="text" className="postal-code-input" onChange={(e)=>{
-                                        e.preventDefault()
-                                        setPostalCode(e.target.value)
-                                    }} />
+                                <label htmlFor="">Postal Code*</label>
+                                <input type="text" className="postal-code-input" onChange={(e) => {
+                                    e.preventDefault()
+                                    setPostalCode(e.target.value)
+                                }} />
                             </div>
-                           {valuesA([title, workers, date, startHour, estimatedTime, payment, amount, address, city, codePostal])? <button className='popUp-next-btn'  onClick={(e) => {
+                            <div className='popup-nxt-btn-container'>
+                            {valuesA([title, workers, date, startHour, estimatedTime, payment, amount, address, city, codePostal]) ? <button className='popUp-next-btn' onClick={(e) => {
                                 e.preventDefault();
                                 setVisiblity('hidden')
                                 setVisiblityB('visible')
                             }}>Next</button>
-                            :
-                             <button className='popUp-next-btn' disabled onClick={(e) => {
-                                e.preventDefault();
-                                setVisiblity('hidden')
-                                setVisiblityB('visible')
-                            }}>Next</button>}
+                                :
+                                <button className='popUp-next-btn' disabled onClick={(e) => {
+                                    e.preventDefault();
+                                    setVisiblity('hidden')
+                                    setVisiblityB('visible')
+                                }}>Next</button>}
+                            </div>
                         </div>
                     </form>
                 </div>

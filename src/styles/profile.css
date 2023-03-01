@@ -313,14 +313,15 @@
     padding: 25px 25px;
     box-shadow: inset 0 0 5px black;
     border-radius: 15px;
-
+    align-items: center;
+    
 }
 
 .offer-form-head{
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-right: 80px;
+    /* margin-right: 80px; */
     margin-top: -10px;
 }
 
@@ -340,7 +341,12 @@
     height: 4vh;
     border: 0.5px solid aquamarine;
     border-radius: 3px;
-    box-shadow: inset 0 0 5px grey;
+    box-shadow: inset 0 0 3px grey;
+}
+
+.offer-popUp1 input:focus{
+    outline: none;
+    background-color: rgba(119, 221, 255, 0.157);
 }
 
 
@@ -442,27 +448,39 @@
 }
 
 .popUp-next-btn{
-    width: 300px;
-    /* margin: auto ; */
+    width: 200px;
+    margin: auto ;
     align-items: center;
     height: 4.5vh;
     border: none;
-    border-radius: 13px;
-    background-color: rgb(107, 107, 255);
-    margin: 15px 0 15px 60px;
-    
+    border-radius: 55px;
+    background-color: rgb(30, 30, 30);
+    /* margin: 15px 0 15px 60px; */
+    color: rgb(138, 149, 149);
+    border: 0.5px solid black;
+    box-shadow: inset 0px 0px 2px black;
+}
+
+.popUp-next-btn:hover{
+    border: 0.5px solid white;
+    box-shadow: inset 0px 0px 2px 4px aquamarine;
+    color:aquamarine;
 }
 
 .close-window{
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+    justify-content: space-between;
     padding:0 15px;
     padding-top: 10px;
     font-size: 20px;
+    width: 95%;
+   
 }
 
 .close-icon{
     cursor: pointer;
+    margin-right: -10px;
 }
 
 .close-icon :hover{
@@ -503,8 +521,14 @@
     border-radius: 13px;
     cursor: pointer;
     box-shadow: inset 0 0 3px black;
-    color: aquamarine;
+    color:darkcyan;
     border: 0.3px solid aquamarine;
+}
+
+.hour-span:hover{
+    transform: scale(1.1);
+    color: #21D4FD;
+    /* box-shadow: inset 0px 0px 3px rgb(187, 179, 179); */
 }
 
 .hours-close{
@@ -514,6 +538,10 @@
 
 .hours-btn{
     width: 128px;
+    background-color: #7acbfa;
+    color: azure;
+    border: 0.5px solid aquamarine;
+    box-shadow: inset 0px 0px 2px white;
 }
 
 .payment-options{
@@ -574,3 +602,50 @@
 .postal-code-input{
     width: 110px;
 }
+
+
+.desp-span{
+    /* background-color: #21D4FD; */
+    width: 100px;
+    text-align: center;
+    height: 30px;
+    align-items: center;
+    border-radius: 60%;
+    box-shadow: inset 0px 0px 2px white;
+    padding-top: 3px;
+    /* background: linear-gradient(to right, #36d1dc, #5b86e5); */
+    /* color: rgb(93, 193, 255); */
+    border: 0.5px solid aquamarine;
+}
+
+.desp-pay-span{
+    margin-top: 17px !important;
+    color: white;
+    background-color: #74EBD5;
+}
+
+/* border: 0.5px solid #74EBD5; */
+.popup-nxt-btn-container{
+    width: 100%;
+    /* background-color: #2AF598; */
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.desp-date-span{
+    background-color:#21D4FD;
+    color: white;
+    /* border: 0.5px solid tomato; */
+}
+
+.desp-adrs-span{
+    background-color: rgb(255, 179, 166);
+    color: white;
+}
+
+.popup-amount-input{
+    background-color: #74EBD5;
+    color: azure;
+}
+

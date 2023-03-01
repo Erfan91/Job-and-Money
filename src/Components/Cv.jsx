@@ -90,7 +90,7 @@ const Cv = (props) => {
                     <img src={content?.ownerId?.image} alt="image not found" className='user-cv-img' />
                     <div className='cv-personal-info' >
                       <div className='cv-name-title-container'>
-                        <h2 test>{content?.ownerId?.name} {content?.ownerId?.surName}</h2>
+                        <h2 className='cv-fName-lName' test>{content?.ownerId?.name} {content?.ownerId?.surName}</h2>
                         <p><i>Director</i></p>
                       </div>
                       <div>
@@ -99,20 +99,20 @@ const Cv = (props) => {
                     </div>
                     <div className='cv-personal-data' >
                       <div className='cv-address-div cv-content-child'>
-                          <h5>ADDRESS</h5>
-                          <p>{content?.address}</p>
+                          <h5 className='p-info-header'>ADDRESS</h5>
+                          <p className='p-info-paragraph'>{content?.address}</p>
                       </div>
                       <div className='cv-number-div cv-content-child'>
-                        <h5>PHONE NUMBER</h5>
-                        <p>{content?.ownerId?.phoneNumber}</p>
+                        <h5 className='p-info-header'>PHONE NUMBER</h5>
+                        <p className='p-info-paragraph'>{content?.ownerId?.phoneNumber}</p>
                       </div>
                       <div className='cv-email-div cv-content-child'>
-                        <h5>EMAIL</h5>
-                        <p>{content?.ownerId?.email}</p>
+                        <h5 className='p-info-header'>EMAIL</h5>
+                        <p className='p-info-paragraph'>{content?.ownerId?.email}</p>
                       </div>
                       <div className='cv-website-div cv-content-child'>
-                        <h5>WEBSITE</h5>
-                        <p>||</p>
+                        <h5 className='p-info-header'>WEBSITE</h5>
+                        <p className='p-info-paragraph'>||</p>
                       </div>
                     </div>
                     <div className='social-media-pages'>

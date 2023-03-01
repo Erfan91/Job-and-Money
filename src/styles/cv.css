@@ -23,7 +23,10 @@
     text-align: center;
     padding: 0 13px;
     justify-content: flex-end;
-    background-color: rgba(251, 251, 251, 0.449);
+    /* background-color: rgba(251, 251, 251, 0.449); */
+    background-image: url(../images/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products.jpg);
+    background-size: cover;
+    /* background-position: center; */
     /* box-shadow: 0 0 10px black; */
     border-right: 1px dashed aquamarine;
     border-left: 1px dashed aquamarine;
@@ -79,7 +82,7 @@
 .cv-edu-section{
     width: 33.5%;
     height: 100vh;
-    background-color: rgba(251, 251, 251, 0.449);
+    /* background-color: rgba(251, 251, 251, 0.449); */
     padding: 0 13px;
     display: flex;
     flex-direction: column;
@@ -89,6 +92,8 @@
     /* box-shadow: 0 0 10px black; */
     border-right: 1px dashed aquamarine;
     border-left: 1px dashed aquamarine;
+    background-image: url(../images/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products.jpg);
+    background-size: cover;
 }
 
 
@@ -139,7 +144,9 @@
 
 .cv-personal-content-main-div{
     text-align: center;
-    background-color: rgba(251, 251, 251, 0.449);
+    /* background-color: rgba(251, 251, 251, 0.449); */
+    background-image: url(../images/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products.jpg);
+    background-size: cover;
     padding: 0 15px;
     width: 70%;
     height: 100%;
@@ -199,6 +206,11 @@
     width: 100%;
     margin: auto;
     font-size: small;
+    color: azure;
+}
+
+.cv-fName-lName{
+    color: aliceblue;
 }
 
 .cv-content-child{
@@ -239,4 +251,15 @@
     font-size: 22px;
     color: red;
     filter: drop-shadow(0px 0px 2px red);
+}
+
+.p-info-header{
+    color: rgb(188, 220, 255);
+    font-family:monospace;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.p-info-paragraph{
+    color: azure;
 }
