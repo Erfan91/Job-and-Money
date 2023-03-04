@@ -10,6 +10,7 @@
     height: 100vh;
     width: 75vw;
     /* background-color: rgba(251, 251, 251, 0.449); */
+    background: linear-gradient(to right, #4ecdc4, #556270);
     display: flex;
 }
 
@@ -27,16 +28,14 @@
     background-image: url(../images/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products.jpg);
     background-size: cover;
     /* background-position: center; */
-    /* box-shadow: 0 0 10px black; */
-    border-right: 1px dashed aquamarine;
-    border-left: 1px dashed aquamarine;
+    /* box-shadow: 0px 0px 1px 3px aquamarine; */
+    /* border-right: 1px dashed aquamarine;
+    border-left: 1px dashed aquamarine; */
 
 }
 
 .exp-h3{
-    border: 1px dashed whitesmoke;
-    border-left: none;
-    border-right: none;
+    /* border: 1px dashed whitesmoke; */
     padding: 6px 0;
     width: 100%;
     text-align: center;
@@ -45,6 +44,7 @@
     background-position: top;
     color: aquamarine;
     box-shadow: 0 0 10px black;
+    border-radius: 25px;
    
 }
 
@@ -62,7 +62,7 @@
 .exp-company-span{
     font-weight: lighter;
     font-size: large;
-    color: rgb(10, 10, 10);
+    color:aliceblue;
 }
 
 .exp-content-container p{
@@ -72,6 +72,12 @@
 
 .cv-title-spn{
     font-weight: bold;
+    color:aliceblue;
+}
+
+.exp-edu-date-span{
+    color: rgb(117, 157, 146);
+    font-size: small;
 }
 
 .cv-city-spn{

@@ -73,6 +73,7 @@ const EmployeeProfile = () => {
                 return (
                   <div className='info-div-child'>
                     <img src={user.image} className="empe-pro-img" />
+                    <div className='empee-prfl-pInfo'>
                     <span className='empe-name-span'>{user.name} {user.surName}</span>
                     <span className='username-span'>@{user.userName}</span>
                     {!user?.profession?
@@ -85,9 +86,8 @@ const EmployeeProfile = () => {
                     :
                       <span className='profession-span'>i am {user?.profession}</span>
                     }
-                    {/* {
-                      user?.aboutMe
-                    } */}
+                    </div>
+                   
                   </div>
                 )
               })

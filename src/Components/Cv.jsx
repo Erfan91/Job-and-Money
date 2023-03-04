@@ -66,7 +66,7 @@ const Cv = (props) => {
                       <div className='exp-head-content'>
                       <span className='exp-company-span'>{exp?.company}</span>
                       <span className='cv-title-spn'>{exp?.title}</span>
-                      <span>{moment(exp?.startDate).format("MMM Do YY")} - {moment(exp?.endDate).format("MMM Do YY")}</span>
+                      <span className='exp-edu-date-span'>{moment(exp?.startDate).format("MMM  YY")} - {moment(exp?.endDate).format("MMM  YY")}</span>
                       <span className='cv-city-spn'><small>{exp?.city}</small></span>
                       </div>
                       <p>{exp?.description}</p>
@@ -151,7 +151,7 @@ const Cv = (props) => {
                       <div className='exp-head-content'>
                       <span className='exp-company-span'>{exp?.company}</span>
                       <span className='cv-title-spn'>{exp?.title}</span>
-                      <span>{moment(exp?.startDate).format("MMM Do YY")} - {moment(exp?.endDate).format("MMM Do YY")}</span>
+                      <span className='exp-edu-date-span'>{moment(exp?.startDate).format("MMM  YY")} - {moment(exp?.endDate).format("MMM  YY")}</span>
                       <span className='cv-city-spn'><small>{exp?.city}</small></span>
                       </div>
                       <p>{exp?.description}</p>
